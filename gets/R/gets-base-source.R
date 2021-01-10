@@ -745,7 +745,9 @@ ols <- function(y, x, untransformed.residuals=NULL, tol=1e-07,
   ##ordinary vcov:
   ##--------------
   if(method==3){
-
+    
+    test <- "a"
+    
     ##mean specification:
     out <- list()
     out$n <- length(y)
