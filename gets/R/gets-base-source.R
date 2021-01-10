@@ -746,7 +746,7 @@ ols <- function(y, x, untransformed.residuals=NULL, tol=1e-07,
   ##--------------
   if(method==3){
     
-    test <- c("a","b")
+    test <- c("a","b","c")
     
     
     test1 <- "d"
