@@ -748,6 +748,9 @@ ols <- function(y, x, untransformed.residuals=NULL, tol=1e-07,
     
     test <- "a"
     
+    
+    test1 <- "d"
+    
     ##mean specification:
     out <- list()
     out$n <- length(y)
