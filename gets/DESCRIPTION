@@ -11,5 +11,5 @@ Imports: methods
 Depends: R (>= 3.3.0), zoo, parallel
 Suggests: lgarch, xtable, Matrix, microbenchmark, testthat
 BugReports: https://github.com/gsucarrat/gets/issues
-URL: https://CRAN.R-project.org/package=gets, http://www.sucarrat.net/R/gets/
+URL: https://CRAN.R-project.org/package=gets, http://www.sucarrat.net/R/gets/, http://moritzschwarz.org/gets/
 Config/testthat/edition: 3
