@@ -34,8 +34,9 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v2
         with:
-          extra-packages: any::pkgdown, local::gets/.
+          extra-packages: any::pkgdown, local::.
           needs: website
+	  working-directory: 'gets/.'
 
       - name: Build site
         run: pkgdown::build_site_github_pages(pkg = "gets", new_process = FALSE, install = FALSE)
