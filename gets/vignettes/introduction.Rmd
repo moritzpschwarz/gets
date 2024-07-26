@@ -1,6 +1,7 @@
 ---
 date: "`r Sys.Date()`"
-title: "An Introduction to the gets package^[This vignette is a minor modification of \\citet{PretisReadeSucarrat2018}]"
+title: "An Introduction to the gets package"
+author: Felix Pretis[^1], J. James Reade[^2] and Genaro Sucarrat[^3]
 output: 
   bookdown::html_vignette2:
     toc: true
@@ -9,11 +10,11 @@ output:
 bibliography: bib-introduction.bib
 link-citations: yes
 vignette: >
-  %\VignetteIndexEntry{An Introduction to the gets package}
-  %\VignetteDepends{gets}
-  %\VignetteKeywords{general-to-specific, model selection, variable selection, regression of the mean, regression of the log-variance, time series, AR-X, log-ARCH-X, indicator saturation}
-  %\VignettePackage{gets}
-  %\VignetteEngine{knitr::rmarkdown}
+  \VignetteIndexEntry{An Introduction to the gets package}
+  \VignetteDepends{gets}
+  \VignetteKeywords{general-to-specific, model selection, variable selection, regression of the mean, regression of the log-variance, time series, AR-X, log-ARCH-X, indicator saturation}
+  \VignettePackage{gets}
+  \VignetteEngine{bookdown::html_vignette2}
   \usepackage{babel}
   \usepackage{natbib}
   \usepackage{amsmath}
@@ -24,9 +25,7 @@ vignette: >
   \usepackage{multirow}
 ---
 
-<!-- \SweaveOpts{engine=R,eps=FALSE -->
 
-<!-- \VignetteIndexEntry{An introduction to the gets package -->
 
 <!-- \VignetteDepends{gets -->
 
@@ -34,7 +33,6 @@ vignette: >
 
 <!-- \VignettePackage{gets -->
 
-Felix Pretis[^1], J. James Reade[^2] and Genaro Sucarrat[^3]
 
 [^1]: University of Victoria, Department of Economics & INET at the Oxford Martin School, University of Oxford. URL: <http://www.felixpretis.org/>
 
@@ -44,16 +42,16 @@ Felix Pretis[^1], J. James Reade[^2] and Genaro Sucarrat[^3]
 
 \bigskip
 
-This version: `r Sys.Date()` [Original version: 3 September 2018]
+This version: `r Sys.Date()` 
+
+Original version: 3 September 2018
+
+Modified for Online Display by Moritz Schwarz
 
 <!-- table of contents -->
 
-```{=tex}
-\clearpage
-\section*{Summary}
-```
 
-```{r}
+```{r, echo=FALSE}
 knitr::opts_chunk$set(
   collapse = TRUE,
   warning = FALSE, 
@@ -63,7 +61,7 @@ knitr::opts_chunk$set(
 ```
 
 
-```{r}
+```{r, echo=FALSE}
 options(rmarkdown.html_vignette.check_title = FALSE)
 ```
 
@@ -113,17 +111,17 @@ E(\widehat{k}_{\text{rel}}/k_{\text{rel}}) \rightarrow \quad 1 \quad \text{and} 
 
 when $k_{\text{rel}},k_{\text{irr}}>0$. If either $k_{\text{rel}}=0$ or $k_{\text{irr}}=0$, then the criteria are modified in the obvious ways: If $k_{\text{rel}}=0$, then $E(\widehat{k}_{\text{rel}}) = 0$, and if $k_{\text{irr}}=0$, then $E(\widehat{k}_{\text{irr}}) = 0$. The proportion of spuriously retained variables, i.e., $\widehat{k}_{\text{irr}}/k_{\text{irr}}$, is also referred to as *gauge* in the GETS literature, with distributional results on the gauge for a specific case (the variables being impulses as in IIS) provided in [@johansen2016asymptotic]. The relevance proportion, i.e., $\widehat{k}_{\text{irr}}/k_{\text{irr}}$, is also referred to as *potency* in the GETS literature. 
 
-Table \@ref(table:comparison-of-gets-algorithms) contains a comparison of the variable selection properties of GETS software packages for some well-known experiments. As the results show, **gets** performs as expected in the experiments, since the irrelevance proportion corresponds well to the nominal regressor significance level $\alpha$, and since the relevance proportion is 1. Additional simulations, and comparisons against alternative algorithms, are contained in Section \@ref(subsec:comparison-of-gets-with-alternatives).
+Table \@ref(tab:comparison-of-gets-algorithms) contains a comparison of the variable selection properties of GETS software packages for some well-known experiments. As the results show, **gets** performs as expected in the experiments, since the irrelevance proportion corresponds well to the nominal regressor significance level $\alpha$, and since the relevance proportion is 1. Additional simulations, and comparisons against alternative algorithms, are contained in Section \@ref(subsec:comparison-of-gets-with-alternatives).
 
 
-```{r, echo=FALSE}
+```{r comparison-of-gets-algorithms, echo=FALSE}
 library(kableExtra)
 
 # Data for the table
 data <- data.frame(
   Experiment = c("HP1", "", "", "", "", 
                  "HP2", "", "", "", "", "", 
-                 "HP7'", "", "", "", "", ""),
+                 "HP7", "", "", "", "", ""),
   k_rel = c(0, "", "", "", "", 
             1, "", "", "", "", "", 
             3, "", "", "", "", ""),
@@ -149,7 +147,7 @@ data <- data.frame(
 
 # Creating the table
 kable(data, "html", escape = FALSE,
-caption = "\\label{table:comparison-of-gets-algorithms}", 
+      caption = "Variable selection properties of GETS algorithms. The table is essentially Table 2 in @sucarrat2012automated, p. 724,  augmented by the properties of **gets**, see Appendix \\@ref(sec:simulation-tables) for more details on the simulations. The variable selection is undertaken with a nominal regressor significance level of 5%. $m(\\widehat{k}_{\\text{rel}}/k_{\\text{rel}})$, average proportion of relevant variables $\\widehat{k}_{\\text{rel}}$. $m(\\widehat{k}_{\\text{irr}}/k_{\\text{irr}})$, average proportion of irrelevant variables $\\widehat{k}_{\\text{irr}}$ retained relative to the actual number of irrelevant variables $k_{\\text{irr}}$ in the GUM. $\\widehat{p}(\\text{DGP})$, proportion of times the exact DGP is found. The properties of the HP1999 algorithm are from @hoover1999data Table 4 on p. 179. The properties of the \\pkg{PcGets} algorithm are from @hendry2005properties Figure 1 on p. C39, and the properties of the \\pkg{Autometrics} algorithm are from @Doornik2009, Section 6.",
       col.names = c("Experiment", "$k_{\\text{rel}}$", "$k_{\\text{irr}}$", "Algorithm", 
                     "$n$", "$m(\\widehat{k}_{\\text{rel}}/k_{\\text{rel}})$",
                     "$m(\\widehat{k}_{\\text{irr}}/k_{\\text{irr}})$", 
@@ -158,30 +156,6 @@ caption = "\\label{table:comparison-of-gets-algorithms}",
   add_header_above(c(" " = 4, "Metrics" = 4))
 ```
 
-
-
-<!-- Variable selection properties of GETS algorithms. The -->
-<!-- table is essentially Table 2 in -->
-<!-- \citet[][p.~724]{sucarrat2012automated} augmented by the -->
-<!-- properties of **gets**, see Appendix~\@ref(appendix) for more details -->
-<!-- on the simulations. The variable selection is undertaken -->
-<!-- with a nominal regressor significance level of -->
-<!-- 5\%. $m(\widehat{k}_{\text{rel}}/k_{\text{rel}})$, average -->
-<!-- proportion of relevant variables $\widehat{k}_{\text{rel}}$ -->
-<!-- retained relative to the actual number of relevant variables -->
-<!-- $k_{\text{rel}}$. -->
-<!-- $m(\widehat{k}_{\text{irr}}/k_{\text{irr}})$, average -->
-<!-- proportion of irrelevant variables -->
-<!-- $\widehat{k}_{\text{irr}}$ retained relative to the actual -->
-<!-- number of irrelevant variables $k_{\text{irr}}$ in the -->
-<!-- GUM. $\widehat{p}(\text{DGP})$, proportion of times the -->
-<!-- exact DGP is found. The properties of the HP1999 algorithm -->
-<!-- are from \citet[][Table 4 on p.~179]{hoover1999data}. The -->
-<!-- properties of the \pkg{PcGets} algorithm are from -->
-<!-- \citet[][Figure 1 on p.~C39]{hendry2005properties}, and the -->
-<!-- properties of the \pkg{Autometrics} algorithm are from -->
-<!-- \citet[][Section -->
-<!-- 6]{Doornik2009}.  {#table:comparison-of-gets-algorithms} -->
 
 GETS modeling combines well-known ingredients from the model-selection literature: backwards elimination, tests on the $\beta_j$'s (both single and multiple hypothesis tests), diagnostics tests, and fit-measures (e.g., information criteria). Specifically, GETS modeling may be described as proceeding in three steps:
 
@@ -205,36 +179,214 @@ Numerous model and variable selection methods have been proposed, and an even la
 
 As is clear from the table, GETS may be viewed as being more general than many of its competitors. This comes at a cost: computational speed. Relying on multiple path searches implies that the required computational time increases non-linearly with the number of potential candidate regressors selected over. This is a particular concern when using indicator saturation [see section "Indicator Saturation"](sec:indicator:saturation), where the number of candidate variables scales linearly with the number of observations and subsequently implies a non-linear increase in required computational time. For example, selection over $k$ (irrelevant) candidate regressors in **gets** (in a sample of $n=200$ observations) on a 1.8GHz processor requires approximately 0.8 seconds (s) for $k=10$, 2.9s for $k=20$, 15s for $k=40$, and 114s for $k=80$. By contrast, the identical experiment with $k=80$ requires 0.16s using the Lasso in **glmnet**, 0.41s in **lars**, and 0.3s using `step` (backward).
 
-```{=latex}
-\begin{table}[t!]
-\centering
-\begin{tabular}{lcccccc}
-\hline
-& `ar` & `step` (forward) & `step` (backward) & \pkg{lars} & \pkg{glmnet} & **gets** \\
-\hline
-AR-terms & Yes & Yes & Yes & Yes & Yes & Yes \\[1mm] 
-Covariates (``X'') & & Yes & Yes & Yes& Yes & Yes \\[1mm] 
-More variables & & & & & & \\ 
-than observations & & Yes & & Yes & Yes & Yes \\[1mm] 
-Variance-modeling & & & & & & Yes \\[1mm] 
+```{r, echo=FALSE, results='asis'}
+library(stringr)
+library(kableExtra)
+library(dplyr)
+
+parse_and_classify_latex <- function(latex_code) {
+  
+  # Split the LaTeX code into lines
+  lines <- str_split(latex_code, "\\n")[[1]]
+  
+  # Remove leading and trailing white spaces from each line
+  lines <- str_trim(lines)
+  
+  # Remove empty lines
+  lines <- lines[lines != ""]
+  
+  # Initialize lists for different classifications
+  begin_lines <- list()
+  options_lines <- list()
+  body_lines <- list()
+  caption_lines <- list()
+  end_lines <- list()
+  
+  # Classification patterns
+  begin_pattern <- "^\\\\begin\\{table"
+  end_pattern <- "^\\\\end\\{table"
+  caption_pattern <- "\\\\caption"
+  
+  # Classify each line
+  for (line in lines) {
+    if (str_detect(line, begin_pattern)) {
+      begin_lines <- c(begin_lines, line)
+    } else if (str_detect(line, caption_pattern)) {
+      caption_lines <- c(caption_lines, line)
+    } else if (str_detect(line, end_pattern)) {
+      end_lines <- c(end_lines, line)
+    } else if (str_detect(line, "^\\\\\\w+")) {
+      options_lines <- c(options_lines, line)
+    } else {
+      body_lines <- c(body_lines, line)
+    }
+  }
+  
+  # Print classified lines for inspection
+  cat("Begin Lines:\n")
+  print(begin_lines)
+  
+  cat("\nOptions Lines:\n")
+  print(options_lines)
+  
+  cat("\nBody Lines:\n")
+  print(body_lines)
+  
+  cat("\nCaption Lines:\n")
+  print(caption_lines)
+  
+  cat("\nEnd Lines:\n")
+  print(end_lines)
+  
+  # Return a list of classified lines
+  result <- list(
+    Begin = begin_lines,
+    Options = options_lines,
+    Body = body_lines,
+    Caption = caption_lines,
+    End = end_lines
+  )
+  
+  return(result)
+}
+
+
+
+# Function to convert classified LaTeX lines into a kableExtra table
+create_kable_table <- function(classified_latex, format = "latex") {
+  
+  # Extract classified lines
+  body_lines <- classified_latex$Body
+  caption_line <- classified_latex$Caption
+  options_lines <- classified_latex$Options
+  
+  # Extract caption text
+  caption_text <- str_replace_all(caption_line, "\\\\caption\\{(.*)\\}", "\\1")
+  
+  # Correct quotes
+  # body_lines <- str_replace_all(body_lines, "``", "'")
+  # body_lines <- str_replace_all(body_lines, "''", "'")
+  #body_lines <- str_replace_all(body_lines, "``*.''", '"*"')
+  
+  # Handle rows and split lines
+  # body_lines_split <- str_split(body_lines, "\\\\[1mm]", simplify = TRUE)
+  
+  # # Combine all lines and handle trailing backslashes
+  # body_lines_cleaned <- sapply(body_lines_split, function(x) {
+  #   x <- str_trim(x)
+  #   x <- str_replace_all(x, "\\\\$", "") # Remove trailing backslashes
+  #   return(x)
+  # })
+  # 
+  # Create a data frame from split lines
+  df_list <- lapply(body_lines, function(x) {
+    str_split(x, "&", simplify = TRUE) %>%
+      as.data.frame(stringsAsFactors = FALSE) %>%
+      mutate_all(~ str_replace_all(., "\\\\$", "")) %>% 
+      mutate_all(~ gsub("\\\\[1mm]", "",., fixed = TRUE))
+  })
+  # 
+  # # Combine all rows into a single data frame
+  df <- do.call(rbind, df_list)
+  df_orig <- df
+  # in rows where the first column is not " " but all other columns are
+  # we want to merge the first column with the text that is in the first column of the next row
+  # and remove the row where the first column is not " " but all other columns are
+  
+  i <- 1
+  while(i <= nrow(df)){
+    if (df[i, 1] != " " & all(df[i, -1] == " ")) {
+      df[i + 1, 1] <- paste0(df[i, 1], df[i + 1, 1])
+      df <- df[-(i), ]
+    }
+    i = i + 1
+  }
+    
+  
+  # Choose the output format and create kable table
+  if (format == "latex") {
+    kable_table <- kable(df, format = "latex", booktabs = TRUE, escape = FALSE,
+                         caption = if (caption_text != "") caption_text else NULL) %>%
+      kable_styling(latex_options = c("striped", "hold_position")) %>%
+      add_header_above(c(" " = ncol(df)))
+  } else if (format == "html") {
+    kable_table <- kable(df, format = "html", escape = FALSE,
+                         caption = if (caption_text != "") caption_text else NULL) %>%
+      kable_styling(bootstrap_options = c("striped", "hover", "condensed", "responsive"))
+  } else {
+    stop("Unsupported format. Please choose 'latex' or 'html'.")
+  }
+  
+  return(kable_table)
+}
+
+# Example LaTeX code
+latex_code <- "
+\\begin{table}[t!]
+\\centering
+\\begin{tabular}{lcccccc}
+\\hline
+& `ar` & `step` (forward) & `step` (backward) & \\pkg{lars} & \\pkg{glmnet} & **gets** \\
+\\hline
+AR-terms & Yes & Yes & Yes & Yes & Yes & Yes \\\\[1mm]
+Covariates (``X'') & & Yes & Yes & Yes& Yes & Yes \\\\[1mm]
+More variables & & & & & & \\
+than observations & & Yes & & Yes & Yes & Yes \\\\[1mm]
+Variance-modeling & & & & & & Yes \\\\[1mm]
 Regressor tests & & & & & & \\
-during search & & & & & & Yes \\[1mm] 
+during search & & & & & & Yes \\\\[1mm]
 Diagnostics tests & & & & & & \\
-during search & & & & & & Yes \\[1mm]       
-Computational & & & & & & \\        
-cost (relative) & Low & Low & Low & Low & Low & High \\[1mm]        
-\hline
-\end{tabular}\\
-<!--    \raggedrigh -->
-\caption{A variable-selection focused feature-based comparison of **gets**  against the `ar` and `step` functions in the \proglang{R} package **stats** \citep{RCoreTeam2016}, and against the \proglang{R} packages \pkg{lars} \citep{HastieEfron2013} and \pkg{glmnet} \citep{friedman2010regularization}.  {#table:comparison:of:softwares} }
-\end{table}
+during search & & & & & & Yes \\\\[1mm]
+Computational & & & & & & \\
+cost (relative) & Low & Low & Low & Low & Low & High \\\\[1mm]
+\\hline
+\\end{tabular}\\
+\\caption{A variable-selection focused feature-based comparison of **gets**  against the `ar` and `step` functions in the \\proglang{R} package **stats** \\citep{RCoreTeam2016}, and against the \\proglang{R} packages \\pkg{lars} \\citep{HastieEfron2013} and \\pkg{glmnet} \\citep{friedman2010regularization}.  {#table:comparison:of:softwares} }
+\\end{table}
+"
+
+# Call the function with the example LaTeX code
+parsed_latex_classified <- parse_and_classify_latex(latex_code)
+
+# Call the function to create a kableExtra table (format as "latex")
+kable_table_latex <- create_kable_table(parsed_latex_classified, format = "latex")
+
+# Call the function to create a kableExtra table (format as "html")
+kable_table_html <- create_kable_table(parsed_latex_classified, format = "html")
+
+kable_table_html
 ```
+
+
+<!-- " -->
+<!-- \begin{table}[t!] -->
+<!-- \centering -->
+<!-- \begin{tabular}{lcccccc} -->
+<!-- \hline -->
+<!-- & `ar` & `step` (forward) & `step` (backward) & \pkg{lars} & \pkg{glmnet} & **gets** \\ -->
+<!-- \hline -->
+<!-- AR-terms & Yes & Yes & Yes & Yes & Yes & Yes \\[1mm] -->
+<!-- Covariates (``X'') & & Yes & Yes & Yes& Yes & Yes \\[1mm] -->
+<!-- More variables & & & & & & \\ -->
+<!-- than observations & & Yes & & Yes & Yes & Yes \\[1mm] -->
+<!-- Variance-modeling & & & & & & Yes \\[1mm] -->
+<!-- Regressor tests & & & & & & \\ -->
+<!-- during search & & & & & & Yes \\[1mm] -->
+<!-- Diagnostics tests & & & & & & \\ -->
+<!-- during search & & & & & & Yes \\[1mm] -->
+<!-- Computational & & & & & & \\ -->
+<!-- cost (relative) & Low & Low & Low & Low & Low & High \\[1mm] -->
+<!-- \hline -->
+<!-- \end{tabular}\\ -->
+
+<!-- \caption{A variable-selection focused feature-based comparison of **gets**  against the `ar` and `step` functions in the \proglang{R} package **stats** \citep{RCoreTeam2016}, and against the \proglang{R} packages \pkg{lars} \citep{HastieEfron2013} and \pkg{glmnet} \citep{friedman2010regularization}.  {#table:comparison:of:softwares} } -->
+<!-- \end{table} " -->
 
 ### GETS compared to alternative methods -- a performance-based comparison
 
-\citet[Section 17]{HendryDoornik2014} together with [@castle2011evaluating] provide a broad overview of the performance of GETS relative to alternative model selection strategies of the mean of a regression, including step-wise regression, information criteria and penalized shrinkage-based selection using the Lasso \citep[see][]{tibshirani1996regression}. [@castle2015detecting] compare GETS in the context of step-shifts against the Lasso using LARS \citep{efron2004least}, and [@pretis_volc16] compare GETS against the Lasso for designed break functions (see Section [7.3](sec:isat_comp)) for a more detailed discussion of **gets** in the context of break detection). In both instances shrinkage-based selection is implemented using the R packages **lars** \citep{HastieEfron2013} and **glmnet** \citep{friedman2010regularization}. The emerging consensus from these simulation comparisons is that the false-positive rate, or irrelevance proportion or gauge, is erratic and difficult to control in step-wise as well as shrinkage-based selection procedures. When selecting on information criteria only, the implicit significance level of selection results in a high gauge when the number of candidate variables increases relative to the sample size. In contrast, the gauge tends to be well-calibrated around the nominal size of selection $\alpha$ in GETS. While the retention of relevant variables often is high in shrinkage-based approaches (and erratic in step-wise regression), this result comes at the cost of a high gauge and the performance becomes less reliable in the presence of correlation between the candidate variables.
+@hendry2014empirical (Section 17) together with [@castle2011evaluating] provide a broad overview of the performance of GETS relative to alternative model selection strategies of the mean of a regression, including step-wise regression, information criteria and penalized shrinkage-based selection using the Lasso \citep[see][]{tibshirani1996regression}. [@castle2015detecting] compare GETS in the context of step-shifts against the Lasso using LARS \citep{efron2004least}, and [@pretis_volc16] compare GETS against the Lasso for designed break functions (see Section [7.3](sec:isat_comp)) for a more detailed discussion of **gets** in the context of break detection). In both instances shrinkage-based selection is implemented using the R packages **lars** \citep{HastieEfron2013} and **glmnet** \citep{friedman2010regularization}. The emerging consensus from these simulation comparisons is that the false-positive rate, or irrelevance proportion or gauge, is erratic and difficult to control in step-wise as well as shrinkage-based selection procedures. When selecting on information criteria only, the implicit significance level of selection results in a high gauge when the number of candidate variables increases relative to the sample size. In contrast, the gauge tends to be well-calibrated around the nominal size of selection $\alpha$ in GETS. While the retention of relevant variables often is high in shrinkage-based approaches (and erratic in step-wise regression), this result comes at the cost of a high gauge and the performance becomes less reliable in the presence of correlation between the candidate variables.
 
-To provide additional comparisons of performance to alternative methods for detecting relevant and discarding irrelevant variables, here we compare **gets** to: shrinkage-based selection, 1-cut selection (where all variables with $p$\~values $\leq \alpha$ in the GUM are retained in a single decision), and conducting selection inference starting at the DGP itself. The results are provided in Figure \@ref(fig_lass) (and Tables \@ref(tab_lassuncorr), \@ref(tab_lassposcorr), and \@ref(tab_lassnegcorr) in Appendix \@ref(sec:simulation-tables)). The simulations cover three correlation structures of regressors: First, in-expectation uncorrelated regressors, second, positively correlated regressors ($\rho=0.5$), and third, alternating negatively correlated regressors (where $\rho(x_i, x_{i+1}) = 0.5$, $\rho(x_i, x_{i+2})=-0.5$). We consider a total of $k=20$ regressors in a sample of $n=500$ observations for $1000$ replications. The number of relevant regressors is increased from $k_{\text{rel}}=0$ to $k_{\text{rel}}=10$ with coefficients set to correspond to an expected $t$-statistic of $\approx 3$. The performance of **gets** using the `getsm` function is compared to the cross-validated Lasso in **glmnet** and the Lasso with fixed penalty parameter such that the false-detection rate approximately matches `getsm` under the null (when $k_{\text{rel}}=0$). The significance level of 1-cut selection is chosen to match $\alpha=1\%$ in `getsm` selection.
+To provide additional comparisons of performance to alternative methods for detecting relevant and discarding irrelevant variables, here we compare **gets** to: shrinkage-based selection, 1-cut selection (where all variables with $p$ values $\leq \alpha$ in the GUM are retained in a single decision), and conducting selection inference starting at the DGP itself. The results are provided in Figure \@ref(fig_lass) (and Tables \@ref(tab_lassuncorr), \@ref(tab_lassposcorr), and \@ref(tab_lassnegcorr) in Appendix \@ref(sec:simulation-tables)). The simulations cover three correlation structures of regressors: First, in-expectation uncorrelated regressors, second, positively correlated regressors ($\rho=0.5$), and third, alternating negatively correlated regressors (where $\rho(x_i, x_{i+1}) = 0.5$, $\rho(x_i, x_{i+2})=-0.5$). We consider a total of $k=20$ regressors in a sample of $n=500$ observations for $1000$ replications. The number of relevant regressors is increased from $k_{\text{rel}}=0$ to $k_{\text{rel}}=10$ with coefficients set to correspond to an expected $t$-statistic of $\approx 3$. The performance of **gets** using the `getsm` function is compared to the cross-validated Lasso in **glmnet** and the Lasso with fixed penalty parameter such that the false-detection rate approximately matches `getsm` under the null (when $k_{\text{rel}}=0$). The significance level of 1-cut selection is chosen to match $\alpha=1\%$ in `getsm` selection.
 
 ![test](fig_getsm_performance_v2.pdf){width=100%}
 
@@ -1142,7 +1294,7 @@ The R package **gets** provides a toolkit for general-to-specific modeling throu
 # (APPENDIX) Appendix {-} 
 
 
-# Hoover and Perez [@hoover1999data] simulations
+# @hoover1999data simulations
 
 
 Table \@ref(table:list 1 of experiments) contains the list of experiments. The design of the experiments HP1, HP2' and HP7' are based on \citet[][see Table 3 on p.~174]{hoover1999data}, and make use of their data $x_{1t}^{\text{HP}},...,x_{36t}^{\text{HP}}$. It should be noted that there are two typos in their Table 3. The value $\sqrt{(7/4)}$ should instead be $\sqrt{7}/4$ in the model of the autoregressive error, and the value 6.73 should instead be 6.44 in model 7', see also \citet{Doornik2009}. The number of relevant variables in the GUM is $k_{\text{rel}}$, the number of irrelevant variables in the GUM is $k_{\text{irr}}$ and the total number of variables (the constant included) in the GUM is $k = k_{\text{rel}} + k_{\text{irr}} + 1$. Nominal regressor significance level used is 5%, and 1000 replications. The term $m(\hat{k}_{\text{rel}}/k_{\text{rel}})$ is the average proportion of relevant variables $\hat{k}_{\text{rel}}$ retained relative to the actual number of relevant variables $k_{\text{rel}}$ in the DGP. The term $m(\hat{k}_{\text{irr}}/k_{\text{irr}})$ denotes the average proportion of irrelevant variables $\hat{k}_{\text{irr}}$ retained relative to the actual number of irrelevant variables $k_{\text{irr}}$ in the GUM. The estimate $\hat{k}_{\text{irr}}$ includes both significant and insignificant retained irrelevant variables (this is in line with \citet{hendry2005properties}, and \citet{Doornik2009}, but counter to HP which only includes significant irrelevant variables in the estimate). $\hat{p}(\text{DGP})$ is the proportion of times the DGP is found exactly. The properties of the HP algorithm are from \citet[][Table 4 on p.~179]{hoover1999data}. The properties of the **PcGets** algorithm are from \citet[][Figure 1 on
@@ -1197,6 +1349,7 @@ Tables \@ref(tab_lassuncorr), \@ref(tab_lassposcorr), \@ref(tab_lassnegcorr) and
 \caption{Variable selection properties of \code{getsm} algorithm in **gets** compared to alternative algorithms when regressors are uncorrelated in expectation. Variable selection in \code{getsm} is undertaken with a nominal significance level of 1\%. For a total number of $k=20$ variables, $m(\widehat{k}_{\text{rel}}/k_{\text{rel}})$ defines the average proportion of relevant variables $\widehat{k}_{\text{rel}}$ retained relative to the actual number of relevant variables $k_{\text{rel}}$. $m(\widehat{k}_{\text{irr}}/k_{\text{irr}})$, average proportion of irrelevant variables $\widehat{k}_{\text{irr}}$ retained relative to the actual number of irrelevant variables $k_{\text{irr}}$ in the GUM. LassCV denotes the the cross-validated LASSO using \pkg{glmnet}, LassFix denotes the LASSO where the penalty parameter is chosen to match the gauge of \code{getsm} under the null. Column 1-cut denotes 1-cut selection of the GUM where all variables with $p$~values $< 1$\% are retained in a single decision, DGP denotes the proportion of variables retained if the DGP is correctly estimated and $t$-tests are conducted at the 1\% level. Simulation undertaken on a sample of $n=100$ observations using 1000 replications.  {#tab_lassuncorr} }
 \end{table}
 ```
+
 ```{=tex}
 \begin{table}[t!]
 \centering
@@ -1220,6 +1373,7 @@ Tables \@ref(tab_lassuncorr), \@ref(tab_lassposcorr), \@ref(tab_lassnegcorr) and
 \caption{Variable selection properties of \code{getsm} algorithm in **gets** compared to alternative algorithms when regressors are positively correlated ($\rho=0.5$) in expectation. Variable selection in \code{getsm} is undertaken with a nominal significance level of 1\%. For a total number of $k=20$ variables, $m(\widehat{k}_{\text{rel}}/k_{\text{rel}})$ defines the average proportion of relevant variables $\widehat{k}_{\text{rel}}$ retained relative to the actual number of relevant variables $k_{\text{rel}}$. $m(\widehat{k}_{\text{irr}}/k_{\text{irr}})$, average proportion of irrelevant variables $\widehat{k}_{\text{irr}}$ retained relative to the actual number of irrelevant variables $k_{\text{irr}}$ in the GUM. LassCV denotes the the cross-validated LASSO using \pkg{glmnet}, LassFix denotes the LASSO where the penalty parameter is chosen to match the gauge of \code{getsm} under the null. Column 1-cut denotes 1-cut selection of the GUM where all variables with $p$~values $<1$\% are retained in a single decision, DGP denotes the proportion of variables retained if the DGP is correctly estimated and $t$-tests are conducted at the 1\% level. Simulation undertaken on a sample of $n=100$ observations using 1000 replications.  {#tab_lassposcorr} }
 \end{table}
 ```
+
 ```{=tex}
 \begin{table}[t!]
 \centering
@@ -1264,6 +1418,7 @@ $n=100$ observations using 1000
 replications.  {#tab_lassnegcorr} }
 \end{table}
 ```
+
 ```{=tex}
 \begin{table}[t!]
 \centering
