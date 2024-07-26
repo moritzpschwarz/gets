@@ -45,8 +45,77 @@
   </div>
 </nav><div class="container template-home">
 <div class="row">
-  <main id="main" class="col-md-9">
-Automated General-to-Specific (GETS) modelling of the mean and variance of a regression, and indicator saturation methods for detecting and testing for structural breaks in the mean, see Pretis, Reade and Sucarrat (2018) &lt;<a href="https://doi.org/10.18637/jss.v086.i03" class="external-link">doi:10.18637/jss.v086.i03</a>&gt;.
+  <main id="main" class="col-md-9"><div class="section level1">
+<div class="page-header"><h1 id="gets">gets<a class="anchor" aria-label="anchor" href="#gets"></a>
+</h1></div>
+<div class="float">
+<img src="https://github.com/gsucarrat/gets/workflows/R-CMD-check/badge.svg" alt="R-CMD-check"><div class="figcaption">R-CMD-check</div>
+</div>
+<p>The R Package <em>gets</em> provides General-to-Specific (GETS) modelling of the mean and variance of a regression, and Indicator Saturation (ISAT) methods for detecting and testing for structural breaks in the mean. Facilities for <em>user-specified</em> GETS and ISAT methods are also provided.</p>
+<p>The CRAN webpage of the package is: <a href="https://CRAN.R-project.org/package=gets" class="external-link">https://CRAN.R-project.org/package=gets</a>. Here, on Github, we provide the development version of the package. For an overview of the files and folders, see below under ‘Overview of files and folders’.</p>
+</div>
+<div class="section level1">
+<h1 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
+</h1>
+<p>The following R command installs the stable version from CRAN:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">'gets'</span>, <span class="at">dependencies =</span> <span class="cn">TRUE</span>)</span></code></pre></div>
+<p>To install the current development version available here at Github, use the following command:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" tabindex="-1"></a><span class="fu">install.packages</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" tabindex="-1"></a>  <span class="st">"https://github.com/gsucarrat/gets/raw/master/gets_devel.tar.gz"</span>,</span>
+<span id="cb2-3"><a href="#cb2-3" tabindex="-1"></a>  <span class="at">repos =</span> <span class="cn">NULL</span>, <span class="at">type =</span> <span class="st">"source"</span></span>
+<span id="cb2-4"><a href="#cb2-4" tabindex="-1"></a>)</span></code></pre></div>
+</div>
+<div class="section level1">
+<h1 id="resources">Resources<a class="anchor" aria-label="anchor" href="#resources"></a>
+</h1>
+<ul>
+<li>An introduction (PDF): <a href="https://doi.org/10.18637/jss.v086.i03" class="external-link">https://doi.org/10.18637/jss.v086.i03</a>
+</li>
+<li>User-specified GETS and ISAT (PDF): <a href="https://journal.r-project.org/archive/2021/RJ-2021-024/" class="external-link">https://journal.r-project.org/archive/2021/RJ-2021-024/</a>
+</li>
+<li>Webpage: <a href="http://www.sucarrat.net/R/gets" class="external-link">http://www.sucarrat.net/R/gets</a>
+</li>
+<li>CRAN webpage: <a href="https://CRAN.R-project.org/package=gets" class="external-link">https://CRAN.R-project.org/package=gets</a>
+</li>
+<li><a href="https://felixpretis.climateeconometrics.org/software/" class="external-link">https://felixpretis.climateeconometrics.org/software/</a></li>
+</ul>
+</div>
+<div class="section level1">
+<h1 id="license">License<a class="anchor" aria-label="anchor" href="#license"></a>
+</h1>
+<p>This package is free and open source software, licensed under GPL (&gt;= 2)</p>
+</div>
+<div class="section level1">
+<h1 id="overview-of-files-and-folders">Overview of files and folders<a class="anchor" aria-label="anchor" href="#overview-of-files-and-folders"></a>
+</h1>
+<p>The folder <em>gets</em> contains the ‘raw-material’ of the current development version of the package. The file <em>gets_devel.tar.gz</em> contains a tarball of the package that has passed the CRAN checks. See the instructions above for how to install this version.</p>
+<div class="section level3">
+<h3 id="source-code">Source code<a class="anchor" aria-label="anchor" href="#source-code"></a>
+</h3>
+<p>The source code of the package is contained in the following files in the <em>gets/R/</em> folder:</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" tabindex="-1"></a>gets<span class="sc">-</span>base<span class="sc">-</span>source.R</span>
+<span id="cb3-2"><a href="#cb3-2" tabindex="-1"></a>gets<span class="sc">-</span>isat<span class="sc">-</span>source.R</span>
+<span id="cb3-3"><a href="#cb3-3" tabindex="-1"></a>gets<span class="sc">-</span>dlogitx<span class="sc">-</span>source.R</span>
+<span id="cb3-4"><a href="#cb3-4" tabindex="-1"></a>gets<span class="sc">-</span>lm<span class="sc">-</span>source.R</span></code></pre></div>
+<p>The first file contains the base functions of the package, and the functions related to the <em>arx()</em> function. The second file contains the functions related to the <em>isat()</em> function. The third file contains the functions related to the <em>dlogitx()</em> function. The fourth file contains the functions related to the <em>lm()</em> function. The associated help-files are contained in the folder named <em>gets/man/</em>.</p>
+</div>
+<div class="section level3">
+<h3 id="create-and-check-the-tarball">Create and check the tarball<a class="anchor" aria-label="anchor" href="#create-and-check-the-tarball"></a>
+</h3>
+<p>The files in <em>0-make-and-check-tarball-by-G</em> is used by the maintainer to build and CRAN-check the tarball.</p>
+</div>
+<div class="section level3">
+<h3 id="test-files">Test-files<a class="anchor" aria-label="anchor" href="#test-files"></a>
+</h3>
+<p>The files in <em>0-test-files-by-G</em> are used by the maintainer to test the code before a new version is released. A subset of these tests is automatically invoked by the test-files in the <em>gets/tests/</em> folder.</p>
+</div>
+<div class="section level3">
+<h3 id="other-files">Other files<a class="anchor" aria-label="anchor" href="#other-files"></a>
+</h3>
+<p>The remaining files on Github are auxiliary files, or prototypes of new ideas and functionality.</p>
+</div>
+</div>
+
   </main><aside class="col-md-3"><div class="links">
 <h2 data-toc-skip>Links</h2>
 <ul class="list-unstyled">
