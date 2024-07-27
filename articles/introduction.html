@@ -5,12 +5,12 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-<title>An Introduction to the gets package^[This vignette is a minor modification of \citet{PretisReadeSucarrat2018}] • gets</title>
+<title>An Introduction to the gets package • gets</title>
 <script src="../deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="An Introduction to the gets package^[This vignette is a minor modification of \citet{PretisReadeSucarrat2018}]">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="An Introduction to the gets package">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -33,7 +33,7 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/introduction.html">An Introduction to the gets package^[This vignette is a minor modification of \citet{PretisReadeSucarrat2018}]</a></li>
+<li><a class="dropdown-item" href="../articles/introduction.html">An Introduction to the gets package</a></li>
   </ul>
 </li>
       </ul>
@@ -55,9 +55,16 @@
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
 
-      <h1>An Introduction to the gets package^[This vignette is a minor modification of \citet{PretisReadeSucarrat2018}]</h1>
+      <h1>An Introduction to the gets package</h1>
+                        <h4 data-toc-skip class="author">Felix Pretis<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;University of Victoria, Department of Economics &amp;amp;
+INET at the Oxford Martin School, University of Oxford. URL: &lt;a href="http://www.felixpretis.org/" class="external-link uri"&gt;http://www.felixpretis.org/&lt;/a&gt;&lt;/p&gt;'><sup>1</sup></a>, J. James
+Reade<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;Programme for Economic Modelling at the Oxford Martin
+School &amp;amp; Department of Economics, University of Reading. URL: &lt;a href="https://sites.google.com/site/jjamesreade/" class="external-link uri"&gt;https://sites.google.com/site/jjamesreade/&lt;/a&gt;&lt;/p&gt;'><sup>2</sup></a>
+and Genaro Sucarrat<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;Department of Economics, BI Norwegian Business School.
+URL: &lt;a href="https://www.sucarrat.net/" class="external-link uri"&gt;https://www.sucarrat.net/&lt;/a&gt;&lt;/p&gt;'><sup>3</sup></a>
+</h4>
             
-            <h4 data-toc-skip class="date">2024-07-26</h4>
+            <h4 data-toc-skip class="date">2024-07-27</h4>
       
       <small class="dont-index">Source: <a href="https://github.com/gsucarrat/gets/blob/master/vignettes/introduction.Rmd" class="external-link"><code>vignettes/introduction.Rmd</code></a></small>
       <div class="d-none name"><code>introduction.Rmd</code></div>
@@ -65,31 +72,18 @@
 
     
     
-<!-- \SweaveOpts{engine=R,eps=FALSE -->
-<!-- \VignetteIndexEntry{An introduction to the gets package -->
 <!-- \VignetteDepends{gets -->
 <!-- \VignetteKeywords{general-to-specific, model selection, variable selection, regression of the mean, regression of the log-variance, time series, AR-X, log-ARCH-X, indicator saturation -->
 <!-- \VignettePackage{gets -->
-<p>Felix Pretis<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;University of Victoria, Department of Economics &amp;amp;
-INET at the Oxford Martin School, University of Oxford. URL: &lt;a href="http://www.felixpretis.org/" class="external-link uri"&gt;http://www.felixpretis.org/&lt;/a&gt;&lt;/p&gt;'><sup>2</sup></a>, J. James Reade<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;Programme for Economic Modelling at the Oxford Martin
-School &amp;amp; Department of Economics, University of Reading. URL: &lt;a href="https://sites.google.com/site/jjamesreade/" class="external-link uri"&gt;https://sites.google.com/site/jjamesreade/&lt;/a&gt;&lt;/p&gt;'><sup>3</sup></a> and Genaro Sucarrat<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;Department of Economics, BI Norwegian Business School.
-URL: &lt;a href="https://www.sucarrat.net/" class="external-link uri"&gt;https://www.sucarrat.net/&lt;/a&gt;&lt;/p&gt;'><sup>4</sup></a></p>
-<p>This version: 2024-07-26 [Original version: 3 September 2018]</p>
+<p>This version: 2024-07-27</p>
+<p>Original version: 3 September 2018</p>
+<p>Modified for Online Display by Moritz Schwarz</p>
 <!-- table of contents -->
-<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu">knitr</span><span class="fu">::</span><span class="va"><a href="https://rdrr.io/pkg/knitr/man/opts_chunk.html" class="external-link">opts_chunk</a></span><span class="op">$</span><span class="fu">set</span><span class="op">(</span></span>
-<span>  collapse <span class="op">=</span> <span class="cn">TRUE</span>,</span>
-<span>  warning <span class="op">=</span> <span class="cn">FALSE</span>, </span>
-<span>  message <span class="op">=</span> <span class="cn">FALSE</span>,</span>
-<span>  comment <span class="op">=</span> <span class="st">""</span></span>
-<span><span class="op">)</span></span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/base/options.html" class="external-link">options</a></span><span class="op">(</span>rmarkdown.html_vignette.check_title <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
 <div class="section level2">
 <h2 class="unnumbered" id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a>
 </h2>
 <p>This vignette<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;This vignette is a minor modification of &lt;span class="citation"&gt;(&lt;a href="#ref-pretis2018automated"&gt;Felix Pretis,
-Reade, and Sucarrat 2018&lt;/a&gt;)&lt;/span&gt;&lt;/p&gt;'><sup>5</sup></a> provides an overview of the R package
+Reade, and Sucarrat 2018&lt;/a&gt;)&lt;/span&gt;&lt;/p&gt;'><sup>4</sup></a> provides an overview of the R package
 <strong>gets</strong>, which contains facilities for automated
 general-to-specific (GETS) modeling of the mean and variance of a
 regression, and indicator saturation (IS) methods for the detection and
@@ -144,7 +138,7 @@ substantially improved upon the then (in economics) popular model
 selection strategies. In the study of <span class="citation">(<a href="#ref-hoover1999data">Hoover and Perez 1999</a>)</span>,
 purpose-specific but limited MATLAB code was used in the simulations.<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;The code is limited in that it allows for a maximum of
 10 paths to be searched, and because there is no user manual nor
-help-system available. The data and code is available from &lt;a href="http://www.feweb.vu.nl/econometriclinks/journal/volume2/HooverKD_PerezSJ/data_and_code/" class="external-link uri"&gt;http://www.feweb.vu.nl/econometriclinks/journal/volume2/HooverKD_PerezSJ/data_and_code/&lt;/a&gt;.&lt;/p&gt;'><sup>6</sup></a></p>
+help-system available. The data and code is available from &lt;a href="http://www.feweb.vu.nl/econometriclinks/journal/volume2/HooverKD_PerezSJ/data_and_code/" class="external-link uri"&gt;http://www.feweb.vu.nl/econometriclinks/journal/volume2/HooverKD_PerezSJ/data_and_code/&lt;/a&gt;.&lt;/p&gt;'><sup>5</sup></a></p>
 <p>Subsequently, further improvements were achieved in the commercial
 software packages <strong>PcGets</strong> and in its successor
 <strong>Autometrics</strong> . In particular, indicator-saturation
@@ -285,7 +279,7 @@ being impulses as in IIS) provided in <span class="citation">(<a href="#ref-joha
 2016</a>)</span>. The relevance proportion, i.e.,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">irr</mtext></msub><mi>/</mi><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub></mrow><annotation encoding="application/x-tex">\widehat{k}_{\text{irr}}/k_{\text{irr}}</annotation></semantics></math>,
 is also referred to as <em>potency</em> in the GETS literature.</p>
-<p>Table @ref(table:comparison-of-gets-algorithms) contains a comparison
+<p>Table @ref(tab:comparison-of-gets-algorithms) contains a comparison
 of the variable selection properties of GETS software packages for some
 well-known experiments. As the results show, <strong>gets</strong>
 performs as expected in the experiments, since the irrelevance
@@ -296,7 +290,28 @@ comparisons against alternative algorithms, are contained in Section
 @ref(subsec:comparison-of-gets-with-alternatives).</p>
 <table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
-
+Variable selection properties of GETS algorithms. The table is
+essentially Table 2 in <span class="citation">Sucarrat and Escribano (<a href="#ref-sucarrat2012automated">2012</a>)</span>, p. 724, augmented by
+the properties of <strong>gets</strong>, see Appendix
+@ref(sec:simulation-tables) for more details on the simulations. The
+variable selection is undertaken with a nominal regressor significance
+level of 5%.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">rel</mtext></msub><mi>/</mi><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">m(\widehat{k}_{\text{rel}}/k_{\text{rel}})</annotation></semantics></math>,
+average proportion of relevant variables
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">rel</mtext></msub><annotation encoding="application/x-tex">\widehat{k}_{\text{rel}}</annotation></semantics></math>.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">irr</mtext></msub><mi>/</mi><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">m(\widehat{k}_{\text{irr}}/k_{\text{irr}})</annotation></semantics></math>,
+average proportion of irrelevant variables
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">irr</mtext></msub><annotation encoding="application/x-tex">\widehat{k}_{\text{irr}}</annotation></semantics></math>
+retained relative to the actual number of irrelevant variables
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><annotation encoding="application/x-tex">k_{\text{irr}}</annotation></semantics></math>
+in the GUM.
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>p</mi><mo accent="true">̂</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">DGP</mtext><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\widehat{p}(\text{DGP})</annotation></semantics></math>,
+proportion of times the exact DGP is found. The properties of the HP1999
+algorithm are from <span class="citation">Hoover and Perez (<a href="#ref-hoover1999data">1999</a>)</span> Table 4 on p. 179. The
+properties of the algorithm are from <span class="citation">Hendry and
+Krolzig (<a href="#ref-hendry2005properties">2005</a>)</span> Figure 1
+on p. C39, and the properties of the algorithm are from <span class="citation">Doornik (<a href="#ref-Doornik2009">2009</a>)</span>,
+Section 6.
 </caption>
 <thead>
 <tr>
@@ -576,7 +591,7 @@ Autometrics
 </tr>
 <tr>
 <td style="text-align:left;">
-HP7’
+HP7
 </td>
 <td style="text-align:left;">
 3
@@ -708,7 +723,7 @@ Autometrics
 </tr>
 </tbody>
 </table>
-<!-- Variable selection properties of GETS algorithms. The --><!-- table is essentially Table 2 in --><!-- \citet[][p.~724]{sucarrat2012automated} augmented by the --><!-- properties of **gets**, see Appendix~\@ref(appendix) for more details --><!-- on the simulations. The variable selection is undertaken --><!-- with a nominal regressor significance level of --><!-- 5\%. $m(\widehat{k}_{\text{rel}}/k_{\text{rel}})$, average --><!-- proportion of relevant variables $\widehat{k}_{\text{rel}}$ --><!-- retained relative to the actual number of relevant variables --><!-- $k_{\text{rel}}$. --><!-- $m(\widehat{k}_{\text{irr}}/k_{\text{irr}})$, average --><!-- proportion of irrelevant variables --><!-- $\widehat{k}_{\text{irr}}$ retained relative to the actual --><!-- number of irrelevant variables $k_{\text{irr}}$ in the --><!-- GUM. $\widehat{p}(\text{DGP})$, proportion of times the --><!-- exact DGP is found. The properties of the HP1999 algorithm --><!-- are from \citet[][Table 4 on p.~179]{hoover1999data}. The --><!-- properties of the \pkg{PcGets} algorithm are from --><!-- \citet[][Figure 1 on p.~C39]{hendry2005properties}, and the --><!-- properties of the \pkg{Autometrics} algorithm are from --><!-- \citet[][Section --><!-- 6]{Doornik2009}.  {#table:comparison-of-gets-algorithms} --><p>GETS modeling combines well-known ingredients from the
+<p>GETS modeling combines well-known ingredients from the
 model-selection literature: backwards elimination, tests on the
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>β</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\beta_j</annotation></semantics></math>’s
 (both single and multiple hypothesis tests), diagnostics tests, and
@@ -720,7 +735,7 @@ chosen diagnostic tests.<a class="footnote-ref" tabindex="0" data-bs-toggle="pop
 &lt;strong&gt;gets&lt;/strong&gt; are tests for serial correlation and ARCH in the
 standardized residuals, and a test for non-normality. In addition, the
 user may add her or his own test or set of tests via the
-&lt;code&gt;user.diagnostics&lt;/code&gt; argument.}&lt;/p&gt;"><sup>7</sup></a> Each non-significant regressor in the GUM
+&lt;code&gt;user.diagnostics&lt;/code&gt; argument.}&lt;/p&gt;"><sup>6</sup></a> Each non-significant regressor in the GUM
 constitutes the starting point of a backwards elimination path, and a
 regressor is non-significant if the
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>~value
@@ -804,16 +819,279 @@ By contrast, the identical experiment with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>80</mn></mrow><annotation encoding="application/x-tex">k=80</annotation></semantics></math>
 requires 0.16s using the Lasso in <strong>glmnet</strong>, 0.41s in
 <strong>lars</strong>, and 0.3s using <code>step</code> (backward).</p>
+<p>Begin Lines: [[1]] [1] “\begin{table}[t!]”</p>
+<p>Options Lines: [[1]] [1] “\centering”</p>
+<p>[[2]] [1] “\begin{tabular}{lcccccc}”</p>
+<p>[[3]] [1] “\hline”</p>
+<p>[[4]] [1] “\hline”</p>
+<p>[[5]] [1] “\hline”</p>
+<p>[[6]] [1] “\end{tabular}\”</p>
+<p>Body Lines: [[1]] [1] “&amp; <code>ar</code> &amp; <code>step</code>
+(forward) &amp; <code>step</code> (backward) &amp; \pkg{lars} &amp;
+\pkg{glmnet} &amp; <strong>gets</strong> \”</p>
+<p>[[2]] [1] “AR-terms &amp; Yes &amp; Yes &amp; Yes &amp; Yes &amp; Yes
+&amp; Yes \\[1mm]”</p>
+<p>[[3]] [1] “Covariates (``X’’) &amp; &amp; Yes &amp; Yes &amp;
+Yes&amp; Yes &amp; Yes \\[1mm]”</p>
+<p>[[4]] [1] “More variables &amp; &amp; &amp; &amp; &amp; &amp; \”</p>
+<p>[[5]] [1] “than observations &amp; &amp; Yes &amp; &amp; Yes &amp;
+Yes &amp; Yes \\[1mm]”</p>
+<p>[[6]] [1] “Variance-modeling &amp; &amp; &amp; &amp; &amp; &amp; Yes
+\\[1mm]”</p>
+<p>[[7]] [1] “Regressor tests &amp; &amp; &amp; &amp; &amp; &amp; \”</p>
+<p>[[8]] [1] “during search &amp; &amp; &amp; &amp; &amp; &amp; Yes
+\\[1mm]”</p>
+<p>[[9]] [1] “Diagnostics tests &amp; &amp; &amp; &amp; &amp; &amp;
+\”</p>
+<p>[[10]] [1] “during search &amp; &amp; &amp; &amp; &amp; &amp; Yes
+\\[1mm]”</p>
+<p>[[11]] [1] “Computational &amp; &amp; &amp; &amp; &amp; &amp; \”</p>
+<p>[[12]] [1] “cost (relative) &amp; Low &amp; Low &amp; Low &amp; Low
+&amp; Low &amp; High \\[1mm]”</p>
+<p>Caption Lines: [[1]] [1] “\caption{A variable-selection focused
+feature-based comparison of <strong>gets</strong> against the
+<code>ar</code> and <code>step</code> functions in the \proglang{R}
+package <strong>stats</strong> \citep{RCoreTeam2016}, and against the
+\proglang{R} packages \pkg{lars} \citep{HastieEfron2013} and
+\pkg{glmnet} \citep{friedman2010regularization}.
+{#table:comparison:of:softwares} }”</p>
+<p>End Lines: [[1]] [1] “\end{table}”</p>
+<table class="table table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<caption>
+A variable-selection focused feature-based comparison of
+<strong>gets</strong> against the <code>ar</code> and <code>step</code>
+functions in the package <strong>stats</strong> , and against the
+packages and . {#table:comparison:of:softwares}
+</caption>
+<thead><tr>
+<th style="text-align:left;">
+</th>
+<th style="text-align:left;">
+V1
+</th>
+<th style="text-align:left;">
+V2
+</th>
+<th style="text-align:left;">
+V3
+</th>
+<th style="text-align:left;">
+V4
+</th>
+<th style="text-align:left;">
+V5
+</th>
+<th style="text-align:left;">
+V6
+</th>
+<th style="text-align:left;">
+V7
+</th>
+</tr></thead>
+<tbody>
+<tr>
+<td style="text-align:left;">
+1
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+<code>ar</code>
+</td>
+<td style="text-align:left;">
+<code>step</code> (forward)
+</td>
+<td style="text-align:left;">
+<code>step</code> (backward)
+</td>
+<td style="text-align:left;">
+
+</td>
+<td style="text-align:left;">
+
+</td>
+<td style="text-align:left;">
+<strong>gets</strong>
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+2
+</td>
+<td style="text-align:left;">
+AR-terms
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+3
+</td>
+<td style="text-align:left;">
+Covariates (``X’’)
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+5
+</td>
+<td style="text-align:left;">
+More variables than observations
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+6
+</td>
+<td style="text-align:left;">
+Variance-modeling
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+8
+</td>
+<td style="text-align:left;">
+Regressor tests during search
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+10
+</td>
+<td style="text-align:left;">
+Diagnostics tests during search
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+</td>
+<td style="text-align:left;">
+Yes
+</td>
+</tr>
+<tr>
+<td style="text-align:left;">
+12
+</td>
+<td style="text-align:left;">
+Computational cost (relative)
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:left;">
+Low
+</td>
+<td style="text-align:left;">
+High
+</td>
+</tr>
+</tbody>
+</table>
+<!-- " --><!-- \begin{table}[t!] --><!-- \centering --><!-- \begin{tabular}{lcccccc} --><!-- \hline --><!-- & `ar` & `step` (forward) & `step` (backward) & \pkg{lars} & \pkg{glmnet} & **gets** \\ --><!-- \hline --><!-- AR-terms & Yes & Yes & Yes & Yes & Yes & Yes \\[1mm] --><!-- Covariates (``X'') & & Yes & Yes & Yes& Yes & Yes \\[1mm] --><!-- More variables & & & & & & \\ --><!-- than observations & & Yes & & Yes & Yes & Yes \\[1mm] --><!-- Variance-modeling & & & & & & Yes \\[1mm] --><!-- Regressor tests & & & & & & \\ --><!-- during search & & & & & & Yes \\[1mm] --><!-- Diagnostics tests & & & & & & \\ --><!-- during search & & & & & & Yes \\[1mm] --><!-- Computational & & & & & & \\ --><!-- cost (relative) & Low & Low & Low & Low & Low & High \\[1mm] --><!-- \hline --><!-- \end{tabular}\\ --><!-- \caption{A variable-selection focused feature-based comparison of **gets**  against the `ar` and `step` functions in the \proglang{R} package **stats** \citep{RCoreTeam2016}, and against the \proglang{R} packages \pkg{lars} \citep{HastieEfron2013} and \pkg{glmnet} \citep{friedman2010regularization}.  {#table:comparison:of:softwares} } --><!-- \end{table} " -->
 </div>
 <div class="section level4">
 <h4 id="gets-compared-to-alternative-methods-a-performance-based-comparison">GETS compared to alternative methods – a performance-based
 comparison<a class="anchor" aria-label="anchor" href="#gets-compared-to-alternative-methods-a-performance-based-comparison"></a>
 </h4>
-<p> together with <span class="citation">(<a href="#ref-castle2011evaluating">Castle, Doornik, and Hendry
-2011</a>)</span> provide a broad overview of the performance of GETS
-relative to alternative model selection strategies of the mean of a
-regression, including step-wise regression, information criteria and
-penalized shrinkage-based selection using the Lasso . <span class="citation">(<a href="#ref-castle2015detecting">Castle et al.
+<p><span class="citation">Hendry and Doornik (<a href="#ref-hendry2014empirical">2014</a>)</span> (Section 17) together
+with <span class="citation">(<a href="#ref-castle2011evaluating">Castle,
+Doornik, and Hendry 2011</a>)</span> provide a broad overview of the
+performance of GETS relative to alternative model selection strategies
+of the mean of a regression, including step-wise regression, information
+criteria and penalized shrinkage-based selection using the Lasso . <span class="citation">(<a href="#ref-castle2015detecting">Castle et al.
 2015</a>)</span> compare GETS in the context of step-shifts against the
 Lasso using LARS , and <span class="citation">(<a href="#ref-pretis_volc16">F. Pretis and Volz 2016</a>)</span> compare
 GETS against the Lasso for designed break functions (see Section <a href="sec:isat_comp">7.3</a>) for a more detailed discussion of
@@ -837,7 +1115,8 @@ variables.</p>
 methods for detecting relevant and discarding irrelevant variables, here
 we compare <strong>gets</strong> to: shrinkage-based selection, 1-cut
 selection (where all variables with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>~values
+<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
+values
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">\leq \alpha</annotation></semantics></math>
 in the GUM are retained in a single decision), and conducting selection
 inference starting at the DGP itself. The results are provided in Figure
@@ -1120,7 +1399,7 @@ with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\alpha_0=0</annotation></semantics></math>
 and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mn>1</mn></msub><mo>=</mo><mn>0.3</mn></mrow><annotation encoding="application/x-tex">\alpha_1=0.3</annotation></semantics></math>:</p>
-<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">eps</span> <span class="op">&lt;-</span> <span class="fu">lgarchSim</span><span class="op">(</span><span class="fl">100</span>, arch <span class="op">=</span> <span class="fl">0.3</span>, garch <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
 <p>By default, the standardized error
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mi>t</mi></msub><annotation encoding="application/x-tex">z_t</annotation></semantics></math>
@@ -1281,7 +1560,7 @@ that the conditional variance specification provides a substantial
 improvement in terms of fit and diagnostics.</p>
 <p>The following code imports the data<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;The source of the data is Statistics Norway (&lt;a href="http://www.ssb.no/" class="external-link uri"&gt;http://www.ssb.no/&lt;/a&gt;). The
 original untransformed data, a monthly consumer price index (CPI), was
-retrieved 14 February 2016 via &lt;a href="http://www.ssb.no/tabell/08183/" class="external-link uri"&gt;http://www.ssb.no/tabell/08183/&lt;/a&gt;&lt;/p&gt;'><sup>8</sup></a> and assigns it
+retrieved 14 February 2016 via &lt;a href="http://www.ssb.no/tabell/08183/" class="external-link uri"&gt;http://www.ssb.no/tabell/08183/&lt;/a&gt;&lt;/p&gt;'><sup>7</sup></a> and assigns it
 quarterly time-series attributes:</p>
 <p>data(“infldata”, package = “gets”) infldata &lt;- zooreg(infldata[,
 -1], frequency = 4, start = c(1989, 1))</p>
@@ -1747,7 +2026,7 @@ arch1 0.17438 0.10057 1.7339 0.086217 arch2 0.16822 0.10034 1.6764
 much higher than for financial returns,<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;In finance, if
 &lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;ϵ&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;\epsilon_t&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
 is a mean-corrected financial return, then the ARCH(1) term is usually
-about 0.05, and almost never higher than 0.1.&lt;/p&gt;'><sup>9</sup></a> and that the
+about 0.05, and almost never higher than 0.1.&lt;/p&gt;'><sup>8</sup></a> and that the
 conditional variance depends on quarter. To obtain an idea of the
 economic importance of our results, we re-estimate the full, simplified
 model, and generate out-of-sample forecasts of the conditional standard
@@ -1877,7 +2156,7 @@ contrast, the paper introducing SIS &lt;span class="citation"&gt;(&lt;a href="#r
 with step-indicators of the form
 &lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;msubsup&gt;&lt;mo&gt;∑&lt;/mo&gt;&lt;mrow&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mrow&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/msubsup&gt;&lt;msub&gt;&lt;mi&gt;δ&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/msub&gt;&lt;msub&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mrow&gt;&lt;mo stretchy="false" form="prefix"&gt;{&lt;/mo&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mo&gt;≤&lt;/mo&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;mo stretchy="false" form="postfix"&gt;}&lt;/mo&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;/mrow&gt;&lt;annotation encoding="application/x-tex"&gt;\sum^{n}_{j=2} \delta_j 1_{\{ t \leq j \}}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;,
 in which case the steps have to be subtracted from the previous sum of
-steps to interpret the coefficients.&lt;/p&gt;'><sup>10</sup></a> are given by</p>
+steps to interpret the coefficients.&lt;/p&gt;'><sup>9</sup></a> are given by</p>
 <p>SIS GUM:
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>t</mi></msub><mo>=</mo><mi>μ</mi><mo>+</mo><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>2</mn></mrow><mi>n</mi></msubsup><msub><mi>δ</mi><mi>j</mi></msub><msub><mn>1</mn><mrow><mo stretchy="false" form="prefix">{</mo><mi>t</mi><mo>≥</mo><mi>j</mi><mo stretchy="false" form="postfix">}</mo></mrow></msub><mo>+</mo><msub><mi>u</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">y_t = \mu + \sum^{n}_{j=2} \delta_j 1_{\{ t \geq j \} } + u_t</annotation></semantics></math></p>
 <p>IIS GUM:
@@ -2244,7 +2523,7 @@ allowed to break, and only breaks in the mean (or specified coefficients
 through inclusion in <code>uis</code>) are permitted – making it
 possible to pre-specify constancy. A partial structural change model
 using the Bai and Perron least-squares approach can be estimated using
-available code.<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;Available online at &lt;a href="http://people.bu.edu/perron/code.html" class="external-link uri"&gt;http://people.bu.edu/perron/code.html&lt;/a&gt;.&lt;/p&gt;'><sup>11</sup></a></p>
+available code.<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;Available online at &lt;a href="http://people.bu.edu/perron/code.html" class="external-link uri"&gt;http://people.bu.edu/perron/code.html&lt;/a&gt;.&lt;/p&gt;'><sup>10</sup></a></p>
 <p>Relative to <strong>changepoint</strong> , <code>isat</code> in
 <strong>gets</strong> is focused on regression modeling and structural
 breaks in the intercept of regression models jointly with outlier
@@ -2367,6 +2646,10 @@ Hendry, David F. 2003. <span>“J. Denis Sargan and the Origins of LSE
 Econometric Methodology.”</span> <em>Econometric Theory</em> 19 (3):
 457–80. <a href="https://doi.org/10.1017/s0266466603193061" class="external-link">https://doi.org/10.1017/s0266466603193061</a>.
 </div>
+<div id="ref-hendry2014empirical" class="csl-entry">
+Hendry, David F, and Jurgen Doornik. 2014. <em>Empirical Model Discovery
+and Theory Evaluation</em>. London: The MIT Press.
+</div>
 <div id="ref-hendry2015model" class="csl-entry">
 Hendry, David F, and Søren Johansen. 2015. <span>“Model Discovery and
 Trygve Haavelmo’s Legacy.”</span> <em>Econometric Theory</em> 31 (1):
@@ -2488,8 +2771,8 @@ Infrastructure for Regular and Irregular Time Series.”</span>
 </h2>
 </div>
 <div class="section level2">
-<h2 id="hoover-and-perez-hoover1999data-simulations">Hoover and Perez <span class="citation">(<a href="#ref-hoover1999data">Hoover and Perez 1999</a>)</span>
-simulations<a class="anchor" aria-label="anchor" href="#hoover-and-perez-hoover1999data-simulations"></a>
+<h2 id="hoover1999data-simulations">
+<span class="citation">Hoover and Perez (<a href="#ref-hoover1999data">1999</a>)</span> simulations<a class="anchor" aria-label="anchor" href="#hoover1999data-simulations"></a>
 </h2>
 <p>Table @ref(table:list 1 of experiments) contains the list of
 experiments. The design of the experiments HP1, HP2’ and HP7’ are based
