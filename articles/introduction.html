@@ -77,7 +77,7 @@ URL: &lt;a href="https://www.sucarrat.net/" class="external-link uri"&gt;https:/
 <!-- \VignettePackage{gets -->
 <p>This version: 2025-04-02</p>
 <p>Original version: 3 September 2018</p>
-<p>Modified for Online Display by Moritz Schwarz</p>
+<p>Modified for Online Display by <a href="www.moritzpschwarz.org">Moritz Schwarz</a></p>
 <!-- table of contents -->
 <div class="section level2">
 <h2 class="unnumbered" id="summary">Summary<a class="anchor" aria-label="anchor" href="#summary"></a>
@@ -202,7 +202,7 @@ the linear regression model</p>
 
 y_{t} = \beta_1 x_{1t} + \cdots + \beta_k x_{kt} + u_{t}, \qquad t=1,2,..., n 
 
-(\#eq:linear-regression-model)
+  (\#eq:linear-regression-model)
 
 \end{equation}</annotation></semantics></math></p>
 <p>where
@@ -215,17 +215,13 @@ are the regressors and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mi>t</mi></msub><annotation encoding="application/x-tex">u_t</annotation></semantics></math>
 is a zero mean error term. GETS modeling assumes there exists at least
 one “local” data generating process (LDGP) nested in
-(@ref(eq:linear-regression-model)). By philosophical assumption
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>h</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">the</annotation></semantics></math>
-DGP is not contained in the simple model above, see <span class="citation">(<a href="#ref-sucarrat2010econometric">Sucarrat
-2010</a>)</span> and . The qualifier`local’’ thus means it is assumed
-that there exists a specification within
-(@ref(eq:linear:regression:model)) that is a statistically valid
-representation of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>t</mi><mi>h</mi><mi>e</mi></mrow><annotation encoding="application/x-tex">the</annotation></semantics></math>
-DGP. Henceforth, for notational and theoretical convenience, we will
-assume there exists only a single LDGP, but this is not a necessary
-condition.</p>
+@ref(eq:linear-regression-model). By philosophical assumption the DGP is
+not contained in the simple model above, see <span class="citation">(<a href="#ref-sucarrat2010econometric">Sucarrat 2010</a>)</span> and . The
+qualifier`local’’ thus means it is assumed that there exists a
+specification within @ref(eq:linear-regression-model) that is a
+statistically valid representation of the DGP. Henceforth, for
+notational and theoretical convenience, we will assume there exists only
+a single LDGP, but this is not a necessary condition.</p>
 <p>A variable
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mrow><mi>j</mi><mi>t</mi></mrow></msub><annotation encoding="application/x-tex">x_{jt}</annotation></semantics></math>,
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><mi>k</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">j\in \{1,...,k\}</annotation></semantics></math>,
@@ -255,9 +251,12 @@ and
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">irr</mtext></msub><annotation encoding="application/x-tex">\widehat{k}_{\text{irr}}</annotation></semantics></math>
 are the retained number of relevant and irrelevant variables,
 respectively, then GETS modeling aims at satisfying</p>
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">rel</mtext></msub><mi>/</mi><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><mspace width="1.0em"></mspace><mn>1</mn><mspace width="1.0em"></mspace><mtext mathvariant="normal">and</mtext><mspace width="1.0em"></mspace><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">irr</mtext></msub><mi>/</mi><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><mi>α</mi><mspace width="1.0em"></mspace><mtext mathvariant="normal">as</mtext><mspace width="1.0em"></mspace><mi>n</mi><mo>→</mo><mi>∞</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">\begin{equation}
+<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">rel</mtext></msub><mi>/</mi><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><mspace width="1.0em"></mspace><mn>1</mn><mspace width="1.0em"></mspace><mtext mathvariant="normal">and</mtext><mspace width="1.0em"></mspace><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">irr</mtext></msub><mi>/</mi><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><mi>α</mi><mspace width="1.0em"></mspace><mtext mathvariant="normal">as</mtext><mspace width="1.0em"></mspace><mi>n</mi><mo>→</mo><mi>∞</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">\begin{equation}
+
 E(\widehat{k}_{\text{rel}}/k_{\text{rel}}) \rightarrow \quad 1 \quad \text{and} \quad E(\widehat{k}_{\text{irr}}/k_{\text{irr}}) \rightarrow \alpha \quad \text{as} \quad n\rightarrow\infty,
-\end{equation}</annotation></semantics></math><p>when
+
+\end{equation}</annotation></semantics></math></p>
+<p>when
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><mo>,</mo><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k_{\text{rel}},k_{\text{irr}}&gt;0</annotation></semantics></math>.
 If either
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k_{\text{rel}}=0</annotation></semantics></math>
@@ -783,7 +782,7 @@ comparison<a class="anchor" aria-label="anchor" href="#sec:GETSalt"></a>
 </h4>
 <p>Numerous model and variable selection methods have been proposed, and
 an even larger number of implementations are available. Focusing on
-variable selection, Table @ref(table:comparison:of:softwares) contains a
+variable selection, Table @ref(tab:comparison-of-softwares) contains a
 feature-based comparison of <strong>gets</strong> against some common
 alternatives in R. The <code>ar</code> function in
 <strong>stats</strong> searches for the best
@@ -819,262 +818,179 @@ By contrast, the identical experiment with
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>80</mn></mrow><annotation encoding="application/x-tex">k=80</annotation></semantics></math>
 requires 0.16s using the Lasso in <strong>glmnet</strong>, 0.41s in
 <strong>lars</strong>, and 0.3s using <code>step</code> (backward).</p>
-<p>Begin Lines: [[1]] [1] “\begin{table}[t!]”</p>
-<p>Options Lines: [[1]] [1] “\centering”</p>
-<p>[[2]] [1] “\begin{tabular}{lcccccc}”</p>
-<p>[[3]] [1] “\hline”</p>
-<p>[[4]] [1] “\hline”</p>
-<p>[[5]] [1] “\hline”</p>
-<p>[[6]] [1] “\end{tabular}\”</p>
-<p>Body Lines: [[1]] [1] “&amp; <code>ar</code> &amp; <code>step</code>
-(forward) &amp; <code>step</code> (backward) &amp; \pkg{lars} &amp;
-\pkg{glmnet} &amp; <strong>gets</strong> \”</p>
-<p>[[2]] [1] “AR-terms &amp; Yes &amp; Yes &amp; Yes &amp; Yes &amp; Yes
-&amp; Yes \\[1mm]”</p>
-<p>[[3]] [1] “Covariates (``X’’) &amp; &amp; Yes &amp; Yes &amp;
-Yes&amp; Yes &amp; Yes \\[1mm]”</p>
-<p>[[4]] [1] “More variables &amp; &amp; &amp; &amp; &amp; &amp; \”</p>
-<p>[[5]] [1] “than observations &amp; &amp; Yes &amp; &amp; Yes &amp;
-Yes &amp; Yes \\[1mm]”</p>
-<p>[[6]] [1] “Variance-modeling &amp; &amp; &amp; &amp; &amp; &amp; Yes
-\\[1mm]”</p>
-<p>[[7]] [1] “Regressor tests &amp; &amp; &amp; &amp; &amp; &amp; \”</p>
-<p>[[8]] [1] “during search &amp; &amp; &amp; &amp; &amp; &amp; Yes
-\\[1mm]”</p>
-<p>[[9]] [1] “Diagnostics tests &amp; &amp; &amp; &amp; &amp; &amp;
-\”</p>
-<p>[[10]] [1] “during search &amp; &amp; &amp; &amp; &amp; &amp; Yes
-\\[1mm]”</p>
-<p>[[11]] [1] “Computational &amp; &amp; &amp; &amp; &amp; &amp; \”</p>
-<p>[[12]] [1] “cost (relative) &amp; Low &amp; Low &amp; Low &amp; Low
-&amp; Low &amp; High \\[1mm]”</p>
-<p>Caption Lines: [[1]] [1] “\caption{A variable-selection focused
-feature-based comparison of <strong>gets</strong> against the
-<code>ar</code> and <code>step</code> functions in the \proglang{R}
-package <strong>stats</strong> \citep{RCoreTeam2016}, and against the
-\proglang{R} packages \pkg{lars} \citep{HastieEfron2013} and
-\pkg{glmnet} \citep{friedman2010regularization}.
-{#table:comparison:of:softwares} }”</p>
-<p>End Lines: [[1]] [1] “\end{table}”</p>
-<table class="table table table-striped table-hover table-condensed table-responsive" style="margin-left: auto; margin-right: auto;">
+<table class="table table" style="margin-left: auto; margin-right: auto;">
 <caption>
 A variable-selection focused feature-based comparison of
 <strong>gets</strong> against the <code>ar</code> and <code>step</code>
-functions in the package <strong>stats</strong> , and against the
-packages and . {#table:comparison:of:softwares}
+functions in the <strong>R</strong> package <strong>stats</strong> <span class="citation">(<a href="#ref-r2018manual">R Core Team
+2018</a>)</span>, and against the <strong>R</strong> packages
+<strong>lars</strong> <span class="citation">(<a href="#ref-hastie2013lars">Hastie and Efron 2013</a>)</span> and
+<strong>glmnet</strong> <span class="citation">(<a href="#ref-friedman2010regularization">Friedman, Hastie, and Tibshirani
+2010</a>)</span>.
 </caption>
 <thead><tr>
 <th style="text-align:left;">
 </th>
-<th style="text-align:left;">
-V1
+<th style="text-align:center;">
+ar
 </th>
-<th style="text-align:left;">
-V2
+<th style="text-align:center;">
+step (forward)
 </th>
-<th style="text-align:left;">
-V3
+<th style="text-align:center;">
+step (backward)
 </th>
-<th style="text-align:left;">
-V4
+<th style="text-align:center;">
+lars
 </th>
-<th style="text-align:left;">
-V5
+<th style="text-align:center;">
+glmnet
 </th>
-<th style="text-align:left;">
-V6
-</th>
-<th style="text-align:left;">
-V7
+<th style="text-align:center;">
+gets
 </th>
 </tr></thead>
 <tbody>
 <tr>
 <td style="text-align:left;">
-1
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-<code>ar</code>
-</td>
-<td style="text-align:left;">
-<code>step</code> (forward)
-</td>
-<td style="text-align:left;">
-<code>step</code> (backward)
-</td>
-<td style="text-align:left;">
-
-</td>
-<td style="text-align:left;">
-
-</td>
-<td style="text-align:left;">
-<strong>gets</strong>
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-2
-</td>
-<td style="text-align:left;">
 AR-terms
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Yes
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Yes
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Yes
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Yes
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Yes
 </td>
-<td style="text-align:left;">
-Yes
-</td>
-</tr>
-<tr>
-<td style="text-align:left;">
-3
-</td>
-<td style="text-align:left;">
-Covariates (``X’’)
-</td>
-<td style="text-align:left;">
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
-Yes
-</td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Yes
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-5
+Covariates (“X”)
 </td>
+<td style="text-align:center;">
+</td>
+<td style="text-align:center;">
+Yes
+</td>
+<td style="text-align:center;">
+Yes
+</td>
+<td style="text-align:center;">
+Yes
+</td>
+<td style="text-align:center;">
+Yes
+</td>
+<td style="text-align:center;">
+Yes
+</td>
+</tr>
+<tr>
 <td style="text-align:left;">
 More variables than observations
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Yes
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Yes
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Yes
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Yes
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-6
-</td>
 <td style="text-align:left;">
 Variance-modeling
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Yes
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-8
-</td>
 <td style="text-align:left;">
 Regressor tests during search
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Yes
 </td>
 </tr>
 <tr>
-<td style="text-align:left;">
-10
-</td>
 <td style="text-align:left;">
 Diagnostics tests during search
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Yes
 </td>
 </tr>
 <tr>
 <td style="text-align:left;">
-12
-</td>
-<td style="text-align:left;">
 Computational cost (relative)
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Low
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Low
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Low
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Low
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 Low
 </td>
-<td style="text-align:left;">
+<td style="text-align:center;">
 High
 </td>
 </tr>
@@ -1431,8 +1347,7 @@ returns:</p>
 Least Squares (OLS) Variance-Covariance: Ordinary No. of observations
 (mean eq.): 99 Sample: 2 to 100</p>
 <p>Mean equation:</p>
-<p>coef std.error t-stat p-value<br>
-mconst 0.034045 0.091664 0.3714 0.7111<br>
+<p>coef std.error t-stat p-value mconst 0.034045 0.091664 0.3714 0.7111
 ar1 0.397411 0.095212 4.1740 6.533e-05</p>
 <p>Diagnostics and fit:</p>
 <p>Chi-sq df p-value Ljung-Box AR(2) 0.25922 2 0.8784 Ljung-Box ARCH(1)
@@ -1587,18 +1502,15 @@ typing <code>inflMod01</code> prints the estimation results:</p>
 Least Squares (OLS) Variance-Covariance: White (1980) No. of
 observations (mean eq.): 104 Sample: 1990(1) to 2015(4)</p>
 <p>Mean equation:</p>
-<p>coef std.error t-stat p-value<br>
-mconst 0.8386311 0.2961338 2.8319 0.005637 ar1 0.7257550 0.1300407
-5.5810 2.211e-07 ar2 0.0195911 0.1171347 0.1673 0.867523<br>
-ar3 0.0350092 0.1385735 0.2526 0.801087<br>
-ar4 -0.1676751 0.1336972 -1.2541 0.212836<br>
-q2dum -0.0148892 0.2333917 -0.0638 0.949266<br>
-q3dum -0.0072972 0.2262704 -0.0322 0.974340<br>
-q4dum 0.0103990 0.2226772 0.0467 0.962849</p>
+<p>coef std.error t-stat p-value mconst 0.8386311 0.2961338 2.8319
+0.005637 ar1 0.7257550 0.1300407 5.5810 2.211e-07 ar2 0.0195911
+0.1171347 0.1673 0.867523 ar3 0.0350092 0.1385735 0.2526 0.801087 ar4
+-0.1676751 0.1336972 -1.2541 0.212836 q2dum -0.0148892 0.2333917 -0.0638
+0.949266 q3dum -0.0072972 0.2262704 -0.0322 0.974340 q4dum 0.0103990
+0.2226772 0.0467 0.962849</p>
 <p>Diagnostics and fit:</p>
-<p>Chi-sq df p-value<br>
-Ljung-Box AR(5) 16.3205 5 0.005986 Ljung-Box ARCH(1) 5.9665 1
-0.014580</p>
+<p>Chi-sq df p-value Ljung-Box AR(5) 16.3205 5 0.005986 Ljung-Box
+ARCH(1) 5.9665 1 0.014580</p>
 <p>SE of regression 0.72814 R-squared 0.53166 Log-lik.(n=104)
 -110.57435</p>
 <p>The diagnostics suggest the standardized residuals are autocorrelated
@@ -1621,24 +1533,18 @@ Typing <code>inflMod02</code> returns</p>
 Least Squares (OLS) Variance-Covariance: White (1980) No. of
 observations (mean eq.): 104 Sample: 1990(1) to 2015(4)</p>
 <p>Mean equation:</p>
-<p>coef std.error t-stat p-value<br>
-mconst 0.8386311 0.2961338 2.8319 0.005637 ar1 0.7257550 0.1300407
-5.5810 2.211e-07 ar2 0.0195911 0.1171347 0.1673 0.867523<br>
-ar3 0.0350092 0.1385735 0.2526 0.801087<br>
-ar4 -0.1676751 0.1336972 -1.2541 0.212836<br>
-q2dum -0.0148892 0.2333917 -0.0638 0.949266<br>
-q3dum -0.0072972 0.2262704 -0.0322 0.974340<br>
-q4dum 0.0103990 0.2226772 0.0467 0.962849</p>
+<p>coef std.error t-stat p-value mconst 0.8386311 0.2961338 2.8319
+0.005637 ar1 0.7257550 0.1300407 5.5810 2.211e-07 ar2 0.0195911
+0.1171347 0.1673 0.867523 ar3 0.0350092 0.1385735 0.2526 0.801087 ar4
+-0.1676751 0.1336972 -1.2541 0.212836 q2dum -0.0148892 0.2333917 -0.0638
+0.949266 q3dum -0.0072972 0.2262704 -0.0322 0.974340 q4dum 0.0103990
+0.2226772 0.0467 0.962849</p>
 <p>Log-variance equation:</p>
-<p>coef std.error t-stat p-value<br>
-vconst 0.95935 0.53464 3.2199 0.072749 arch1 0.16697 0.10352 1.6130
-0.110169<br>
-arch2 0.12027 0.10335 1.1637 0.247566<br>
-arch3 0.14740 0.10332 1.4267 0.157060<br>
-arch4 0.05982 0.10515 0.5689 0.570824<br>
-q2dum -1.32860 0.61862 -2.1477 0.034366 q3dum -0.92707 0.58400 -1.5874
-0.115843<br>
-q4dum -1.82736 0.62014 -2.9467 0.004069</p>
+<p>coef std.error t-stat p-value vconst 0.95935 0.53464 3.2199 0.072749
+arch1 0.16697 0.10352 1.6130 0.110169 arch2 0.12027 0.10335 1.1637
+0.247566 arch3 0.14740 0.10332 1.4267 0.157060 arch4 0.05982 0.10515
+0.5689 0.570824 q2dum -1.32860 0.61862 -2.1477 0.034366 q3dum -0.92707
+0.58400 -1.5874 0.115843 q4dum -1.82736 0.62014 -2.9467 0.004069</p>
 <p>Diagnostics and fit:</p>
 <p>Chi-sq df p-value Ljung-Box AR(5) 9.1776 5 0.1022 Ljung-Box ARCH(5)
 1.7613 5 0.8811</p>
@@ -1722,26 +1628,21 @@ output:</p>
 <p>Date: Fri Aug 06 11:17:38 2021 Dependent var.: y Method: Ordinary
 Least Squares (OLS) Sample: 1983-07-05 to 2016-03-08</p>
 <p>Log-variance equation:</p>
-<p>coef std.error t-stat p-value<br>
-vconst 0.0107260 0.0784437 0.0187 0.891241<br>
-arch1 -0.0482520 0.0161972 -2.9790 0.002900 arch2 0.0071996 0.0122312
-0.5886 0.556127<br>
-arch3 0.0256668 0.0122521 2.0949 0.036212 arch4 0.0149581 0.0122145
-1.2246 0.220758<br>
-arch5 0.0371055 0.0122796 3.0217 0.002521 asym1 -0.0336271 0.0175185
--1.9195 0.054954 logEqWMA(5) 0.0262491 0.0519435 0.5053 0.613334<br>
-logEqWMA(20) 0.2817220 0.0713466 3.9486 7.926e-05 logEqWMA(60) 0.1970841
-0.1052311 1.8729 0.061122 logEqWMA(120) 0.1936954 0.0865864 2.2370
-0.025312 volproxylag 0.2078785 0.0400515 5.1903 2.151e-07 volumedifflag
--0.0030906 0.0014207 -2.1754 0.029630 dTue 0.0978314 0.0834703 1.1720
-0.241212<br>
-dWed -0.0804053 0.0853471 -0.9421 0.346171<br>
-dThu 0.0838896 0.0843500 0.9945 0.319988<br>
-dFri 0.0756869 0.0840118 0.9009 0.367664</p>
+<p>coef std.error t-stat p-value vconst 0.0107260 0.0784437 0.0187
+0.891241 arch1 -0.0482520 0.0161972 -2.9790 0.002900 arch2 0.0071996
+0.0122312 0.5886 0.556127 arch3 0.0256668 0.0122521 2.0949 0.036212
+arch4 0.0149581 0.0122145 1.2246 0.220758 arch5 0.0371055 0.0122796
+3.0217 0.002521 asym1 -0.0336271 0.0175185 -1.9195 0.054954 logEqWMA(5)
+0.0262491 0.0519435 0.5053 0.613334 logEqWMA(20) 0.2817220 0.0713466
+3.9486 7.926e-05 logEqWMA(60) 0.1970841 0.1052311 1.8729 0.061122
+logEqWMA(120) 0.1936954 0.0865864 2.2370 0.025312 volproxylag 0.2078785
+0.0400515 5.1903 2.151e-07 volumedifflag -0.0030906 0.0014207 -2.1754
+0.029630 dTue 0.0978314 0.0834703 1.1720 0.241212 dWed -0.0804053
+0.0853471 -0.9421 0.346171 dThu 0.0838896 0.0843500 0.9945 0.319988 dFri
+0.0756869 0.0840118 0.9009 0.367664</p>
 <p>Diagnostics and fit:</p>
-<p>Chi-sq df p-value<br>
-Ljung-Box AR(1) 0.53421 1 0.4648<br>
-Ljung-Box ARCH(6) 29.21040 6 5.55e-05</p>
+<p>Chi-sq df p-value Ljung-Box AR(1) 0.53421 1 0.4648 Ljung-Box ARCH(6)
+29.21040 6 5.55e-05</p>
 <p>SE of regression 1.13957 R-squared -0.00069 Log-lik.(n=8120)
 -10985.79738</p>
 <p>Later, in Section @ref(subsec:gets:sp500:example), we will simplify
@@ -1783,27 +1684,20 @@ optional arguments:</p>
 <p>The results are stored in an object named <code>getsm05</code>, and
 the information produced during the specification search is:</p>
 <p>GUM mean equation:</p>
-<p>reg.no. keep coef std.error t-stat p-value<br>
-mconst 1 0 -0.0596894 0.0782285 -0.7630 0.4475<br>
-ar1 2 0 0.1938157 0.1235456 1.5688 0.1202<br>
-ar2 3 0 0.0343803 0.1141559 0.3012 0.7640<br>
-mxreg1 4 0 0.1171045 0.0805838 1.4532 0.1496<br>
-mxreg2 5 0 0.0116124 0.0865925 0.1341 0.8936<br>
-mxreg3 6 0 -0.1087162 0.0815946 -1.3324 0.1861<br>
-mxreg4 7 0 -0.2226722 0.1019820 -2.1834 0.0316 mxreg5 8 0 0.0012498
-0.0694024 0.0180 0.9857</p>
+<p>reg.no. keep coef std.error t-stat p-value mconst 1 0 -0.0596894
+0.0782285 -0.7630 0.4475 ar1 2 0 0.1938157 0.1235456 1.5688 0.1202 ar2 3
+0 0.0343803 0.1141559 0.3012 0.7640 mxreg1 4 0 0.1171045 0.0805838
+1.4532 0.1496 mxreg2 5 0 0.0116124 0.0865925 0.1341 0.8936 mxreg3 6 0
+-0.1087162 0.0815946 -1.3324 0.1861 mxreg4 7 0 -0.2226722 0.1019820
+-2.1834 0.0316 mxreg5 8 0 0.0012498 0.0694024 0.0180 0.9857</p>
 <p>GUM log-variance equation:</p>
-<p>coef std.error t-stat p-value<br>
-vconst 0.351872 0.438687 0.6434 0.42249<br>
+<p>coef std.error t-stat p-value vconst 0.351872 0.438687 0.6434 0.42249
 arch1 0.268975 0.107470 2.5028 0.01424 arch2 0.088540 0.159135 0.5564
-0.57941<br>
-arch3 0.022932 0.115861 0.1979 0.84357<br>
-asym2 -0.112941 0.171767 -0.6575 0.51262<br>
-vxreg1 0.102181 0.110374 0.9258 0.35718<br>
-vxreg2 -0.068873 0.093762 -0.7345 0.46464<br>
-vxreg3 -0.032006 0.102597 -0.3120 0.75584<br>
-vxreg4 0.029429 0.106865 0.2754 0.78369<br>
-vxreg5 0.187176 0.120259 1.5564 0.12332</p>
+0.57941 arch3 0.022932 0.115861 0.1979 0.84357 asym2 -0.112941 0.171767
+-0.6575 0.51262 vxreg1 0.102181 0.110374 0.9258 0.35718 vxreg2 -0.068873
+0.093762 -0.7345 0.46464 vxreg3 -0.032006 0.102597 -0.3120 0.75584
+vxreg4 0.029429 0.106865 0.2754 0.78369 vxreg5 0.187176 0.120259 1.5564
+0.12332</p>
 <p>Diagnostics:</p>
 <p>Chi-sq df p-value Ljung-Box AR(3) 0.18672 3 0.97970 Ljung-Box ARCH(4)
 0.43983 4 0.97909</p>
@@ -1963,25 +1857,18 @@ the mean, and stores the results in an object named
 <p>inflMod03 &lt;- getsm(inflMod02)</p>
 <p>This produces the following during the specification search:</p>
 <p>GUM mean equation:</p>
-<p>reg.no. keep coef std.error t-stat p-value<br>
-mconst 1 0 0.8386311 0.2961338 2.8319 0.005637 ar1 2 0 0.7257550
-0.1300407 5.5810 2.211e-07 ar2 3 0 0.0195911 0.1171347 0.1673
-0.867523<br>
-ar3 4 0 0.0350092 0.1385735 0.2526 0.801087<br>
-ar4 5 0 -0.1676751 0.1336972 -1.2541 0.212836<br>
-q2dum 6 0 -0.0148892 0.2333917 -0.0638 0.949266<br>
-q3dum 7 0 -0.0072972 0.2262704 -0.0322 0.974340<br>
-q4dum 8 0 0.0103990 0.2226772 0.0467 0.962849</p>
+<p>reg.no. keep coef std.error t-stat p-value mconst 1 0 0.8386311
+0.2961338 2.8319 0.005637 ar1 2 0 0.7257550 0.1300407 5.5810 2.211e-07
+ar2 3 0 0.0195911 0.1171347 0.1673 0.867523 ar3 4 0 0.0350092 0.1385735
+0.2526 0.801087 ar4 5 0 -0.1676751 0.1336972 -1.2541 0.212836 q2dum 6 0
+-0.0148892 0.2333917 -0.0638 0.949266 q3dum 7 0 -0.0072972 0.2262704
+-0.0322 0.974340 q4dum 8 0 0.0103990 0.2226772 0.0467 0.962849</p>
 <p>GUM log-variance equation:</p>
-<p>coef std.error t-stat p-value<br>
-vconst 0.95935 0.53464 3.2199 0.072749 arch1 0.16697 0.10352 1.6130
-0.110169<br>
-arch2 0.12027 0.10335 1.1637 0.247566<br>
-arch3 0.14740 0.10332 1.4267 0.157060<br>
-arch4 0.05982 0.10515 0.5689 0.570824<br>
-q2dum -1.32860 0.61862 -2.1477 0.034366 q3dum -0.92707 0.58400 -1.5874
-0.115843<br>
-q4dum -1.82736 0.62014 -2.9467 0.004069</p>
+<p>coef std.error t-stat p-value vconst 0.95935 0.53464 3.2199 0.072749
+arch1 0.16697 0.10352 1.6130 0.110169 arch2 0.12027 0.10335 1.1637
+0.247566 arch3 0.14740 0.10332 1.4267 0.157060 arch4 0.05982 0.10515
+0.5689 0.570824 q2dum -1.32860 0.61862 -2.1477 0.034366 q3dum -0.92707
+0.58400 -1.5874 0.115843 q4dum -1.82736 0.62014 -2.9467 0.004069</p>
 <p>Diagnostics:</p>
 <p>Chi-sq df p-value Ljung-Box AR(5) 9.1776 5 0.10219 Ljung-Box ARCH(5)
 1.7613 5 0.88109</p>
@@ -2014,8 +1901,7 @@ the standardized residuals is undertaken at the same lag as earlier, the
 <code>inflMod05</code> prints the results, and again we only reproduce
 selected parts in the interest of brevity:</p>
 <p>SPECIFIC log-variance equation:</p>
-<p>coef std.error t-stat p-value<br>
-vconst 0.71311 0.53965 1.7462 0.186355<br>
+<p>coef std.error t-stat p-value vconst 0.71311 0.53965 1.7462 0.186355
 arch1 0.17438 0.10057 1.7339 0.086217 arch2 0.16822 0.10034 1.6764
 0.096975 q2dum -1.43834 0.62992 -2.2834 0.024662 q3dum -1.09189 0.60035
 -1.8187 0.072135 q4dum -1.82836 0.60351 -3.0295 0.003163</p>
@@ -2077,16 +1963,15 @@ significance level equal to
 NULL)</p>
 <p>Typing <code>sp500Mod03</code> returns (amongst other):</p>
 <p>SPECIFIC log-variance equation:</p>
-<p>coef std.error t-stat p-value<br>
-vconst 0.016309 0.044960 0.1316 0.7167940<br>
-arch1 -0.064147 0.013740 -4.6687 3.080e-06 arch5 0.038690 0.011324
-3.4168 0.0006368 logEqWMA(20) 0.427071 0.053110 8.0413 1.014e-15
-logEqWMA(120) 0.327148 0.052734 6.2038 5.782e-10 volproxylag 0.197866
-0.036558 5.4124 6.396e-08 dWed -0.176576 0.064799 -2.7250 0.0064442</p>
+<p>coef std.error t-stat p-value vconst 0.016309 0.044960 0.1316
+0.7167940 arch1 -0.064147 0.013740 -4.6687 3.080e-06 arch5 0.038690
+0.011324 3.4168 0.0006368 logEqWMA(20) 0.427071 0.053110 8.0413
+1.014e-15 logEqWMA(120) 0.327148 0.052734 6.2038 5.782e-10 volproxylag
+0.197866 0.036558 5.4124 6.396e-08 dWed -0.176576 0.064799 -2.7250
+0.0064442</p>
 <p>Diagnostics and fit:</p>
-<p>Chi-sq df p-value<br>
-Ljung-Box AR(1) 0.40681 1 0.5236<br>
-Ljung-Box ARCH(6) 32.33070 6 1.41e-05</p>
+<p>Chi-sq df p-value Ljung-Box AR(1) 0.40681 1 0.5236 Ljung-Box ARCH(6)
+32.33070 6 1.41e-05</p>
 <p>SE of regression 1.14417 Log-lik.(n=8120) -10993.62221</p>
 <p>In other words, no day-of-the-week dummies are retained and only the
 first ARCH-term is retained. However, three of the log-proxies are
@@ -2258,10 +2143,9 @@ This suggests less than one indicator being retained spuriously on
 average in a well-specified model under the null of no shifts or
 outliers. Estimating an <code>isat</code> model using SIS
 (<code>sis = TRUE</code> is default): %</p>
-<p>options(plot = TRUE) so2 &lt;- data(“so2data”, package =
-“gets”)<br>
-yso2 &lt;- zoo(so2data[, “DLuk_tot_so2”], order.by = so2data[, “year”])
-(sis &lt;- isat(yso2, t.pval = 0.01))</p>
+<p>options(plot = TRUE) so2 &lt;- data(“so2data”, package = “gets”) yso2
+&lt;- zoo(so2data[, “DLuk_tot_so2”], order.by = so2data[, “year”]) (sis
+&lt;- isat(yso2, t.pval = 0.01))</p>
 <p>SIS block 1 of 2: 30 paths to search Searching: 1 2 3 4 …</p>
 <p>SIS block 2 of 2:</p>
 <p>26 paths to search Searching: 1 2 3 4 …</p>
@@ -2630,6 +2514,12 @@ Ericsson, N. R., and D. F. Hendry. 2013. <span>“Biased Regressors and
 Spurious Regressions.”</span> <em>Journal of Econometrics</em> 177 (2):
 357–65. <a href="https://doi.org/10.1016/j.jeconom.2013.06.004" class="external-link">https://doi.org/10.1016/j.jeconom.2013.06.004</a>.
 </div>
+<div id="ref-friedman2010regularization" class="csl-entry">
+Friedman, Jerome, Trevor Hastie, and Robert Tibshirani. 2010.
+<span>“Regularization Paths for Generalized Linear Models via Coordinate
+Descent.”</span> <em>Journal of Statistical Software</em> 33 (1): 1–22.
+<a href="https://doi.org/10.18637/jss.v033.i01" class="external-link">https://doi.org/10.18637/jss.v033.i01</a>.
+</div>
 <div id="ref-glosten1993relation" class="csl-entry">
 Glosten, Lawrence R, Ravi Jagannathan, and David E Runkle. 1993.
 <span>“On the Relation Between the Expected Value and the Volatility of
@@ -2640,6 +2530,10 @@ the Nominal Excess Return on Stocks.”</span> <em>Journal of Finance</em>
 Hannan, Edward J, and Barry G Quinn. 1979. <span>“The Determination of
 the Order of an Autoregression.”</span> <em>Journal of the Royal
 Statistical Society B</em> 41 (2): 190–95.
+</div>
+<div id="ref-hastie2013lars" class="csl-entry">
+Hastie, Trevor, and Bradley Efron. 2013. <em>Lars: Least Angle
+Regression, Lasso and Forward Stagewise</em>. <a href="https://CRAN.R-project.org/package=lars" class="external-link">https://CRAN.R-project.org/package=lars</a>.
 </div>
 <div id="ref-hendry2003sargan" class="csl-entry">
 Hendry, David F. 2003. <span>“J. Denis Sargan and the Origins of LSE
@@ -2722,6 +2616,11 @@ Indicator Saturation for Outliers and Structural Breaks.”</span>
 Pretis, F., and U. Volz. 2016. <span>“Nowcasting the Swiss
 Economy.”</span> <em>Swiss Journal of Economics and Statistics</em> 152
 (2): 95–135. <a href="https://doi.org/10.1007/BF03399588" class="external-link">https://doi.org/10.1007/BF03399588</a>.
+</div>
+<div id="ref-r2018manual" class="csl-entry">
+R Core Team. 2018. <em>R: A Language and Environment for Statistical
+Computing</em>. Vienna, Austria: R Foundation for Statistical Computing.
+<a href="https://www.R-project.org/" class="external-link">https://www.R-project.org/</a>.
 </div>
 <div id="ref-schwarz1978estimating" class="csl-entry">
 Schwarz, Gideon. 1978. <span>“Estimating the Dimension of a
