@@ -46,7 +46,7 @@ This version: `r Sys.Date()`
 
 Original version: 3 September 2018
 
-Modified for Online Display by Moritz Schwarz
+Modified for Online Display by [Moritz Schwarz](www.moritzpschwarz.org)
 
 <!-- table of contents -->
 
@@ -95,21 +95,24 @@ It is convenient to provide an overview of GETS modeling in terms of the linear 
 
 y_{t} = \beta_1 x_{1t} + \cdots + \beta_k x_{kt} + u_{t}, \qquad t=1,2,..., n 
 
-(\#eq:linear-regression-model)
+  (\#eq:linear-regression-model)
 
 \end{equation}
 
-where $y_t$ is the dependent variable, the $\beta$'s are slope coefficients, the $x$'s are the regressors and $u_t$ is a zero mean error term. GETS modeling assumes there exists at least one "local" data generating process (LDGP) nested in (\@ref(eq:linear-regression-model)). By philosophical assumption $the$ DGP is not contained in the simple model above, see [@sucarrat2010econometric] and \citet[][Sections 6.2--6.3]{HendryDoornik2014}. The qualifier\`local'' thus means it is assumed that there exists a specification within (\@ref(eq:linear:regression:model)) that is a statistically valid representation of $the$ DGP. Henceforth, for notational and theoretical convenience, we will assume there exists only a single LDGP, but this is not a necessary condition.
+
+where $y_t$ is the dependent variable, the $\beta$'s are slope coefficients, the $x$'s are the regressors and $u_t$ is a zero mean error term. GETS modeling assumes there exists at least one "local" data generating process (LDGP) nested in \@ref(eq:linear-regression-model). By philosophical assumption the DGP is not contained in the simple model above, see [@sucarrat2010econometric] and \citet[][Sections 6.2--6.3]{HendryDoornik2014}. The qualifier\`local'' thus means it is assumed that there exists a specification within \@ref(eq:linear-regression-model) that is a statistically valid representation of the DGP. Henceforth, for notational and theoretical convenience, we will assume there exists only a single LDGP, but this is not a necessary condition.
 
 A variable $x_{jt}$, $j\in \{1,...,k\}$, is said to be relevant if $\beta_j \neq 0$ and irrelevant if $\beta_j = 0$. Let $k_{\text{rel}} \geq 0$ and $k_{\text{irr}} \geq 0$ denote the number of relevant and irrelevant variables, respectively, such that $k_{\text{rel}} + k_{\text{irr}} = k$. Of course, both $k_{\text{rel}}$ and $k_{\text{irr}}$ are unknown to the investigator. GETS modeling aims at finding a specification that contains as many relevant variables as possible, and a proportion of irrelevant variables that corresponds to the significance level $\alpha$ chosen by the investigator. Put differently, if $\widehat{k}_{\text{rel}}$ and $\widehat{k}_{\text{irr}}$ are the retained number of relevant and irrelevant variables, respectively, then GETS modeling aims at satisfying
 
-```{=tex}
-\begin{equation}
-E(\widehat{k}_{\text{rel}}/k_{\text{rel}}) \rightarrow \quad 1 \quad \text{and} \quad E(\widehat{k}_{\text{irr}}/k_{\text{irr}}) \rightarrow \alpha \quad \text{as} \quad n\rightarrow\infty,
-\end{equation}
-```
 
-when $k_{\text{rel}},k_{\text{irr}}>0$. If either $k_{\text{rel}}=0$ or $k_{\text{irr}}=0$, then the criteria are modified in the obvious ways: If $k_{\text{rel}}=0$, then $E(\widehat{k}_{\text{rel}}) = 0$, and if $k_{\text{irr}}=0$, then $E(\widehat{k}_{\text{irr}}) = 0$. The proportion of spuriously retained variables, i.e., $\widehat{k}_{\text{irr}}/k_{\text{irr}}$, is also referred to as *gauge* in the GETS literature, with distributional results on the gauge for a specific case (the variables being impulses as in IIS) provided in [@johansen2016asymptotic]. The relevance proportion, i.e., $\widehat{k}_{\text{irr}}/k_{\text{irr}}$, is also referred to as *potency* in the GETS literature. 
+\begin{equation}
+
+E(\widehat{k}_{\text{rel}}/k_{\text{rel}}) \rightarrow \quad 1 \quad \text{and} \quad E(\widehat{k}_{\text{irr}}/k_{\text{irr}}) \rightarrow \alpha \quad \text{as} \quad n\rightarrow\infty,
+
+\end{equation}
+
+
+when $k_{\text{rel}},k_{\text{irr}}>0$. If either $k_{\text{rel}}=0$ or $k_{\text{irr}}=0$, then the criteria are modified in the obvious ways: If $k_{\text{rel}}=0$, then $E(\widehat{k}_{\text{rel}}) = 0$, and if $k_{\text{irr}}=0$, then $E(\widehat{k}_{\text{irr}}) = 0$. The proportion of spuriously retained variables, i.e., $\widehat{k}_{\text{irr}}/k_{\text{irr}}$, is also referred to as *gauge* in the GETS literature, with distributional results on the gauge for a specific case (the variables being impulses as in IIS) provided in [@johansen2016asymptotic]. The relevance proportion, i.e., $\widehat{k}_{\text{irr}}/k_{\text{irr}}$, is also referred to as *potency* in the GETS literature.
 
 Table \@ref(tab:comparison-of-gets-algorithms) contains a comparison of the variable selection properties of GETS software packages for some well-known experiments. As the results show, **gets** performs as expected in the experiments, since the irrelevance proportion corresponds well to the nominal regressor significance level $\alpha$, and since the relevance proportion is 1. Additional simulations, and comparisons against alternative algorithms, are contained in Section \@ref(subsec:comparison-of-gets-with-alternatives).
 
@@ -119,38 +122,38 @@ library(kableExtra)
 
 # Data for the table
 data <- data.frame(
-  Experiment = c("HP1", "", "", "", "", 
-                 "HP2", "", "", "", "", "", 
+  Experiment = c("HP1", "", "", "", "",
+                 "HP2", "", "", "", "", "",
                  "HP7", "", "", "", "", ""),
-  k_rel = c(0, "", "", "", "", 
-            1, "", "", "", "", "", 
+  k_rel = c(0, "", "", "", "",
+            1, "", "", "", "", "",
             3, "", "", "", "", ""),
-  k_irr = c(40, "", "", "", "", 
-            39, "", "", "", "", "", 
+  k_irr = c(40, "", "", "", "",
+            39, "", "", "", "", "",
             37, "", "", "", "", ""),
-  Algorithm = c("**gets**", "AutoSEARCH", "HP1999", "PcGets", "", 
+  Algorithm = c("**gets**", "AutoSEARCH", "HP1999", "PcGets", "",
                 "**gets**", "AutoSEARCH", "HP1999", "PcGets", "Autometrics", "",
                 "**gets**", "AutoSEARCH", "HP1999", "PcGets", "Autometrics", ""),
-  n = c(139, "", "", "", "", 
-        139, "", "", "", "", "", 
+  n = c(139, "", "", "", "",
+        139, "", "", "", "", "",
         138, "", "", "", "", ""),
-  m_rel_k_rel = c("", "", "", "", "", 
-                  "1.000", "1.000", "1.000", "≈ 0.97", "1.000", "", 
+  m_rel_k_rel = c("", "", "", "", "",
+                  "1.000", "1.000", "1.000", "≈ 0.97", "1.000", "",
                   "0.999", "1.000", "0.967", "≈ 1.00", "0.999", ""),
-  m_irr_k_irr = c("0.053", "0.049", "0.045", "≈ 0.04", "", 
-                  "0.056", "0.050", "0.107", "≈ 0.05", "0.063", "", 
+  m_irr_k_irr = c("0.053", "0.049", "0.045", "≈ 0.04", "",
+                  "0.056", "0.050", "0.107", "≈ 0.05", "0.063", "",
                   "0.055", "0.051", "0.082", "≈ 0.04", "0.066", ""),
-  p_DGP = c("0.269", "0.239", "0.292", "≈ 0.45", "", 
-            "0.254", "0.252", "0.000", "≈ 0.32", "0.119", "", 
+  p_DGP = c("0.269", "0.239", "0.292", "≈ 0.45", "",
+            "0.254", "0.252", "0.000", "≈ 0.32", "0.119", "",
             "0.232", "0.232", "0.040", "≈ 0.37", "0.111", "")
 )
 
 # Creating the table
 kable(data, "html", escape = FALSE,
       caption = "Variable selection properties of GETS algorithms. The table is essentially Table 2 in @sucarrat2012automated, p. 724,  augmented by the properties of **gets**, see Appendix \\@ref(sec:simulation-tables) for more details on the simulations. The variable selection is undertaken with a nominal regressor significance level of 5%. $m(\\widehat{k}_{\\text{rel}}/k_{\\text{rel}})$, average proportion of relevant variables $\\widehat{k}_{\\text{rel}}$. $m(\\widehat{k}_{\\text{irr}}/k_{\\text{irr}})$, average proportion of irrelevant variables $\\widehat{k}_{\\text{irr}}$ retained relative to the actual number of irrelevant variables $k_{\\text{irr}}$ in the GUM. $\\widehat{p}(\\text{DGP})$, proportion of times the exact DGP is found. The properties of the HP1999 algorithm are from @hoover1999data Table 4 on p. 179. The properties of the \\pkg{PcGets} algorithm are from @hendry2005properties Figure 1 on p. C39, and the properties of the \\pkg{Autometrics} algorithm are from @Doornik2009, Section 6.",
-      col.names = c("Experiment", "$k_{\\text{rel}}$", "$k_{\\text{irr}}$", "Algorithm", 
+      col.names = c("Experiment", "$k_{\\text{rel}}$", "$k_{\\text{irr}}$", "Algorithm",
                     "$n$", "$m(\\widehat{k}_{\\text{rel}}/k_{\\text{rel}})$",
-                    "$m(\\widehat{k}_{\\text{irr}}/k_{\\text{irr}})$", 
+                    "$m(\\widehat{k}_{\\text{irr}}/k_{\\text{irr}})$",
                     "$\\widehat{p}(\\text{DGP})$")) %>%
   kable_styling("striped", full_width = F) %>%
   add_header_above(c(" " = 4, "Metrics" = 4))
@@ -175,38 +178,71 @@ When comparing the R package **gets** to alternatives, it is important to differ
 
 ### GETS compared to alternative methods -- a feature-based comparison {#sec:GETSalt}
 
-Numerous model and variable selection methods have been proposed, and an even larger number of implementations are available. Focusing on variable selection, Table \@ref(table:comparison:of:softwares) contains a feature-based comparison of **gets** against some common alternatives in R. The `ar` function in **stats** \citep{RCoreTeam2016} searches for the best AR($P$) model using the AIC. The `step` function, also in **stats**, offers both forward and backward step-wise search. The packages **lars** \citep{HastieEfron2013} and **glmnet** \citep{friedman2010regularization}, provide shrinkage-based search methods for variable selection.
+Numerous model and variable selection methods have been proposed, and an even larger number of implementations are available. Focusing on variable selection, Table \@ref(tab:comparison-of-softwares) contains a feature-based comparison of **gets** against some common alternatives in R. The `ar` function in **stats** \citep{RCoreTeam2016} searches for the best AR($P$) model using the AIC. The `step` function, also in **stats**, offers both forward and backward step-wise search. The packages **lars** \citep{HastieEfron2013} and **glmnet** \citep{friedman2010regularization}, provide shrinkage-based search methods for variable selection.
 
 As is clear from the table, GETS may be viewed as being more general than many of its competitors. This comes at a cost: computational speed. Relying on multiple path searches implies that the required computational time increases non-linearly with the number of potential candidate regressors selected over. This is a particular concern when using indicator saturation [see section "Indicator Saturation"](sec:indicator:saturation), where the number of candidate variables scales linearly with the number of observations and subsequently implies a non-linear increase in required computational time. For example, selection over $k$ (irrelevant) candidate regressors in **gets** (in a sample of $n=200$ observations) on a 1.8GHz processor requires approximately 0.8 seconds (s) for $k=10$, 2.9s for $k=20$, 15s for $k=40$, and 114s for $k=80$. By contrast, the identical experiment with $k=80$ requires 0.16s using the Lasso in **glmnet**, 0.41s in **lars**, and 0.3s using `step` (backward).
 
-```{r, echo=FALSE, results='asis'}
+```{r comparison-of-softwares, echo=FALSE}
+library(kableExtra)
+library(knitr)
+
+# Create the table data
+df <- data.frame(
+  Feature = c(
+    "AR-terms", 
+    'Covariates ("X")', 
+    "More variables \n than observations",
+    "Variance-modeling",
+    "Regressor tests \n during search",
+    "Diagnostics tests \n during search",
+    "Computational \n cost (relative)"
+  ),
+  ar = c("Yes", "", "", "", "", "", "Low"),
+  step_forward = c("Yes", "Yes", "Yes", "", "", "", "Low"),
+  step_backward = c("Yes", "Yes", "", "", "", "", "Low"),
+  lars = c("Yes", "Yes", "Yes", "", "", "", "Low"),
+  glmnet = c("Yes", "Yes", "Yes", "", "", "", "Low"),
+  gets = c("Yes", "Yes", "Yes", "Yes", "Yes", "Yes", "High")
+)
+
+# Generate the LaTeX table
+kable(df, format = "html", booktabs = TRUE, escape = FALSE, align = "lcccccc",
+      col.names = c("", "ar", "step (forward)", "step (backward)", "lars", "glmnet", "gets"),
+      caption = "A variable-selection focused feature-based comparison of **gets** against the `ar` and `step` functions in the **R** package **stats** [@r2018manual], and against the **R** packages **lars** [@hastie2013lars] and **glmnet** [@friedman2010regularization]."
+) %>%
+  kable_styling(latex_options = c("striped", "hold_position"))
+```
+
+
+
+```{r, echo=FALSE, results='asis',eval=FALSE}
 library(stringr)
 library(kableExtra)
 library(dplyr)
 
 parse_and_classify_latex <- function(latex_code) {
-  
+
   # Split the LaTeX code into lines
   lines <- str_split(latex_code, "\\n")[[1]]
-  
+
   # Remove leading and trailing white spaces from each line
   lines <- str_trim(lines)
-  
+
   # Remove empty lines
   lines <- lines[lines != ""]
-  
+
   # Initialize lists for different classifications
   begin_lines <- list()
   options_lines <- list()
   body_lines <- list()
   caption_lines <- list()
   end_lines <- list()
-  
+
   # Classification patterns
   begin_pattern <- "^\\\\begin\\{table"
   end_pattern <- "^\\\\end\\{table"
   caption_pattern <- "\\\\caption"
-  
+
   # Classify each line
   for (line in lines) {
     if (str_detect(line, begin_pattern)) {
@@ -221,23 +257,23 @@ parse_and_classify_latex <- function(latex_code) {
       body_lines <- c(body_lines, line)
     }
   }
-  
-  # Print classified lines for inspection
-  cat("Begin Lines:\n")
-  print(begin_lines)
-  
-  cat("\nOptions Lines:\n")
-  print(options_lines)
-  
-  cat("\nBody Lines:\n")
-  print(body_lines)
-  
-  cat("\nCaption Lines:\n")
-  print(caption_lines)
-  
-  cat("\nEnd Lines:\n")
-  print(end_lines)
-  
+
+  # # Print classified lines for inspection
+  # cat("Begin Lines:\n")
+  # print(begin_lines)
+  # 
+  # cat("\nOptions Lines:\n")
+  # print(options_lines)
+  # 
+  # cat("\nBody Lines:\n")
+  # print(body_lines)
+  # 
+  # cat("\nCaption Lines:\n")
+  # print(caption_lines)
+  # 
+  # cat("\nEnd Lines:\n")
+  # print(end_lines)
+
   # Return a list of classified lines
   result <- list(
     Begin = begin_lines,
@@ -246,69 +282,62 @@ parse_and_classify_latex <- function(latex_code) {
     Caption = caption_lines,
     End = end_lines
   )
-  
+
   return(result)
 }
 
 
 
-# Function to convert classified LaTeX lines into a kableExtra table
 create_kable_table <- function(classified_latex, format = "latex") {
   
   # Extract classified lines
   body_lines <- classified_latex$Body
   caption_line <- classified_latex$Caption
-  options_lines <- classified_latex$Options
-  
+
   # Extract caption text
   caption_text <- str_replace_all(caption_line, "\\\\caption\\{(.*)\\}", "\\1")
-  
-  # Correct quotes
-  # body_lines <- str_replace_all(body_lines, "``", "'")
-  # body_lines <- str_replace_all(body_lines, "''", "'")
-  #body_lines <- str_replace_all(body_lines, "``*.''", '"*"')
-  
-  # Handle rows and split lines
-  # body_lines_split <- str_split(body_lines, "\\\\[1mm]", simplify = TRUE)
-  
-  # # Combine all lines and handle trailing backslashes
-  # body_lines_cleaned <- sapply(body_lines_split, function(x) {
-  #   x <- str_trim(x)
-  #   x <- str_replace_all(x, "\\\\$", "") # Remove trailing backslashes
-  #   return(x)
-  # })
-  # 
-  # Create a data frame from split lines
+
+  # Convert body lines into a structured dataframe
   df_list <- lapply(body_lines, function(x) {
     str_split(x, "&", simplify = TRUE) %>%
       as.data.frame(stringsAsFactors = FALSE) %>%
-      mutate_all(~ str_replace_all(., "\\\\$", "")) %>% 
-      mutate_all(~ gsub("\\\\[1mm]", "",., fixed = TRUE))
+      mutate_all(~ str_replace_all(., "\\\\$", "")) %>%
+      mutate_all(~ gsub("\\\\[1mm]", "", ., fixed = TRUE))
   })
-  # 
-  # # Combine all rows into a single data frame
+
+  # Combine all rows into a single data frame
   df <- do.call(rbind, df_list)
-  df_orig <- df
-  # in rows where the first column is not " " but all other columns are
-  # we want to merge the first column with the text that is in the first column of the next row
-  # and remove the row where the first column is not " " but all other columns are
-  
+
+  # Merge multi-line row descriptions
   i <- 1
-  while(i <= nrow(df)){
-    if (df[i, 1] != " " & all(df[i, -1] == " ")) {
-      df[i + 1, 1] <- paste0(df[i, 1], df[i + 1, 1])
-      df <- df[-(i), ]
+  while (i < nrow(df)) {
+    if (df[i, 1] != "" & all(df[i, -1] == "")) {
+      df[i + 1, 1] <- paste0(df[i, 1], " ", df[i + 1, 1])
+      df <- df[-i, ]
+    } else {
+      i <- i + 1
     }
-    i = i + 1
   }
-    
-  
+
+  # Extract column names from the first row
+  colnames(df) <- as.character(df[1, ])
+  df <- df[-1, ]  # Remove first row from body
+
+  # Assign first column as row names
+  row_names <- df[, 1]
+  df <- df[, -1]  # Remove first column after extracting row names
+
+  # Ensure unique row names (fix duplicates)
+  row_names <- make.unique(row_names)
+
+  # Assign cleaned row names
+  rownames(df) <- row_names
+
   # Choose the output format and create kable table
   if (format == "latex") {
     kable_table <- kable(df, format = "latex", booktabs = TRUE, escape = FALSE,
                          caption = if (caption_text != "") caption_text else NULL) %>%
-      kable_styling(latex_options = c("striped", "hold_position")) %>%
-      add_header_above(c(" " = ncol(df)))
+      kable_styling(latex_options = c("striped", "hold_position"))
   } else if (format == "html") {
     kable_table <- kable(df, format = "html", escape = FALSE,
                          caption = if (caption_text != "") caption_text else NULL) %>%
@@ -316,9 +345,11 @@ create_kable_table <- function(classified_latex, format = "latex") {
   } else {
     stop("Unsupported format. Please choose 'latex' or 'html'.")
   }
-  
+
   return(kable_table)
 }
+
+
 
 # Example LaTeX code
 latex_code <- "
@@ -326,7 +357,7 @@ latex_code <- "
 \\centering
 \\begin{tabular}{lcccccc}
 \\hline
-& `ar` & `step` (forward) & `step` (backward) & \\pkg{lars} & \\pkg{glmnet} & **gets** \\
+& `ar` & `step` (forward) & `step` (backward) & `lars` & `glmnet` & **gets** \\
 \\hline
 AR-terms & Yes & Yes & Yes & Yes & Yes & Yes \\\\[1mm]
 Covariates (``X'') & & Yes & Yes & Yes& Yes & Yes \\\\[1mm]
@@ -341,7 +372,7 @@ Computational & & & & & & \\
 cost (relative) & Low & Low & Low & Low & Low & High \\\\[1mm]
 \\hline
 \\end{tabular}\\
-\\caption{A variable-selection focused feature-based comparison of **gets**  against the `ar` and `step` functions in the \\proglang{R} package **stats** \\citep{RCoreTeam2016}, and against the \\proglang{R} packages \\pkg{lars} \\citep{HastieEfron2013} and \\pkg{glmnet} \\citep{friedman2010regularization}.  {#table:comparison:of:softwares} }
+\\caption{A variable-selection focused feature-based comparison of **gets**  against the `ar` and `step` functions in the \\proglang{R} package **stats** \\citep{RCoreTeam2016}, and against the \\proglang{R} packages \\pkg{lars} \\citep{HastieEfron2013} and \\pkg{glmnet} \\citep{friedman2010regularization}. (\\#table:comparison-of-softwares) 
 \\end{table}
 "
 
@@ -382,6 +413,8 @@ kable_table_html
 <!-- \caption{A variable-selection focused feature-based comparison of **gets**  against the `ar` and `step` functions in the \proglang{R} package **stats** \citep{RCoreTeam2016}, and against the \proglang{R} packages \pkg{lars} \citep{HastieEfron2013} and \pkg{glmnet} \citep{friedman2010regularization}.  {#table:comparison:of:softwares} } -->
 <!-- \end{table} " -->
 
+
+
 ### GETS compared to alternative methods -- a performance-based comparison
 
 @hendry2014empirical (Section 17) together with [@castle2011evaluating] provide a broad overview of the performance of GETS relative to alternative model selection strategies of the mean of a regression, including step-wise regression, information criteria and penalized shrinkage-based selection using the Lasso \citep[see][]{tibshirani1996regression}. [@castle2015detecting] compare GETS in the context of step-shifts against the Lasso using LARS \citep{efron2004least}, and [@pretis_volc16] compare GETS against the Lasso for designed break functions (see Section [7.3](sec:isat_comp)) for a more detailed discussion of **gets** in the context of break detection). In both instances shrinkage-based selection is implemented using the R packages **lars** \citep{HastieEfron2013} and **glmnet** \citep{friedman2010regularization}. The emerging consensus from these simulation comparisons is that the false-positive rate, or irrelevance proportion or gauge, is erratic and difficult to control in step-wise as well as shrinkage-based selection procedures. When selecting on information criteria only, the implicit significance level of selection results in a high gauge when the number of candidate variables increases relative to the sample size. In contrast, the gauge tends to be well-calibrated around the nominal size of selection $\alpha$ in GETS. While the retention of relevant variables often is high in shrinkage-based approaches (and erratic in step-wise regression), this result comes at the cost of a high gauge and the performance becomes less reliable in the presence of correlation between the candidate variables.
@@ -421,7 +454,7 @@ There have been different software implementations of GETS modeling -- Table \@r
 \hline
 & & HP1999 & \pkg{PcGets} & \pkg{Autometrics} & **gets** \\
 \hline
-More than 10 paths & &  & Yes & Yes & Yes \\[1mm] 
+More than 10 paths & &  & Yes & Yes & Yes \\[1mm]
 GETS of mean & & Yes & Yes & Yes & Yes \\[1mm]
 GETS of variance & &  &  &  & Yes \\[1mm]
 Impulse and step IS & &  &  & Yes & Yes \\[1mm]
@@ -429,8 +462,8 @@ Trend IS  & &  &  &  & Yes \\[1mm]
 IS variance correction      & &  &  &  & Yes \\[1mm]
 User-defined diagnostics & &  &  &  & Yes \\[1mm]
 GETS of logit models         & &  &  & Yes &  \\[1mm]
-GETS of systems & &  &  & Yes &  \\[1mm]    
-Menu-based GUI  & &  & Yes & Yes &  \\[1mm]     
+GETS of systems & &  &  & Yes &  \\[1mm]
+Menu-based GUI  & &  & Yes & Yes &  \\[1mm]
 Free and open source & & Yes &  &  & Yes \\[1mm]
 \hline
 \end{tabular}\\
@@ -520,17 +553,17 @@ mod01 <- arx(y, ar = 1)
 
 To print the estimation results, simply type `mod01`. This returns:
 
-Date: Fri Aug 06 10:57:59 2021 
-Dependent var.: y 
-Method: Ordinary Least Squares (OLS) 
-Variance-Covariance: Ordinary 
-No. of observations (mean eq.): 99 
-Sample: 2 to 100 
+Date: Fri Aug 06 10:57:59 2021
+Dependent var.: y
+Method: Ordinary Least Squares (OLS)
+Variance-Covariance: Ordinary
+No. of observations (mean eq.): 99
+Sample: 2 to 100
 
 Mean equation:
 
-coef std.error t-stat   p-value    
-mconst 0.034045  0.091664 0.3714    0.7111    
+coef std.error t-stat   p-value
+mconst 0.034045  0.091664 0.3714    0.7111
 ar1    0.397411  0.095212 4.1740 6.533e-05
 
 Diagnostics and fit:
@@ -617,28 +650,28 @@ That is, an AR(4)-X, where the dummies constitute the X-part. The code
 
 estimates the model using heteroscedasticity-robust coefficient standard errors of the [@white1980heteroskedasticity] type, and typing `inflMod01` prints the estimation results:
 
-Date: Fri Aug 06 11:11:17 2021 
-Dependent var.: y 
-Method: Ordinary Least Squares (OLS) 
-Variance-Covariance: White (1980) 
-No. of observations (mean eq.): 104 
-Sample: 1990(1) to 2015(4) 
+Date: Fri Aug 06 11:11:17 2021
+Dependent var.: y
+Method: Ordinary Least Squares (OLS)
+Variance-Covariance: White (1980)
+No. of observations (mean eq.): 104
+Sample: 1990(1) to 2015(4)
 
 Mean equation:
 
-coef  std.error  t-stat   p-value    
+coef  std.error  t-stat   p-value
 mconst  0.8386311  0.2961338  2.8319  0.005637
 ar1     0.7257550  0.1300407  5.5810 2.211e-07
-ar2     0.0195911  0.1171347  0.1673  0.867523    
-ar3     0.0350092  0.1385735  0.2526  0.801087    
-ar4    -0.1676751  0.1336972 -1.2541  0.212836    
-q2dum  -0.0148892  0.2333917 -0.0638  0.949266    
-q3dum  -0.0072972  0.2262704 -0.0322  0.974340    
-q4dum   0.0103990  0.2226772  0.0467  0.962849    
+ar2     0.0195911  0.1171347  0.1673  0.867523
+ar3     0.0350092  0.1385735  0.2526  0.801087
+ar4    -0.1676751  0.1336972 -1.2541  0.212836
+q2dum  -0.0148892  0.2333917 -0.0638  0.949266
+q3dum  -0.0072972  0.2262704 -0.0322  0.974340
+q4dum   0.0103990  0.2226772  0.0467  0.962849
 
 Diagnostics and fit:
 
-Chi-sq df  p-value   
+Chi-sq df  p-value
 Ljung-Box AR(5)   16.3205  5 0.005986
 Ljung-Box ARCH(1)  5.9665  1 0.014580
 
@@ -655,35 +688,35 @@ arch = 1:4, vxreg = inflData[, 2:4], vcov.type = "white")
 
 estimates the full model with [@white1980heteroskedasticity] standard errors in the mean and ordinary standard errors in the log-variance. Typing `inflMod02` returns
 
-Date: Fri Aug 06 11:12:20 2021 
-Dependent var.: y 
-Method: Ordinary Least Squares (OLS) 
-Variance-Covariance: White (1980) 
-No. of observations (mean eq.): 104 
-Sample: 1990(1) to 2015(4) 
+Date: Fri Aug 06 11:12:20 2021
+Dependent var.: y
+Method: Ordinary Least Squares (OLS)
+Variance-Covariance: White (1980)
+No. of observations (mean eq.): 104
+Sample: 1990(1) to 2015(4)
 
 Mean equation:
 
-coef  std.error  t-stat   p-value    
+coef  std.error  t-stat   p-value
 mconst  0.8386311  0.2961338  2.8319  0.005637
 ar1     0.7257550  0.1300407  5.5810 2.211e-07
-ar2     0.0195911  0.1171347  0.1673  0.867523    
-ar3     0.0350092  0.1385735  0.2526  0.801087    
-ar4    -0.1676751  0.1336972 -1.2541  0.212836    
-q2dum  -0.0148892  0.2333917 -0.0638  0.949266    
-q3dum  -0.0072972  0.2262704 -0.0322  0.974340    
-q4dum   0.0103990  0.2226772  0.0467  0.962849    
+ar2     0.0195911  0.1171347  0.1673  0.867523
+ar3     0.0350092  0.1385735  0.2526  0.801087
+ar4    -0.1676751  0.1336972 -1.2541  0.212836
+q2dum  -0.0148892  0.2333917 -0.0638  0.949266
+q3dum  -0.0072972  0.2262704 -0.0322  0.974340
+q4dum   0.0103990  0.2226772  0.0467  0.962849
 
 Log-variance equation:
 
-coef std.error  t-stat  p-value   
+coef std.error  t-stat  p-value
 vconst  0.95935   0.53464  3.2199 0.072749
-arch1   0.16697   0.10352  1.6130 0.110169   
-arch2   0.12027   0.10335  1.1637 0.247566   
-arch3   0.14740   0.10332  1.4267 0.157060   
-arch4   0.05982   0.10515  0.5689 0.570824   
+arch1   0.16697   0.10352  1.6130 0.110169
+arch2   0.12027   0.10335  1.1637 0.247566
+arch3   0.14740   0.10332  1.4267 0.157060
+arch4   0.05982   0.10515  0.5689 0.570824
 q2dum  -1.32860   0.61862 -2.1477 0.034366
-q3dum  -0.92707   0.58400 -1.5874 0.115843   
+q3dum  -0.92707   0.58400 -1.5874 0.115843
 q4dum  -1.82736   0.62014 -2.9467 0.004069
 
 Diagnostics and fit:
@@ -748,36 +781,36 @@ vxreg = cbind(volproxylag, volumedifflag, dTue, dWed, dThu, dFri))
 
 Typing `sp500Mod01` returns the following print output:
 
-Date: Fri Aug 06 11:17:38 2021 
-Dependent var.: y 
-Method: Ordinary Least Squares (OLS) 
-Sample: 1983-07-05 to 2016-03-08 
+Date: Fri Aug 06 11:17:38 2021
+Dependent var.: y
+Method: Ordinary Least Squares (OLS)
+Sample: 1983-07-05 to 2016-03-08
 
 Log-variance equation:
 
-coef  std.error  t-stat   p-value    
-vconst         0.0107260  0.0784437  0.0187  0.891241    
+coef  std.error  t-stat   p-value
+vconst         0.0107260  0.0784437  0.0187  0.891241
 arch1         -0.0482520  0.0161972 -2.9790  0.002900
-arch2          0.0071996  0.0122312  0.5886  0.556127    
+arch2          0.0071996  0.0122312  0.5886  0.556127
 arch3          0.0256668  0.0122521  2.0949  0.036212
-arch4          0.0149581  0.0122145  1.2246  0.220758    
+arch4          0.0149581  0.0122145  1.2246  0.220758
 arch5          0.0371055  0.0122796  3.0217  0.002521
 asym1         -0.0336271  0.0175185 -1.9195  0.054954
-logEqWMA(5)    0.0262491  0.0519435  0.5053  0.613334    
+logEqWMA(5)    0.0262491  0.0519435  0.5053  0.613334
 logEqWMA(20)   0.2817220  0.0713466  3.9486 7.926e-05
 logEqWMA(60)   0.1970841  0.1052311  1.8729  0.061122
 logEqWMA(120)  0.1936954  0.0865864  2.2370  0.025312
 volproxylag    0.2078785  0.0400515  5.1903 2.151e-07
 volumedifflag -0.0030906  0.0014207 -2.1754  0.029630
-dTue           0.0978314  0.0834703  1.1720  0.241212    
-dWed          -0.0804053  0.0853471 -0.9421  0.346171    
-dThu           0.0838896  0.0843500  0.9945  0.319988    
-dFri           0.0756869  0.0840118  0.9009  0.367664    
+dTue           0.0978314  0.0834703  1.1720  0.241212
+dWed          -0.0804053  0.0853471 -0.9421  0.346171
+dThu           0.0838896  0.0843500  0.9945  0.319988
+dFri           0.0756869  0.0840118  0.9009  0.367664
 
 Diagnostics and fit:
 
-Chi-sq df  p-value    
-Ljung-Box AR(1)    0.53421  1   0.4648    
+Chi-sq df  p-value
+Ljung-Box AR(1)    0.53421  1   0.4648
 Ljung-Box ARCH(6) 29.21040  6 5.55e-05
 
 SE of regression      1.13957
@@ -808,29 +841,29 @@ The results are stored in an object named `getsm05`, and the information produce
 
 GUM mean equation:
 
-reg.no. keep       coef  std.error  t-stat p-value  
-mconst       1    0 -0.0596894  0.0782285 -0.7630  0.4475  
-ar1          2    0  0.1938157  0.1235456  1.5688  0.1202  
-ar2          3    0  0.0343803  0.1141559  0.3012  0.7640  
-mxreg1       4    0  0.1171045  0.0805838  1.4532  0.1496  
-mxreg2       5    0  0.0116124  0.0865925  0.1341  0.8936  
-mxreg3       6    0 -0.1087162  0.0815946 -1.3324  0.1861  
+reg.no. keep       coef  std.error  t-stat p-value
+mconst       1    0 -0.0596894  0.0782285 -0.7630  0.4475
+ar1          2    0  0.1938157  0.1235456  1.5688  0.1202
+ar2          3    0  0.0343803  0.1141559  0.3012  0.7640
+mxreg1       4    0  0.1171045  0.0805838  1.4532  0.1496
+mxreg2       5    0  0.0116124  0.0865925  0.1341  0.8936
+mxreg3       6    0 -0.1087162  0.0815946 -1.3324  0.1861
 mxreg4       7    0 -0.2226722  0.1019820 -2.1834  0.0316
-mxreg5       8    0  0.0012498  0.0694024  0.0180  0.9857  
+mxreg5       8    0  0.0012498  0.0694024  0.0180  0.9857
 
 GUM log-variance equation:
 
-coef std.error  t-stat p-value  
-vconst  0.351872  0.438687  0.6434 0.42249  
+coef std.error  t-stat p-value
+vconst  0.351872  0.438687  0.6434 0.42249
 arch1   0.268975  0.107470  2.5028 0.01424
-arch2   0.088540  0.159135  0.5564 0.57941  
-arch3   0.022932  0.115861  0.1979 0.84357  
-asym2  -0.112941  0.171767 -0.6575 0.51262  
-vxreg1  0.102181  0.110374  0.9258 0.35718  
-vxreg2 -0.068873  0.093762 -0.7345 0.46464  
-vxreg3 -0.032006  0.102597 -0.3120 0.75584  
-vxreg4  0.029429  0.106865  0.2754 0.78369  
-vxreg5  0.187176  0.120259  1.5564 0.12332  
+arch2   0.088540  0.159135  0.5564 0.57941
+arch3   0.022932  0.115861  0.1979 0.84357
+asym2  -0.112941  0.171767 -0.6575 0.51262
+vxreg1  0.102181  0.110374  0.9258 0.35718
+vxreg2 -0.068873  0.093762 -0.7345 0.46464
+vxreg3 -0.032006  0.102597 -0.3120 0.75584
+vxreg4  0.029429  0.106865  0.2754 0.78369
+vxreg5  0.187176  0.120259  1.5564 0.12332
 
 Diagnostics:
 
@@ -839,15 +872,15 @@ Ljung-Box AR(3)   0.18672  3 0.97970
 Ljung-Box ARCH(4) 0.43983  4 0.97909
 
 7 path(s) to search
-Searching: 1 2 3 4 5 6 7 
+Searching: 1 2 3 4 5 6 7
 
-Path 1: 1 8 5 3 4 6 2 
-Path 2: 2 8 5 3 1 4 6 
-Path 3: 3 8 5 1 4 6 2 
-Path 4: 4 3 5 8 1 6 2 
-Path 5: 5 8 3 1 4 6 2 
-Path 6: 6 8 5 3 1 4 2 
-Path 7: 8 5 3 1 4 6 2 
+Path 1: 1 8 5 3 4 6 2
+Path 2: 2 8 5 3 1 4 6
+Path 3: 3 8 5 1 4 6 2
+Path 4: 4 3 5 8 1 6 2
+Path 5: 5 8 3 1 4 6 2
+Path 6: 6 8 5 3 1 4 2
+Path 7: 8 5 3 1 4 6 2
 
 Terminal models:
 
@@ -922,26 +955,26 @@ This produces the following during the specification search:
 
 GUM mean equation:
 
-reg.no. keep       coef  std.error  t-stat   p-value    
+reg.no. keep       coef  std.error  t-stat   p-value
 mconst       1    0  0.8386311  0.2961338  2.8319  0.005637
 ar1          2    0  0.7257550  0.1300407  5.5810 2.211e-07
-ar2          3    0  0.0195911  0.1171347  0.1673  0.867523    
-ar3          4    0  0.0350092  0.1385735  0.2526  0.801087    
-ar4          5    0 -0.1676751  0.1336972 -1.2541  0.212836    
-q2dum        6    0 -0.0148892  0.2333917 -0.0638  0.949266    
-q3dum        7    0 -0.0072972  0.2262704 -0.0322  0.974340    
-q4dum        8    0  0.0103990  0.2226772  0.0467  0.962849    
+ar2          3    0  0.0195911  0.1171347  0.1673  0.867523
+ar3          4    0  0.0350092  0.1385735  0.2526  0.801087
+ar4          5    0 -0.1676751  0.1336972 -1.2541  0.212836
+q2dum        6    0 -0.0148892  0.2333917 -0.0638  0.949266
+q3dum        7    0 -0.0072972  0.2262704 -0.0322  0.974340
+q4dum        8    0  0.0103990  0.2226772  0.0467  0.962849
 
 GUM log-variance equation:
 
-coef std.error  t-stat  p-value   
+coef std.error  t-stat  p-value
 vconst  0.95935   0.53464  3.2199 0.072749
-arch1   0.16697   0.10352  1.6130 0.110169   
-arch2   0.12027   0.10335  1.1637 0.247566   
-arch3   0.14740   0.10332  1.4267 0.157060   
-arch4   0.05982   0.10515  0.5689 0.570824   
+arch1   0.16697   0.10352  1.6130 0.110169
+arch2   0.12027   0.10335  1.1637 0.247566
+arch3   0.14740   0.10332  1.4267 0.157060
+arch4   0.05982   0.10515  0.5689 0.570824
 q2dum  -1.32860   0.61862 -2.1477 0.034366
-q3dum  -0.92707   0.58400 -1.5874 0.115843   
+q3dum  -0.92707   0.58400 -1.5874 0.115843
 q4dum  -1.82736   0.62014 -2.9467 0.004069
 
 Diagnostics:
@@ -951,14 +984,14 @@ Ljung-Box AR(5)   9.1776  5 0.10219
 Ljung-Box ARCH(5) 1.7613  5 0.88109
 
 6 path(s) to search
-Searching: 1 2 3 4 5 6 
+Searching: 1 2 3 4 5 6
 
-Path 1: 3 7 6 8 4 5 -5 
-Path 2: 4 7 6 8 3 5 -5 
-Path 3: 5 7 6 3 8 -8 4 -4 
-Path 4: 6 7 8 3 4 5 -5 
-Path 5: 7 6 8 3 4 5 -5 
-Path 6: 8 7 6 3 4 5 -5 
+Path 1: 3 7 6 8 4 5 -5
+Path 2: 4 7 6 8 3 5 -5
+Path 3: 5 7 6 3 8 -8 4 -4
+Path 4: 6 7 8 3 4 5 -5
+Path 5: 7 6 8 3 4 5 -5
+Path 6: 8 7 6 3 4 5 -5
 
 Terminal models:
 
@@ -980,8 +1013,8 @@ Note that, to ensure that the diagnostic test for autocorrelation in the standar
 
 SPECIFIC log-variance equation:
 
-coef std.error  t-stat  p-value   
-vconst  0.71311   0.53965  1.7462 0.186355   
+coef std.error  t-stat  p-value
+vconst  0.71311   0.53965  1.7462 0.186355
 arch1   0.17438   0.10057  1.7339 0.086217
 arch2   0.16822   0.10034  1.6764 0.096975
 q2dum  -1.43834   0.62992 -2.2834 0.024662
@@ -1016,7 +1049,7 @@ predict(inflMod06, n.ahead = 4, spec = "variance", newvxreg = newvxreg)
 
 The first command, `set.seed(123)`, is for reproducibility purposes, since a bootstrap procedure is used to generate variance forecasts two or more steps ahead (the number of draws can be changed via the `n.sim` argument). The forecasts for 2016(1) to 2016(4) are:
 
-2016(1)   2016(2)   2016(3)   2016(4) 
+2016(1)   2016(2)   2016(3)   2016(4)
 1.0448239 0.3403215 0.4628250 0.2075531
 
 In other words, the conditional variance is forecasted to be about four times higher in 2016(1) than in 2016(4). This has notable economic consequences. For example, if the forecasted inflation in 2016(1) is 2%, then an approximate 95% prediction interval computed as $2 \pm 2 \times \widehat{\sigma}_{n+1}$ is given by the range $0$% to 4%, which is large. By contrast, an approximate 95% prediction interval for 2016(4) computed as $2 \pm 2 \times \widehat{\sigma}_{n+4}$ is given by the range 1.1% to 2.9%, which is much tighter.
@@ -1031,8 +1064,8 @@ Typing `sp500Mod03` returns (amongst other):
 
 SPECIFIC log-variance equation:
 
-coef std.error  t-stat   p-value    
-vconst         0.016309  0.044960  0.1316 0.7167940    
+coef std.error  t-stat   p-value
+vconst         0.016309  0.044960  0.1316 0.7167940
 arch1         -0.064147  0.013740 -4.6687 3.080e-06
 arch5          0.038690  0.011324  3.4168 0.0006368
 logEqWMA(20)   0.427071  0.053110  8.0413 1.014e-15
@@ -1042,8 +1075,8 @@ dWed          -0.176576  0.064799 -2.7250 0.0064442
 
 Diagnostics and fit:
 
-Chi-sq df  p-value    
-Ljung-Box AR(1)    0.40681  1   0.5236    
+Chi-sq df  p-value
+Ljung-Box AR(1)    0.40681  1   0.5236
 Ljung-Box ARCH(6) 32.33070  6 1.41e-05
 
 SE of regression      1.14417
@@ -1060,7 +1093,7 @@ The value is 2.7155, so so the parsimonious model provides a better fit (accordi
 Indicator saturation has been a crucial development in GETS modeling to address the distorting influence of outliers and structural breaks (changes in parameters) in econometric models. Such parameter changes are generally of unknown magnitudes and may occur at unknown times. Indicator saturation tackles this challenge by starting from a general model allowing for an outlier or shift at every point and removing all but significant ones using GETS selection. This serves both as a method to detect outliers and breaks, as well as a generalized approach to model mis-specification testing -- if the model is well-specified, then no outliers/shifts will be detected. The function `isat` conducts multi-path indicator saturation to detect outliers and location-shifts in regression models using impulse indicator saturation (IIS -- see \citealt{hendry2008automatic}, and \citealt{johansen2016asymptotic} for a comprehensive asymptotic analysis), step-indicator saturation (SIS -- see \citealt{castle2015detecting}), trend-indicator saturation (TIS -- as applied in \citealt{pretis2015testing}), and user-designed indicator saturation (UIS, or designed break functions in \citealt{pretis_volc16}, and \citealt{schneider2017}). Formulating the detection of structural breaks as a problem of model selection, a regression model is saturated with a full set of indicators which are then selected over using the general-to-specific `getsm` algorithm at a chosen level of significance `t.pval`. This approach to break detection imposes no minimum break length, and outliers can be identified jointly with structural breaks. The false-detection rate or gauge in IS is given by $\alpha k$ for $k$ irrelevant indicators selected over, where $k=n$ for IIS and TIS, and $k=n-1$ for SIS if an intercept is forced. Thus, the false-detection rate can easily be controlled by reducing $\alpha$ at the cost of reduced power of detecting true shifts and outliers. To ensure a low false-detection rate, the rule of thumb of setting $\alpha=\min(0.05,[1/k])$ can be used, which yields one incorrectly retained indicator in expectation for large samples, and aims for a false-detection rate below 5% in small samples. Figure \@ref(fig_isat) (and Table \@ref(tab_isatgauge) in Appendix \@ref(sec:simulation-tables)) show the false-detection rate in IS using `isat` in a simple static simulation for increasing sample sizes.
 
 The respective GUMs for a simple model of the mean of $y_t$ using impulse-, step- and trend-indicator saturation^[Note that specifications of step-functions are possible in SIS. Here we specify the steps as in (\@ref(eq_sisgum)), and thus for interpretation every additional step is added to the previous
-ones. In contrast, the paper introducing SIS [@castle2015detecting] works with step-indicators of the form $\sum^{n}_{j=2} \delta_j 1_{\{ t \leq j \}}$, in which case the steps have to be subtracted from the previous sum of steps to interpret the coefficients.] are given by 
+ones. In contrast, the paper introducing SIS [@castle2015detecting] works with step-indicators of the form $\sum^{n}_{j=2} \delta_j 1_{\{ t \leq j \}}$, in which case the steps have to be subtracted from the previous sum of steps to interpret the coefficients.] are given by
 
 
 SIS GUM: $y_t = \mu + \sum^{n}_{j=2} \delta_j 1_{\{ t \geq j \} } + u_t$
@@ -1108,7 +1141,7 @@ $n \rightarrow \infty$.  {#fig_isat} }
 Annual emissions of the pollutant sulphur dioxide (SO$_2$) in the UK have declined in the latter half of the 20th century due to policy interventions and changes in energy production. Here we assess whether there have been significant shifts in the growth rate ($\Delta \log(SO_2)_t$) of sulphur dioxide emissions between 1946 and 2005, using SIS and the emission time series compiled by [@smith2011anthropogenic]. Setting `t.pval` to 0.01 yields an approximate gauge of $0.01k$ under the null hypothesis of no shifts for $k$ spuriously included variables. Inclusion of a full set of indicators implies that $k=n$ for IIS, and $k=n-1$ for SIS, and thus $0.01(n-1) = 0.01 \times 59$. This suggests less than one indicator being retained spuriously on average in a well-specified model under the null of no shifts or outliers. Estimating an `isat` model using SIS (`sis = TRUE` is default): %
 
 options(plot = TRUE)
-so2 <- data("so2data", package = "gets")  
+so2 <- data("so2data", package = "gets")
 yso2 <- zoo(so2data[, "DLuk_tot_so2"], order.by = so2data[, "year"])
 (sis <- isat(yso2, t.pval = 0.01))
 
@@ -1121,9 +1154,9 @@ SIS block 2 of 2:
 26 paths to search
 Searching: 1 2 3 4 ...
 
-GETS of union of retained SIS variables... 
+GETS of union of retained SIS variables...
 2 paths to search
-Searching: 1 2 
+Searching: 1 2
 
 ...
 
@@ -1272,7 +1305,7 @@ The two most popular commercial econometric software packages are EViews \citep{
 
 EViews code to estimate the model:
 
-equation getsm05.ls(cov = white) yy mxreg4 
+equation getsm05.ls(cov = white) yy mxreg4
 
 R code (example) to export the data of the model:
 
@@ -1291,7 +1324,7 @@ The R package **gets** provides a toolkit for general-to-specific modeling throu
 
 <div id="refs"></div>
 
-# (APPENDIX) Appendix {-} 
+# (APPENDIX) Appendix {-}
 
 
 # @hoover1999data simulations
@@ -1331,20 +1364,20 @@ Tables \@ref(tab_lassuncorr), \@ref(tab_lassposcorr), \@ref(tab_lassnegcorr) and
 \begin{tabular}{rrrrrr|rrrrr}
 \hline
 \multicolumn{2}{c}{$\rho=0$} & \multicolumn{4}{c}{Gauge,  $m(\widehat{k}_{\text{irr}}/k_{\text{irr}})$} & \multicolumn{5}{c}{Potency, $m(\widehat{k}_{\text{rel}}/k_{\text{rel}})$ } \\
-\hline    
-\multicolumn{1}{l}{$k_{\text{rel}}$} & \multicolumn{1}{l}{$k_{\text{irr}}$} & \multicolumn{1}{l}{\code{getsm}} & \multicolumn{1}{l}{LassCV} & \multicolumn{1}{l}{LassFix} & \multicolumn{1}{l}{1-cut} & \multicolumn{1}{|l}{\code{getsm}} & \multicolumn{1}{l}{LassCV} & \multicolumn{1}{l}{LassFix} & \multicolumn{1}{l}{1-cut} & \multicolumn{1}{l}{DGP} \\ \hline 
-0 &   20 & 0.012 & 0.081 & 0.014 & 0.010 &  &  &  &  &  \\ 
-1 &   19 & 0.013 & 0.138 & 0.018 & 0.011 & 0.623 & 0.779 & 0.657 & 0.507 & 0.616 \\ 
-2 &   18 & 0.014 & 0.206 & 0.021 & 0.010 & 0.619 & 0.875 & 0.690 & 0.498 & 0.616 \\ 
-3 &   17 & 0.015 & 0.272 & 0.024 & 0.011 & 0.635 & 0.913 & 0.705 & 0.544 & 0.639 \\ 
-4 &   16 & 0.015 & 0.324 & 0.027 & 0.010 & 0.607 & 0.929 & 0.675 & 0.509 & 0.615 \\ 
-5 &   15 & 0.014 & 0.359 & 0.026 & 0.010 & 0.593 & 0.938 & 0.667 & 0.505 & 0.604 \\ 
-6 &   14 & 0.017 & 0.425 & 0.032 & 0.011 & 0.592 & 0.955 & 0.659 & 0.513 & 0.602 \\ 
-7 &   13 & 0.020 & 0.463 & 0.034 & 0.011 & 0.591 & 0.967 & 0.660 & 0.517 & 0.597 \\ 
-8 &   12 & 0.020 & 0.517 & 0.038 & 0.011 & 0.589 & 0.965 & 0.642 & 0.520 & 0.591 \\ 
-9 &   11 & 0.021 & 0.568 & 0.038 & 0.008 & 0.592 & 0.975 & 0.653 & 0.516 & 0.587 \\ 
-10 &   10 & 0.025 & 0.587 & 0.040 & 0.010 & 0.588 & 0.977 & 0.628 & 0.507 & 0.576 \\ 
-\hline    
+\hline
+\multicolumn{1}{l}{$k_{\text{rel}}$} & \multicolumn{1}{l}{$k_{\text{irr}}$} & \multicolumn{1}{l}{\code{getsm}} & \multicolumn{1}{l}{LassCV} & \multicolumn{1}{l}{LassFix} & \multicolumn{1}{l}{1-cut} & \multicolumn{1}{|l}{\code{getsm}} & \multicolumn{1}{l}{LassCV} & \multicolumn{1}{l}{LassFix} & \multicolumn{1}{l}{1-cut} & \multicolumn{1}{l}{DGP} \\ \hline
+0 &   20 & 0.012 & 0.081 & 0.014 & 0.010 &  &  &  &  &  \\
+1 &   19 & 0.013 & 0.138 & 0.018 & 0.011 & 0.623 & 0.779 & 0.657 & 0.507 & 0.616 \\
+2 &   18 & 0.014 & 0.206 & 0.021 & 0.010 & 0.619 & 0.875 & 0.690 & 0.498 & 0.616 \\
+3 &   17 & 0.015 & 0.272 & 0.024 & 0.011 & 0.635 & 0.913 & 0.705 & 0.544 & 0.639 \\
+4 &   16 & 0.015 & 0.324 & 0.027 & 0.010 & 0.607 & 0.929 & 0.675 & 0.509 & 0.615 \\
+5 &   15 & 0.014 & 0.359 & 0.026 & 0.010 & 0.593 & 0.938 & 0.667 & 0.505 & 0.604 \\
+6 &   14 & 0.017 & 0.425 & 0.032 & 0.011 & 0.592 & 0.955 & 0.659 & 0.513 & 0.602 \\
+7 &   13 & 0.020 & 0.463 & 0.034 & 0.011 & 0.591 & 0.967 & 0.660 & 0.517 & 0.597 \\
+8 &   12 & 0.020 & 0.517 & 0.038 & 0.011 & 0.589 & 0.965 & 0.642 & 0.520 & 0.591 \\
+9 &   11 & 0.021 & 0.568 & 0.038 & 0.008 & 0.592 & 0.975 & 0.653 & 0.516 & 0.587 \\
+10 &   10 & 0.025 & 0.587 & 0.040 & 0.010 & 0.588 & 0.977 & 0.628 & 0.507 & 0.576 \\
+\hline
 \end{tabular}
 \caption{Variable selection properties of \code{getsm} algorithm in **gets** compared to alternative algorithms when regressors are uncorrelated in expectation. Variable selection in \code{getsm} is undertaken with a nominal significance level of 1\%. For a total number of $k=20$ variables, $m(\widehat{k}_{\text{rel}}/k_{\text{rel}})$ defines the average proportion of relevant variables $\widehat{k}_{\text{rel}}$ retained relative to the actual number of relevant variables $k_{\text{rel}}$. $m(\widehat{k}_{\text{irr}}/k_{\text{irr}})$, average proportion of irrelevant variables $\widehat{k}_{\text{irr}}$ retained relative to the actual number of irrelevant variables $k_{\text{irr}}$ in the GUM. LassCV denotes the the cross-validated LASSO using \pkg{glmnet}, LassFix denotes the LASSO where the penalty parameter is chosen to match the gauge of \code{getsm} under the null. Column 1-cut denotes 1-cut selection of the GUM where all variables with $p$~values $< 1$\% are retained in a single decision, DGP denotes the proportion of variables retained if the DGP is correctly estimated and $t$-tests are conducted at the 1\% level. Simulation undertaken on a sample of $n=100$ observations using 1000 replications.  {#tab_lassuncorr} }
 \end{table}
@@ -1354,21 +1387,21 @@ Tables \@ref(tab_lassuncorr), \@ref(tab_lassposcorr), \@ref(tab_lassnegcorr) and
 \begin{table}[t!]
 \centering
 \begin{tabular}{rrrrrr|rrrrr}
-\hline 
-\multicolumn{2}{c}{$\rho=0.5$} & \multicolumn{4}{c}{Gauge,  $m(\widehat{k}_{\text{irr}}/k_{\text{irr}})$} & \multicolumn{5}{c}{Potency, $m(\widehat{k}_{\text{rel}}/k_{\text{rel}})$ } \\ \hline 
-\multicolumn{1}{l}{$k_{\text{rel}}$} & \multicolumn{1}{l}{$k_{\text{irr}}$} & \multicolumn{1}{l}{\code{getsm}} & \multicolumn{1}{l}{LassCV} & \multicolumn{1}{l}{LassFix} & \multicolumn{1}{l}{1-cut} & \multicolumn{1}{|l}{\code{getsm}} & \multicolumn{1}{l}{LassCV} & \multicolumn{1}{l}{LassFix} & \multicolumn{1}{l}{1-cut} & \multicolumn{1}{l}{DGP}  \\ \hline 
-0 &   20 & 0.018 & 0.074 & 0.009 & 0.011 &  &  &  &  &  \\ 
-1 &   19 & 0.025 & 0.154 & 0.043 & 0.009 & 0.502 & 0.752 & 0.616 & 0.257 & 0.654 \\ 
-2 &   18 & 0.026 & 0.232 & 0.095 & 0.010 & 0.505 & 0.874 & 0.782 & 0.258 & 0.498 \\ 
-3 &   17 & 0.029 & 0.273 & 0.139 & 0.009 & 0.508 & 0.911 & 0.847 & 0.248 & 0.418 \\ 
-4 &   16 & 0.031 & 0.307 & 0.169 & 0.010 & 0.525 & 0.921 & 0.870 & 0.262 & 0.388 \\ 
-5 &   15 & 0.032 & 0.338 & 0.202 & 0.010 & 0.522 & 0.932 & 0.887 & 0.247 & 0.353 \\ 
-6 &   14 & 0.038 & 0.378 & 0.229 & 0.011 & 0.525 & 0.938 & 0.899 & 0.255 & 0.344 \\ 
-7 &   13 & 0.036 & 0.394 & 0.249 & 0.009 & 0.536 & 0.946 & 0.912 & 0.263 & 0.336 \\ 
-8 &   12 & 0.043 & 0.421 & 0.281 & 0.010 & 0.523 & 0.947 & 0.915 & 0.251 & 0.328 \\ 
-9 &   11 & 0.046 & 0.440 & 0.305 & 0.011 & 0.527 & 0.954 & 0.928 & 0.250 & 0.315 \\ 
-10 &   10 & 0.048 & 0.447 & 0.304 & 0.011 & 0.526 & 0.958 & 0.933 & 0.254 & 0.308 \\ 
-\hline 
+\hline
+\multicolumn{2}{c}{$\rho=0.5$} & \multicolumn{4}{c}{Gauge,  $m(\widehat{k}_{\text{irr}}/k_{\text{irr}})$} & \multicolumn{5}{c}{Potency, $m(\widehat{k}_{\text{rel}}/k_{\text{rel}})$ } \\ \hline
+\multicolumn{1}{l}{$k_{\text{rel}}$} & \multicolumn{1}{l}{$k_{\text{irr}}$} & \multicolumn{1}{l}{\code{getsm}} & \multicolumn{1}{l}{LassCV} & \multicolumn{1}{l}{LassFix} & \multicolumn{1}{l}{1-cut} & \multicolumn{1}{|l}{\code{getsm}} & \multicolumn{1}{l}{LassCV} & \multicolumn{1}{l}{LassFix} & \multicolumn{1}{l}{1-cut} & \multicolumn{1}{l}{DGP}  \\ \hline
+0 &   20 & 0.018 & 0.074 & 0.009 & 0.011 &  &  &  &  &  \\
+1 &   19 & 0.025 & 0.154 & 0.043 & 0.009 & 0.502 & 0.752 & 0.616 & 0.257 & 0.654 \\
+2 &   18 & 0.026 & 0.232 & 0.095 & 0.010 & 0.505 & 0.874 & 0.782 & 0.258 & 0.498 \\
+3 &   17 & 0.029 & 0.273 & 0.139 & 0.009 & 0.508 & 0.911 & 0.847 & 0.248 & 0.418 \\
+4 &   16 & 0.031 & 0.307 & 0.169 & 0.010 & 0.525 & 0.921 & 0.870 & 0.262 & 0.388 \\
+5 &   15 & 0.032 & 0.338 & 0.202 & 0.010 & 0.522 & 0.932 & 0.887 & 0.247 & 0.353 \\
+6 &   14 & 0.038 & 0.378 & 0.229 & 0.011 & 0.525 & 0.938 & 0.899 & 0.255 & 0.344 \\
+7 &   13 & 0.036 & 0.394 & 0.249 & 0.009 & 0.536 & 0.946 & 0.912 & 0.263 & 0.336 \\
+8 &   12 & 0.043 & 0.421 & 0.281 & 0.010 & 0.523 & 0.947 & 0.915 & 0.251 & 0.328 \\
+9 &   11 & 0.046 & 0.440 & 0.305 & 0.011 & 0.527 & 0.954 & 0.928 & 0.250 & 0.315 \\
+10 &   10 & 0.048 & 0.447 & 0.304 & 0.011 & 0.526 & 0.958 & 0.933 & 0.254 & 0.308 \\
+\hline
 \end{tabular}
 \caption{Variable selection properties of \code{getsm} algorithm in **gets** compared to alternative algorithms when regressors are positively correlated ($\rho=0.5$) in expectation. Variable selection in \code{getsm} is undertaken with a nominal significance level of 1\%. For a total number of $k=20$ variables, $m(\widehat{k}_{\text{rel}}/k_{\text{rel}})$ defines the average proportion of relevant variables $\widehat{k}_{\text{rel}}$ retained relative to the actual number of relevant variables $k_{\text{rel}}$. $m(\widehat{k}_{\text{irr}}/k_{\text{irr}})$, average proportion of irrelevant variables $\widehat{k}_{\text{irr}}$ retained relative to the actual number of irrelevant variables $k_{\text{irr}}$ in the GUM. LassCV denotes the the cross-validated LASSO using \pkg{glmnet}, LassFix denotes the LASSO where the penalty parameter is chosen to match the gauge of \code{getsm} under the null. Column 1-cut denotes 1-cut selection of the GUM where all variables with $p$~values $<1$\% are retained in a single decision, DGP denotes the proportion of variables retained if the DGP is correctly estimated and $t$-tests are conducted at the 1\% level. Simulation undertaken on a sample of $n=100$ observations using 1000 replications.  {#tab_lassposcorr} }
 \end{table}
@@ -1378,21 +1411,21 @@ Tables \@ref(tab_lassuncorr), \@ref(tab_lassposcorr), \@ref(tab_lassnegcorr) and
 \begin{table}[t!]
 \centering
 \begin{tabular}{rrrrrr|rrrrr}
-\hline 
-\multicolumn{2}{c}{$\rho= \pm 0.5$} & \multicolumn{4}{c}{Gauge,  $m(\widehat{k}_{\text{irr}}/k_{\text{irr}})$} & \multicolumn{5}{c}{Potency, $m(\widehat{k}_{\text{rel}}/k_{\text{rel}})$ } \\ \hline 
-\multicolumn{1}{l}{$k_{\text{rel}}$} & \multicolumn{1}{l}{$k_{\text{irr}}$} & \multicolumn{1}{l}{\code{getsm}} & \multicolumn{1}{l}{LassCV} & \multicolumn{1}{l}{LassFix} & \multicolumn{1}{l}{1-cut} & \multicolumn{1}{|l}{\code{getsm}} & \multicolumn{1}{l}{LassCV} & \multicolumn{1}{l}{LassFix} & \multicolumn{1}{l}{1-cut} & \multicolumn{1}{l}{DGP} \\ \hline 
-0 &   20 & 0.018 & 0.080 & 0.010 & 0.010 &  &  &  &  &  \\ 
-1 &   19 & 0.023 & 0.156 & 0.041 & 0.011 & 0.505 & 0.756 & 0.602 & 0.255 & 0.635 \\ 
-2 &   18 & 0.022 & 0.165 & 0.009 & 0.009 & 0.376 & 0.558 & 0.172 & 0.241 & 0.457 \\ 
-3 &   17 & 0.025 & 0.218 & 0.035 & 0.008 & 0.393 & 0.695 & 0.360 & 0.254 & 0.409 \\ 
-4 &   16 & 0.023 & 0.259 & 0.008 & 0.010 & 0.375 & 0.685 & 0.168 & 0.253 & 0.385 \\ 
-5 &   15 & 0.026 & 0.309 & 0.026 & 0.009 & 0.375 & 0.751 & 0.296 & 0.262 & 0.369 \\ 
-6 &   14 & 0.024 & 0.353 & 0.008 & 0.010 & 0.369 & 0.765 & 0.181 & 0.255 & 0.354 \\ 
-7 &   13 & 0.027 & 0.387 & 0.026 & 0.009 & 0.356 & 0.807 & 0.259 & 0.249 & 0.336 \\ 
-8 &   12 & 0.029 & 0.418 & 0.012 & 0.011 & 0.339 & 0.806 & 0.164 & 0.249 & 0.316 \\ 
-9 &   11 & 0.032 & 0.464 & 0.023 & 0.010 & 0.355 & 0.846 & 0.244 & 0.255 & 0.322 \\ 
-10 &   10 & 0.031 & 0.484 & 0.012 & 0.010 & 0.347 & 0.849 & 0.174 & 0.246 & 0.306 \\ 
-\hline 
+\hline
+\multicolumn{2}{c}{$\rho= \pm 0.5$} & \multicolumn{4}{c}{Gauge,  $m(\widehat{k}_{\text{irr}}/k_{\text{irr}})$} & \multicolumn{5}{c}{Potency, $m(\widehat{k}_{\text{rel}}/k_{\text{rel}})$ } \\ \hline
+\multicolumn{1}{l}{$k_{\text{rel}}$} & \multicolumn{1}{l}{$k_{\text{irr}}$} & \multicolumn{1}{l}{\code{getsm}} & \multicolumn{1}{l}{LassCV} & \multicolumn{1}{l}{LassFix} & \multicolumn{1}{l}{1-cut} & \multicolumn{1}{|l}{\code{getsm}} & \multicolumn{1}{l}{LassCV} & \multicolumn{1}{l}{LassFix} & \multicolumn{1}{l}{1-cut} & \multicolumn{1}{l}{DGP} \\ \hline
+0 &   20 & 0.018 & 0.080 & 0.010 & 0.010 &  &  &  &  &  \\
+1 &   19 & 0.023 & 0.156 & 0.041 & 0.011 & 0.505 & 0.756 & 0.602 & 0.255 & 0.635 \\
+2 &   18 & 0.022 & 0.165 & 0.009 & 0.009 & 0.376 & 0.558 & 0.172 & 0.241 & 0.457 \\
+3 &   17 & 0.025 & 0.218 & 0.035 & 0.008 & 0.393 & 0.695 & 0.360 & 0.254 & 0.409 \\
+4 &   16 & 0.023 & 0.259 & 0.008 & 0.010 & 0.375 & 0.685 & 0.168 & 0.253 & 0.385 \\
+5 &   15 & 0.026 & 0.309 & 0.026 & 0.009 & 0.375 & 0.751 & 0.296 & 0.262 & 0.369 \\
+6 &   14 & 0.024 & 0.353 & 0.008 & 0.010 & 0.369 & 0.765 & 0.181 & 0.255 & 0.354 \\
+7 &   13 & 0.027 & 0.387 & 0.026 & 0.009 & 0.356 & 0.807 & 0.259 & 0.249 & 0.336 \\
+8 &   12 & 0.029 & 0.418 & 0.012 & 0.011 & 0.339 & 0.806 & 0.164 & 0.249 & 0.316 \\
+9 &   11 & 0.032 & 0.464 & 0.023 & 0.010 & 0.355 & 0.846 & 0.244 & 0.255 & 0.322 \\
+10 &   10 & 0.031 & 0.484 & 0.012 & 0.010 & 0.347 & 0.849 & 0.174 & 0.246 & 0.306 \\
+\hline
 \end{tabular}
 \caption{Variable selection properties of \code{getsm} algorithm in
 **gets** compared to alternative algorithms when regressors are
@@ -1423,7 +1456,7 @@ replications.  {#tab_lassnegcorr} }
 \begin{table}[t!]
 \centering
 \begin{tabular}{rrrr}
-\hline  
+\hline
 \multicolumn{1}{l}{No.~breaks} & \multicolumn{3}{c}{Gauge,  $m(\widehat{k}_{\text{irr}}/k_{\text{irr}})$} \\        \hline
 \multicolumn{1}{l}{Sample $n$} & \multicolumn{1}{l}{IIS} & \multicolumn{1}{l}{SIS} & \multicolumn{1}{l}{TIS} \\         \hline
 30    & 0.013 & 0.028 & 0.042 \\
