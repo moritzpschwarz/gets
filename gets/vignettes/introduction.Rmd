@@ -9,9 +9,6 @@ output:
     number_sections: true
 bibliography: bib-introduction.bib
 link-citations: yes
-template:
-  bootstrap: 5
-  math-rendering: mathjax
 vignette: >
   \VignetteIndexEntry{An Introduction to the gets package}
   \VignetteDepends{gets}
