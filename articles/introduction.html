@@ -10,7 +10,7 @@
 <link href="../deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
 <script src="../deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="../deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
 <link href="../deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
-<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="An Introduction to the gets package">
+<script src="../deps/headroom-0.11.0/headroom.min.js"></script><script src="../deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="../deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="../deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="../deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="../deps/search-1.0.0/fuse.min.js"></script><script src="../deps/search-1.0.0/mark.min.js"></script><script src="../deps/MathJax-3.2.2/tex-chtml.min.js"></script><!-- pkgdown --><script src="../pkgdown.js"></script><meta property="og:title" content="An Introduction to the gets package">
 </head>
 <body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
@@ -198,94 +198,64 @@ can readily be converted into LaTeX code. Finally, Section <a href="#sec:conclus
 </h3>
 <p>It is convenient to provide an overview of GETS modeling in terms of
 the linear regression model</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>t</mi></msub><mo>=</mo><msub><mi>β</mi><mn>1</mn></msub><msub><mi>x</mi><mrow><mn>1</mn><mi>t</mi></mrow></msub><mo>+</mo><mi>⋯</mi><mo>+</mo><msub><mi>β</mi><mi>k</mi></msub><msub><mi>x</mi><mrow><mi>k</mi><mi>t</mi></mrow></msub><mo>+</mo><msub><mi>u</mi><mi>t</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><mi>t</mi><mo>=</mo><mn>1</mn><mo>,</mo><mn>2</mn><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><mi>n</mi><mrow><mo stretchy="true" form="prefix">(</mo><mi>#</mi><mi>e</mi><mi>q</mi><mo>:</mo><mi>l</mi><mi>i</mi><mi>n</mi><mi>e</mi><mi>a</mi><mi>r</mi><mo>−</mo><mi>r</mi><mi>e</mi><mi>g</mi><mi>r</mi><mi>e</mi><mi>s</mi><mi>s</mi><mi>i</mi><mi>o</mi><mi>n</mi><mo>−</mo><mi>m</mi><mi>o</mi><mi>d</mi><mi>e</mi><mi>l</mi><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\begin{equation}
+<p><span class="math display">\[\begin{equation}
 
-y_{t} = \beta_1 x_{1t} + \cdots + \beta_k x_{kt} + u_{t}, \qquad t=1,2,..., n 
+y_{t} = \beta_1 x_{1t} + \cdots + \beta_k x_{kt} + u_{t}, \qquad
+t=1,2,..., n
 
   (\#eq:linear-regression-model)
 
-\end{equation}</annotation></semantics></math></p>
-<p>where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>y</mi><mi>t</mi></msub><annotation encoding="application/x-tex">y_t</annotation></semantics></math>
-is the dependent variable, the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>β</mi><annotation encoding="application/x-tex">\beta</annotation></semantics></math>’s
-are slope coefficients, the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>x</mi><annotation encoding="application/x-tex">x</annotation></semantics></math>’s
-are the regressors and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mi>t</mi></msub><annotation encoding="application/x-tex">u_t</annotation></semantics></math>
-is a zero mean error term. GETS modeling assumes there exists at least
-one “local” data generating process (LDGP) nested in
-@ref(eq:linear-regression-model). By philosophical assumption the DGP is
-not contained in the simple model above, see <span class="citation">(<a href="#ref-sucarrat2010econometric">Sucarrat 2010</a>)</span> and . The
+\end{equation}\]</span></p>
+<p>where <span class="math inline">\(y_t\)</span> is the dependent
+variable, the <span class="math inline">\(\beta\)</span>’s are slope
+coefficients, the <span class="math inline">\(x\)</span>’s are the
+regressors and <span class="math inline">\(u_t\)</span> is a zero mean
+error term. GETS modeling assumes there exists at least one “local” data
+generating process (LDGP) nested in @ref(eq:linear-regression-model). By
+philosophical assumption the DGP is not contained in the simple model
+above, see <span class="citation">(<a href="#ref-sucarrat2010econometric">Sucarrat 2010</a>)</span> and . The
 qualifier`local’’ thus means it is assumed that there exists a
 specification within @ref(eq:linear-regression-model) that is a
 statistically valid representation of the DGP. Henceforth, for
 notational and theoretical convenience, we will assume there exists only
 a single LDGP, but this is not a necessary condition.</p>
-<p>A variable
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mrow><mi>j</mi><mi>t</mi></mrow></msub><annotation encoding="application/x-tex">x_{jt}</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>j</mi><mo>∈</mo><mo stretchy="false" form="prefix">{</mo><mn>1</mn><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><mi>k</mi><mo stretchy="false" form="postfix">}</mo></mrow><annotation encoding="application/x-tex">j\in \{1,...,k\}</annotation></semantics></math>,
-is said to be relevant if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>β</mi><mi>j</mi></msub><mo>≠</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\beta_j \neq 0</annotation></semantics></math>
-and irrelevant if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>β</mi><mi>j</mi></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\beta_j = 0</annotation></semantics></math>.
-Let
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k_{\text{rel}} \geq 0</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><mo>≥</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k_{\text{irr}} \geq 0</annotation></semantics></math>
-denote the number of relevant and irrelevant variables, respectively,
-such that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><mo>+</mo><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><mo>=</mo><mi>k</mi></mrow><annotation encoding="application/x-tex">k_{\text{rel}} + k_{\text{irr}} = k</annotation></semantics></math>.
-Of course, both
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><annotation encoding="application/x-tex">k_{\text{rel}}</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><annotation encoding="application/x-tex">k_{\text{irr}}</annotation></semantics></math>
-are unknown to the investigator. GETS modeling aims at finding a
-specification that contains as many relevant variables as possible, and
-a proportion of irrelevant variables that corresponds to the
-significance level
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
-chosen by the investigator. Put differently, if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">rel</mtext></msub><annotation encoding="application/x-tex">\widehat{k}_{\text{rel}}</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">irr</mtext></msub><annotation encoding="application/x-tex">\widehat{k}_{\text{irr}}</annotation></semantics></math>
-are the retained number of relevant and irrelevant variables,
-respectively, then GETS modeling aims at satisfying</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">rel</mtext></msub><mi>/</mi><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><mspace width="1.0em"></mspace><mn>1</mn><mspace width="1.0em"></mspace><mtext mathvariant="normal">and</mtext><mspace width="1.0em"></mspace><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">irr</mtext></msub><mi>/</mi><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>→</mo><mi>α</mi><mspace width="1.0em"></mspace><mtext mathvariant="normal">as</mtext><mspace width="1.0em"></mspace><mi>n</mi><mo>→</mo><mi>∞</mi><mo>,</mo></mrow><annotation encoding="application/x-tex">\begin{equation}
+<p>A variable <span class="math inline">\(x_{jt}\)</span>, <span class="math inline">\(j\in \{1,...,k\}\)</span>, is said to be relevant
+if <span class="math inline">\(\beta_j \neq 0\)</span> and irrelevant if
+<span class="math inline">\(\beta_j = 0\)</span>. Let <span class="math inline">\(k_{\text{rel}} \geq 0\)</span> and <span class="math inline">\(k_{\text{irr}} \geq 0\)</span> denote the number
+of relevant and irrelevant variables, respectively, such that <span class="math inline">\(k_{\text{rel}} + k_{\text{irr}} = k\)</span>. Of
+course, both <span class="math inline">\(k_{\text{rel}}\)</span> and
+<span class="math inline">\(k_{\text{irr}}\)</span> are unknown to the
+investigator. GETS modeling aims at finding a specification that
+contains as many relevant variables as possible, and a proportion of
+irrelevant variables that corresponds to the significance level <span class="math inline">\(\alpha\)</span> chosen by the investigator. Put
+differently, if <span class="math inline">\(\widehat{k}_{\text{rel}}\)</span> and <span class="math inline">\(\widehat{k}_{\text{irr}}\)</span> are the retained
+number of relevant and irrelevant variables, respectively, then GETS
+modeling aims at satisfying</p>
+<p><span class="math display">\[\begin{equation}
 
-E(\widehat{k}_{\text{rel}}/k_{\text{rel}}) \rightarrow \quad 1 \quad \text{and} \quad E(\widehat{k}_{\text{irr}}/k_{\text{irr}}) \rightarrow \alpha \quad \text{as} \quad n\rightarrow\infty,
+E(\widehat{k}_{\text{rel}}/k_{\text{rel}}) \rightarrow \quad 1 \quad
+\text{and} \quad E(\widehat{k}_{\text{irr}}/k_{\text{irr}}) \rightarrow
+\alpha \quad \text{as} \quad n\rightarrow\infty,
 
-\end{equation}</annotation></semantics></math></p>
-<p>when
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><mo>,</mo><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k_{\text{rel}},k_{\text{irr}}&gt;0</annotation></semantics></math>.
-If either
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k_{\text{rel}}=0</annotation></semantics></math>
-or
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k_{\text{irr}}=0</annotation></semantics></math>,
-then the criteria are modified in the obvious ways: If
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k_{\text{rel}}=0</annotation></semantics></math>,
-then
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">rel</mtext></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">E(\widehat{k}_{\text{rel}}) = 0</annotation></semantics></math>,
-and if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k_{\text{irr}}=0</annotation></semantics></math>,
-then
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">irr</mtext></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">E(\widehat{k}_{\text{irr}}) = 0</annotation></semantics></math>.
-The proportion of spuriously retained variables, i.e.,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">irr</mtext></msub><mi>/</mi><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub></mrow><annotation encoding="application/x-tex">\widehat{k}_{\text{irr}}/k_{\text{irr}}</annotation></semantics></math>,
+\end{equation}\]</span></p>
+<p>when <span class="math inline">\(k_{\text{rel}},k_{\text{irr}}&gt;0\)</span>. If
+either <span class="math inline">\(k_{\text{rel}}=0\)</span> or <span class="math inline">\(k_{\text{irr}}=0\)</span>, then the criteria are
+modified in the obvious ways: If <span class="math inline">\(k_{\text{rel}}=0\)</span>, then <span class="math inline">\(E(\widehat{k}_{\text{rel}}) = 0\)</span>, and if
+<span class="math inline">\(k_{\text{irr}}=0\)</span>, then <span class="math inline">\(E(\widehat{k}_{\text{irr}}) = 0\)</span>. The
+proportion of spuriously retained variables, i.e., <span class="math inline">\(\widehat{k}_{\text{irr}}/k_{\text{irr}}\)</span>,
 is also referred to as <em>gauge</em> in the GETS literature, with
 distributional results on the gauge for a specific case (the variables
 being impulses as in IIS) provided in <span class="citation">(<a href="#ref-johansen2016asymptotic">Johansen and Nielsen
-2016</a>)</span>. The relevance proportion, i.e.,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">irr</mtext></msub><mi>/</mi><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub></mrow><annotation encoding="application/x-tex">\widehat{k}_{\text{irr}}/k_{\text{irr}}</annotation></semantics></math>,
+2016</a>)</span>. The relevance proportion, i.e., <span class="math inline">\(\widehat{k}_{\text{irr}}/k_{\text{irr}}\)</span>,
 is also referred to as <em>potency</em> in the GETS literature.</p>
 <p>Table @ref(tab:comparison-of-gets-algorithms) contains a comparison
 of the variable selection properties of GETS software packages for some
 well-known experiments. As the results show, <strong>gets</strong>
 performs as expected in the experiments, since the irrelevance
 proportion corresponds well to the nominal regressor significance level
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>,
-and since the relevance proportion is 1. Additional simulations, and
-comparisons against alternative algorithms, are contained in Section
+<span class="math inline">\(\alpha\)</span>, and since the relevance
+proportion is 1. Additional simulations, and comparisons against
+alternative algorithms, are contained in Section
 @ref(subsec:comparison-of-gets-with-alternatives).</p>
 <table class="table table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;">
 <caption>
@@ -294,19 +264,12 @@ essentially Table 2 in <span class="citation">Sucarrat and Escribano (<a href="#
 the properties of <strong>gets</strong>, see Appendix
 @ref(sec:simulation-tables) for more details on the simulations. The
 variable selection is undertaken with a nominal regressor significance
-level of 5%.
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">rel</mtext></msub><mi>/</mi><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">m(\widehat{k}_{\text{rel}}/k_{\text{rel}})</annotation></semantics></math>,
-average proportion of relevant variables
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">rel</mtext></msub><annotation encoding="application/x-tex">\widehat{k}_{\text{rel}}</annotation></semantics></math>.
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">irr</mtext></msub><mi>/</mi><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">m(\widehat{k}_{\text{irr}}/k_{\text{irr}})</annotation></semantics></math>,
-average proportion of irrelevant variables
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">irr</mtext></msub><annotation encoding="application/x-tex">\widehat{k}_{\text{irr}}</annotation></semantics></math>
-retained relative to the actual number of irrelevant variables
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><annotation encoding="application/x-tex">k_{\text{irr}}</annotation></semantics></math>
-in the GUM.
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>p</mi><mo accent="true">̂</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">DGP</mtext><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\widehat{p}(\text{DGP})</annotation></semantics></math>,
-proportion of times the exact DGP is found. The properties of the HP1999
-algorithm are from <span class="citation">Hoover and Perez (<a href="#ref-hoover1999data">1999</a>)</span> Table 4 on p. 179. The
+level of 5%. <span class="math inline">\(m(\widehat{k}_{\text{rel}}/k_{\text{rel}})\)</span>,
+average proportion of relevant variables <span class="math inline">\(\widehat{k}_{\text{rel}}\)</span>. <span class="math inline">\(m(\widehat{k}_{\text{irr}}/k_{\text{irr}})\)</span>,
+average proportion of irrelevant variables <span class="math inline">\(\widehat{k}_{\text{irr}}\)</span> retained
+relative to the actual number of irrelevant variables <span class="math inline">\(k_{\text{irr}}\)</span> in the GUM. <span class="math inline">\(\widehat{p}(\text{DGP})\)</span>, proportion of
+times the exact DGP is found. The properties of the HP1999 algorithm are
+from <span class="citation">Hoover and Perez (<a href="#ref-hoover1999data">1999</a>)</span> Table 4 on p. 179. The
 properties of the algorithm are from <span class="citation">Hendry and
 Krolzig (<a href="#ref-hendry2005properties">2005</a>)</span> Figure 1
 on p. C39, and the properties of the algorithm are from <span class="citation">Doornik (<a href="#ref-Doornik2009">2009</a>)</span>,
@@ -327,25 +290,25 @@ Metrics
 Experiment
 </th>
 <th style="text-align:left;">
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><annotation encoding="application/x-tex">k_{\text{rel}}</annotation></semantics></math>
+<span class="math inline">\(k_{\text{rel}}\)</span>
 </th>
 <th style="text-align:left;">
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><annotation encoding="application/x-tex">k_{\text{irr}}</annotation></semantics></math>
+<span class="math inline">\(k_{\text{irr}}\)</span>
 </th>
 <th style="text-align:left;">
 Algorithm
 </th>
 <th style="text-align:left;">
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
+<span class="math inline">\(n\)</span>
 </th>
 <th style="text-align:left;">
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">rel</mtext></msub><mi>/</mi><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">m(\widehat{k}_{\text{rel}}/k_{\text{rel}})</annotation></semantics></math>
+<span class="math inline">\(m(\widehat{k}_{\text{rel}}/k_{\text{rel}})\)</span>
 </th>
 <th style="text-align:left;">
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">irr</mtext></msub><mi>/</mi><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">m(\widehat{k}_{\text{irr}}/k_{\text{irr}})</annotation></semantics></math>
+<span class="math inline">\(m(\widehat{k}_{\text{irr}}/k_{\text{irr}})\)</span>
 </th>
 <th style="text-align:left;">
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>p</mi><mo accent="true">̂</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">DGP</mtext><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\widehat{p}(\text{DGP})</annotation></semantics></math>
+<span class="math inline">\(\widehat{p}(\text{DGP})\)</span>
 </th>
 </tr>
 </thead>
@@ -723,11 +686,10 @@ Autometrics
 </tbody>
 </table>
 <p>GETS modeling combines well-known ingredients from the
-model-selection literature: backwards elimination, tests on the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>β</mi><mi>j</mi></msub><annotation encoding="application/x-tex">\beta_j</annotation></semantics></math>’s
-(both single and multiple hypothesis tests), diagnostics tests, and
-fit-measures (e.g., information criteria). Specifically, GETS modeling
-may be described as proceeding in three steps:</p>
+model-selection literature: backwards elimination, tests on the <span class="math inline">\(\beta_j\)</span>’s (both single and multiple
+hypothesis tests), diagnostics tests, and fit-measures (e.g.,
+information criteria). Specifically, GETS modeling may be described as
+proceeding in three steps:</p>
 <ol style="list-style-type: decimal">
 <li><p>Formulate a general unrestricted model (GUM) that passes a set of
 chosen diagnostic tests.<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content="&lt;p&gt;Currently, the standard diagnostic tests available in
@@ -736,34 +698,24 @@ standardized residuals, and a test for non-normality. In addition, the
 user may add her or his own test or set of tests via the
 &lt;code&gt;user.diagnostics&lt;/code&gt; argument.}&lt;/p&gt;"><sup>6</sup></a> Each non-significant regressor in the GUM
 constitutes the starting point of a backwards elimination path, and a
-regressor is non-significant if the
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>~value
-of a two-sided
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>-test
-is lower than the chosen significance level
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>.</p></li>
+regressor is non-significant if the <span class="math inline">\(p\)</span>~value of a two-sided <span class="math inline">\(t\)</span>-test is lower than the chosen
+significance level <span class="math inline">\(\alpha\)</span>.</p></li>
 <li><p>Undertake backwards elimination along multiple paths by removing,
 one-by-one, non-significant regressors as determined by the chosen
-significance level
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>.
-Each removal is checked for validity against the chosen set of
-diagnostic tests, and for parsimonious encompassing (i.e., a multiple
-hypothesis test) against the GUM.</p></li>
+significance level <span class="math inline">\(\alpha\)</span>. Each
+removal is checked for validity against the chosen set of diagnostic
+tests, and for parsimonious encompassing (i.e., a multiple hypothesis
+test) against the GUM.</p></li>
 <li><p>Select, among the terminal models, the specification with the
 best fit according to a fit-criterion, e.g., the <span class="citation">(<a href="#ref-schwarz1978estimating">Schwarz
 1978</a>)</span> information criterion.</p></li>
 </ol>
-<p>For
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
-candidate variables, there are
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>2</mn><mi>k</mi></msup><annotation encoding="application/x-tex">2^k</annotation></semantics></math>
-possible models. As
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
-becomes large the number of models becomes computationally infeasible,
-thus, a structured search is required. GETS provides such a structured
-search by starting with a general model (the GUM), and subsequently
-removing variables along search paths while checking the diagnostics at
-each removal.</p>
+<p>For <span class="math inline">\(k\)</span> candidate variables, there
+are <span class="math inline">\(2^k\)</span> possible models. As <span class="math inline">\(k\)</span> becomes large the number of models
+becomes computationally infeasible, thus, a structured search is
+required. GETS provides such a structured search by starting with a
+general model (the GUM), and subsequently removing variables along
+search paths while checking the diagnostics at each removal.</p>
 </div>
 <div class="section level3">
 <h3 id="subsec:comparison-of-gets-with-alternatives">A comparison of GETS and gets with alternatives<a class="anchor" aria-label="anchor" href="#subsec:comparison-of-gets-with-alternatives"></a>
@@ -785,12 +737,11 @@ an even larger number of implementations are available. Focusing on
 variable selection, Table @ref(tab:comparison-of-softwares) contains a
 feature-based comparison of <strong>gets</strong> against some common
 alternatives in R. The <code>ar</code> function in
-<strong>stats</strong> searches for the best
-AR(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>)
-model using the AIC. The <code>step</code> function, also in
-<strong>stats</strong>, offers both forward and backward step-wise
-search. The packages <strong>lars</strong> and <strong>glmnet</strong> ,
-provide shrinkage-based search methods for variable selection.</p>
+<strong>stats</strong> searches for the best AR(<span class="math inline">\(P\)</span>) model using the AIC. The
+<code>step</code> function, also in <strong>stats</strong>, offers both
+forward and backward step-wise search. The packages
+<strong>lars</strong> and <strong>glmnet</strong> , provide
+shrinkage-based search methods for variable selection.</p>
 <p>As is clear from the table, GETS may be viewed as being more general
 than many of its competitors. This comes at a cost: computational speed.
 Relying on multiple path searches implies that the required
@@ -800,23 +751,12 @@ using indicator saturation <a href="sec:indicator:saturation">see
 section “Indicator Saturation”</a>, where the number of candidate
 variables scales linearly with the number of observations and
 subsequently implies a non-linear increase in required computational
-time. For example, selection over
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
+time. For example, selection over <span class="math inline">\(k\)</span>
 (irrelevant) candidate regressors in <strong>gets</strong> (in a sample
-of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>200</mn></mrow><annotation encoding="application/x-tex">n=200</annotation></semantics></math>
-observations) on a 1.8GHz processor requires approximately 0.8 seconds
-(s) for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">k=10</annotation></semantics></math>,
-2.9s for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">k=20</annotation></semantics></math>,
-15s for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>40</mn></mrow><annotation encoding="application/x-tex">k=40</annotation></semantics></math>,
-and 114s for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>80</mn></mrow><annotation encoding="application/x-tex">k=80</annotation></semantics></math>.
-By contrast, the identical experiment with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>80</mn></mrow><annotation encoding="application/x-tex">k=80</annotation></semantics></math>
-requires 0.16s using the Lasso in <strong>glmnet</strong>, 0.41s in
+of <span class="math inline">\(n=200\)</span> observations) on a 1.8GHz
+processor requires approximately 0.8 seconds (s) for <span class="math inline">\(k=10\)</span>, 2.9s for <span class="math inline">\(k=20\)</span>, 15s for <span class="math inline">\(k=40\)</span>, and 114s for <span class="math inline">\(k=80\)</span>. By contrast, the identical
+experiment with <span class="math inline">\(k=80\)</span> requires 0.16s
+using the Lasso in <strong>glmnet</strong>, 0.41s in
 <strong>lars</strong>, and 0.3s using <code>step</code> (backward).</p>
 <table class="table table" style="margin-left: auto; margin-right: auto;">
 <caption>
@@ -1020,54 +960,34 @@ control in step-wise as well as shrinkage-based selection procedures.
 When selecting on information criteria only, the implicit significance
 level of selection results in a high gauge when the number of candidate
 variables increases relative to the sample size. In contrast, the gauge
-tends to be well-calibrated around the nominal size of selection
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
-in GETS. While the retention of relevant variables often is high in
-shrinkage-based approaches (and erratic in step-wise regression), this
-result comes at the cost of a high gauge and the performance becomes
-less reliable in the presence of correlation between the candidate
-variables.</p>
+tends to be well-calibrated around the nominal size of selection <span class="math inline">\(\alpha\)</span> in GETS. While the retention of
+relevant variables often is high in shrinkage-based approaches (and
+erratic in step-wise regression), this result comes at the cost of a
+high gauge and the performance becomes less reliable in the presence of
+correlation between the candidate variables.</p>
 <p>To provide additional comparisons of performance to alternative
 methods for detecting relevant and discarding irrelevant variables, here
 we compare <strong>gets</strong> to: shrinkage-based selection, 1-cut
-selection (where all variables with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>
-values
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≤</mo><mi>α</mi></mrow><annotation encoding="application/x-tex">\leq \alpha</annotation></semantics></math>
-in the GUM are retained in a single decision), and conducting selection
-inference starting at the DGP itself. The results are provided in Figure
-@ref(fig_lass) (and Tables @ref(tab_lassuncorr), @ref(tab_lassposcorr),
-and @ref(tab_lassnegcorr) in Appendix @ref(sec:simulation-tables)). The
-simulations cover three correlation structures of regressors: First,
-in-expectation uncorrelated regressors, second, positively correlated
-regressors
-(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">\rho=0.5</annotation></semantics></math>),
-and third, alternating negatively correlated regressors (where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>,</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>+</mo><mn>1</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">\rho(x_i, x_{i+1}) = 0.5</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>ρ</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mi>x</mi><mi>i</mi></msub><mo>,</mo><msub><mi>x</mi><mrow><mi>i</mi><mo>+</mo><mn>2</mn></mrow></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>−</mo><mn>0.5</mn></mrow><annotation encoding="application/x-tex">\rho(x_i, x_{i+2})=-0.5</annotation></semantics></math>).
-We consider a total of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mn>20</mn></mrow><annotation encoding="application/x-tex">k=20</annotation></semantics></math>
-regressors in a sample of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mo>=</mo><mn>500</mn></mrow><annotation encoding="application/x-tex">n=500</annotation></semantics></math>
-observations for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>1000</mn><annotation encoding="application/x-tex">1000</annotation></semantics></math>
-replications. The number of relevant regressors is increased from
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k_{\text{rel}}=0</annotation></semantics></math>
-to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><mo>=</mo><mn>10</mn></mrow><annotation encoding="application/x-tex">k_{\text{rel}}=10</annotation></semantics></math>
-with coefficients set to correspond to an expected
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>-statistic
-of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>≈</mo><mn>3</mn></mrow><annotation encoding="application/x-tex">\approx 3</annotation></semantics></math>.
-The performance of <strong>gets</strong> using the <code>getsm</code>
-function is compared to the cross-validated Lasso in
-<strong>glmnet</strong> and the Lasso with fixed penalty parameter such
-that the false-detection rate approximately matches <code>getsm</code>
-under the null (when
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">k_{\text{rel}}=0</annotation></semantics></math>).
-The significance level of 1-cut selection is chosen to match
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mn>1</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">\alpha=1\%</annotation></semantics></math>
-in <code>getsm</code> selection.</p>
+selection (where all variables with <span class="math inline">\(p\)</span> values <span class="math inline">\(\leq
+\alpha\)</span> in the GUM are retained in a single decision), and
+conducting selection inference starting at the DGP itself. The results
+are provided in Figure @ref(fig_lass) (and Tables @ref(tab_lassuncorr),
+@ref(tab_lassposcorr), and @ref(tab_lassnegcorr) in Appendix
+@ref(sec:simulation-tables)). The simulations cover three correlation
+structures of regressors: First, in-expectation uncorrelated regressors,
+second, positively correlated regressors (<span class="math inline">\(\rho=0.5\)</span>), and third, alternating
+negatively correlated regressors (where <span class="math inline">\(\rho(x_i, x_{i+1}) = 0.5\)</span>, <span class="math inline">\(\rho(x_i, x_{i+2})=-0.5\)</span>). We consider a
+total of <span class="math inline">\(k=20\)</span> regressors in a
+sample of <span class="math inline">\(n=500\)</span> observations for
+<span class="math inline">\(1000\)</span> replications. The number of
+relevant regressors is increased from <span class="math inline">\(k_{\text{rel}}=0\)</span> to <span class="math inline">\(k_{\text{rel}}=10\)</span> with coefficients set
+to correspond to an expected <span class="math inline">\(t\)</span>-statistic of <span class="math inline">\(\approx 3\)</span>. The performance of
+<strong>gets</strong> using the <code>getsm</code> function is compared
+to the cross-validated Lasso in <strong>glmnet</strong> and the Lasso
+with fixed penalty parameter such that the false-detection rate
+approximately matches <code>getsm</code> under the null (when <span class="math inline">\(k_{\text{rel}}=0\)</span>). The significance level
+of 1-cut selection is chosen to match <span class="math inline">\(\alpha=1\%\)</span> in <code>getsm</code>
+selection.</p>
 <div class="float">
 <embed src="fig_getsm_performance_v2.pdf" style="width:100.0%"></embed><div class="figcaption">test</div>
 </div>
@@ -1169,163 +1089,108 @@ the <strong>zoo</strong> package for several short intros and vignettes:
 <p>The specifications considered by <strong>gets</strong> are all
 contained in the AR-X model with log-ARCH-X errors. This model is made
 up of two equations, one for the mean and one for the log-variance:</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>t</mi></msub><mo>=</mo><msub><mi>ϕ</mi><mn>0</mn></msub><mo>+</mo><munderover><mo>∑</mo><mrow><mi>r</mi><mo>=</mo><mn>1</mn></mrow><mi>R</mi></munderover><msub><mi>ϕ</mi><mi>r</mi></msub><msub><mi>y</mi><mrow><mi>t</mi><mo>−</mo><mi>r</mi></mrow></msub><mo>+</mo><munderover><mo>∑</mo><mrow><mi>s</mi><mo>=</mo><mn>1</mn></mrow><mi>S</mi></munderover><msub><mi>η</mi><mi>s</mi></msub><msubsup><mi>x</mi><mrow><mi>s</mi><mo>,</mo><mi>t</mi></mrow><mi>m</mi></msubsup><mo>+</mo><msub><mi>ϵ</mi><mi>t</mi></msub><mo>,</mo><mspace width="2.0em"></mspace><msub><mi>ϵ</mi><mi>t</mi></msub><mo>=</mo><msub><mi>σ</mi><mi>t</mi></msub><msub><mi>z</mi><mi>t</mi></msub><mo>,</mo><mspace width="1.0em"></mspace><msub><mi>z</mi><mi>t</mi></msub><mo>∼</mo><mtext mathvariant="normal">iid</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>,</mo></mrow><annotation encoding="application/x-tex">y_t = \phi_0 + \sum_{r=1}^R \phi_r y_{t-r} + \sum_{s=1}^S\eta_s x_{s,t}^m + \epsilon_t, \qquad \epsilon_t =\sigma_tz_t, \quad z_t \sim \text{iid}(0,1),</annotation></semantics></math>
-{#eq:ar-x}</p>
-<p><math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>ln</mo><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>σ</mi><mi>t</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><msub><mi>α</mi><mn>0</mn></msub><mo>+</mo><munderover><mo>∑</mo><mrow><mi>p</mi><mo>=</mo><mn>1</mn></mrow><mi>P</mi></munderover><msub><mi>α</mi><mi>p</mi></msub><mo>ln</mo><msubsup><mi>ϵ</mi><mrow><mi>t</mi><mo>−</mo><mi>p</mi></mrow><mn>2</mn></msubsup><mo>+</mo><munder><mo>∑</mo><mrow><mi>q</mi><mo>∈</mo><mi>Q</mi></mrow></munder><msub><mi>β</mi><mi>q</mi></msub><mo>ln</mo><msub><mtext mathvariant="normal">EqWMA</mtext><mrow><mi>q</mi><mo>,</mo><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><munderover><mo>∑</mo><mrow><mi>a</mi><mo>=</mo><mn>1</mn></mrow><mi>A</mi></munderover><msub><mi>λ</mi><mi>a</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mo>ln</mo><msubsup><mi>ϵ</mi><mrow><mi>t</mi><mo>−</mo><mi>a</mi></mrow><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>I</mi><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>ϵ</mi><mrow><mi>t</mi><mo>−</mo><mi>a</mi></mrow></msub><mo>&lt;</mo><mn>0</mn><mo stretchy="false" form="postfix">}</mo></mrow></msub><mo>+</mo><munderover><mo>∑</mo><mrow><mi>d</mi><mo>=</mo><mn>1</mn></mrow><mi>D</mi></munderover><msub><mi>δ</mi><mi>d</mi></msub><msubsup><mi>x</mi><mrow><mi>d</mi><mo>,</mo><mi>t</mi></mrow><mi>v</mi></msubsup></mrow><annotation encoding="application/x-tex">\ln(\sigma_t^2) = \alpha_0 + \sum_{p=1}^P \alpha_p \ln\epsilon_{t-p}^2 + \sum_{q\in Q} \beta_q \ln \text{EqWMA}_{q,t-1} + \sum_{a=1}^A \lambda_a(\ln\epsilon_{t-a}^2)I_{\{\epsilon_{t-a} &lt; 0\}} + \sum_{d=1}^D\delta_d x_{d,t}^v</annotation></semantics></math>
-{#eq:log-variance} </p>
+<p><span class="math display">\[y_t = \phi_0 + \sum_{r=1}^R \phi_r
+y_{t-r} + \sum_{s=1}^S\eta_s x_{s,t}^m + \epsilon_t, \qquad \epsilon_t
+=\sigma_tz_t, \quad z_t \sim \text{iid}(0,1),\]</span> {#eq:ar-x}</p>
+<p><span class="math display">\[\ln(\sigma_t^2) = \alpha_0 +
+\sum_{p=1}^P \alpha_p \ln\epsilon_{t-p}^2 + \sum_{q\in Q} \beta_q \ln
+\text{EqWMA}_{q,t-1} + \sum_{a=1}^A
+\lambda_a(\ln\epsilon_{t-a}^2)I_{\{\epsilon_{t-a} &lt; 0\}} +
+\sum_{d=1}^D\delta_d x_{d,t}^v\]</span> {#eq:log-variance} </p>
 <p>The conditional mean equation (@ref(eq:ar-x)) is an autoregressive
-(AR) specification of order
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>R</mi><annotation encoding="application/x-tex">R</annotation></semantics></math>
-with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>S</mi><annotation encoding="application/x-tex">S</annotation></semantics></math>
-covariates
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>x</mi><mrow><mn>1</mn><mo>,</mo><mi>t</mi></mrow><mi>m</mi></msubsup><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msubsup><mi>x</mi><mrow><mi>S</mi><mo>,</mo><mi>t</mi></mrow><mi>m</mi></msubsup></mrow><annotation encoding="application/x-tex">x_{1,t}^m, ..., x_{S,t}^m</annotation></semantics></math>
-(“X”), AR-X for short. The covariates may contain lags of conditioning
-variables. The error term
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϵ</mi><mi>t</mi></msub><annotation encoding="application/x-tex">\epsilon_t</annotation></semantics></math>
-is a product of the time-varying conditional standard deviation
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>σ</mi><mi>t</mi></msub><mo>&gt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\sigma_t &gt; 0</annotation></semantics></math>
-and the real-valued innovation
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mi>t</mi></msub><annotation encoding="application/x-tex">z_t</annotation></semantics></math>,
-where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mi>t</mi></msub><annotation encoding="application/x-tex">z_t</annotation></semantics></math>
-is iid with zero mean and unit variance conditional on the past. The
-conditional log-variance equation (@ref(eq:log-variance)) is given by a
-logarithmic autoregressive conditional heteroscedasticity (log-ARCH)
-specification of order
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>
-with volatility proxies defined as
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext mathvariant="normal">EqWMA</mtext><mrow><mi>q</mi><mo>,</mo><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mrow><mo stretchy="true" form="prefix">(</mo><msubsup><mi>ϵ</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></msubsup><mo>+</mo><mi>⋯</mi><mo>+</mo><msubsup><mi>ϵ</mi><mrow><mi>t</mi><mo>−</mo><mi>q</mi></mrow><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mi>/</mi><mi>q</mi></mrow><annotation encoding="application/x-tex">\text{EqWMA}_{q,t-1} = (\epsilon_{t-1}^2 + \cdots + \epsilon_{t-q}^2)/q</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>A</mi><annotation encoding="application/x-tex">A</annotation></semantics></math>
-logarithmic asymmetry terms (i.e. “leverage”) analogous to those of
-<span class="citation">(<a href="#ref-glosten1993relation">Glosten,
-Jagannathan, and Runkle 1993</a>)</span> – so
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>I</mi><mrow><msub><mi>ϵ</mi><mrow><mi>t</mi><mo>−</mo><mi>a</mi></mrow></msub><mo>&lt;</mo><mn>0</mn></mrow></msub><annotation encoding="application/x-tex">I_{\epsilon_{t-a} &lt; 0}</annotation></semantics></math>
-is an indicator function equal to 1 if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϵ</mi><mrow><mi>t</mi><mo>−</mo><mi>a</mi></mrow></msub><mo>&lt;</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\epsilon_{t-a} &lt; 0</annotation></semantics></math>
-and 0 otherwise, and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>D</mi><annotation encoding="application/x-tex">D</annotation></semantics></math>
-covariates
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>x</mi><mrow><mn>1</mn><mo>,</mo><mi>t</mi></mrow><mi>v</mi></msubsup><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msubsup><mi>x</mi><mrow><mi>D</mi><mo>,</mo><mi>t</mi></mrow><mi>v</mi></msubsup></mrow><annotation encoding="application/x-tex">x_{1,t}^v, ..., x_{D,t}^v</annotation></semantics></math>,
-log-ARCH-X for short. The covariates may contain lags of conditioning
-variables, and the covariates in the mean need not be the same as those
-of the log-variance specification. Hence the superscripts
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>m</mi><annotation encoding="application/x-tex">m</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>v</mi><annotation encoding="application/x-tex">v</annotation></semantics></math>,
-respectively. The log-proxies
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>ln</mo><msub><mtext mathvariant="normal">EqWMA</mtext><mrow><mi>q</mi><mo>,</mo><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">\ln \text{EqWMA}_{q,t-1}</annotation></semantics></math>,
-where EqWMA is short for equally weighted moving average, are intended
-to proxy lagged log-GARCH terms, e.g.,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>ln</mo><msubsup><mi>σ</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\ln\sigma_{t-1}^2</annotation></semantics></math>.
-However, it should be noted that the log-proxies can also be given
-additional interpretation of interest. For example, if
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>t</mi></msub><mo>=</mo><msub><mi>ϵ</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">y_t=\epsilon_t</annotation></semantics></math>
-is a daily financial return, and if the returns are recorded over
-weekdays only, then
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mtext mathvariant="normal">EqWMA</mtext><mrow><mn>5</mn><mo>,</mo><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">\text{EqWMA}_{5,t-1}</annotation></semantics></math>,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mtext mathvariant="normal">EqWMA</mtext><mrow><mn>20</mn><mo>,</mo><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">\text{EqWMA}_{20,t-1}</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mtext mathvariant="normal">EqWMA</mtext><mrow><mn>60</mn><mo>,</mo><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><annotation encoding="application/x-tex">\text{EqWMA}_{60,t-1}</annotation></semantics></math>
-can be interpreted as the <code>weekly'',</code>monthly’’ and
-``quarterly’’ volatilities, respectively. The log-proxies thus provide
-great flexibility in modeling the persistence of log-volatility. Also,
-note that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mtext mathvariant="normal">EqWMA</mtext><mrow><mi>q</mi><mo>,</mo><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>=</mo><mo>ln</mo><msubsup><mi>ϵ</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\text{EqWMA}_{q,t-1} = \ln\epsilon_{t-1}^2</annotation></semantics></math>,
-i.e., the ARCH(1) term, when
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>q</mi><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">q=1</annotation></semantics></math>.
-Of course, additional volatility proxies can be included via the
-covariates
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>x</mi><mrow><mi>d</mi><mo>,</mo><mi>t</mi></mrow></msub><annotation encoding="application/x-tex">x_{d,t}</annotation></semantics></math>.</p>
+(AR) specification of order <span class="math inline">\(R\)</span> with
+<span class="math inline">\(S\)</span> covariates <span class="math inline">\(x_{1,t}^m, ..., x_{S,t}^m\)</span> (“X”), AR-X for
+short. The covariates may contain lags of conditioning variables. The
+error term <span class="math inline">\(\epsilon_t\)</span> is a product
+of the time-varying conditional standard deviation <span class="math inline">\(\sigma_t &gt; 0\)</span> and the real-valued
+innovation <span class="math inline">\(z_t\)</span>, where <span class="math inline">\(z_t\)</span> is iid with zero mean and unit
+variance conditional on the past. The conditional log-variance equation
+(@ref(eq:log-variance)) is given by a logarithmic autoregressive
+conditional heteroscedasticity (log-ARCH) specification of order <span class="math inline">\(P\)</span> with volatility proxies defined as
+<span class="math inline">\(\text{EqWMA}_{q,t-1} = (\epsilon_{t-1}^2 +
+\cdots + \epsilon_{t-q}^2)/q\)</span>, <span class="math inline">\(A\)</span> logarithmic asymmetry terms
+(i.e. “leverage”) analogous to those of <span class="citation">(<a href="#ref-glosten1993relation">Glosten, Jagannathan, and Runkle
+1993</a>)</span> – so <span class="math inline">\(I_{\epsilon_{t-a} &lt;
+0}\)</span> is an indicator function equal to 1 if <span class="math inline">\(\epsilon_{t-a} &lt; 0\)</span> and 0 otherwise,
+and <span class="math inline">\(D\)</span> covariates <span class="math inline">\(x_{1,t}^v, ..., x_{D,t}^v\)</span>, log-ARCH-X for
+short. The covariates may contain lags of conditioning variables, and
+the covariates in the mean need not be the same as those of the
+log-variance specification. Hence the superscripts <span class="math inline">\(m\)</span> and <span class="math inline">\(v\)</span>, respectively. The log-proxies <span class="math inline">\(\ln \text{EqWMA}_{q,t-1}\)</span>, where EqWMA is
+short for equally weighted moving average, are intended to proxy lagged
+log-GARCH terms, e.g., <span class="math inline">\(\ln\sigma_{t-1}^2\)</span>. However, it should be
+noted that the log-proxies can also be given additional interpretation
+of interest. For example, if <span class="math inline">\(y_t=\epsilon_t\)</span> is a daily financial
+return, and if the returns are recorded over weekdays only, then <span class="math inline">\(\text{EqWMA}_{5,t-1}\)</span>, <span class="math inline">\(\text{EqWMA}_{20,t-1}\)</span> and <span class="math inline">\(\text{EqWMA}_{60,t-1}\)</span> can be interpreted
+as the <code>weekly'',</code>monthly’’ and ``quarterly’’ volatilities,
+respectively. The log-proxies thus provide great flexibility in modeling
+the persistence of log-volatility. Also, note that <span class="math inline">\(\text{EqWMA}_{q,t-1} =
+\ln\epsilon_{t-1}^2\)</span>, i.e., the ARCH(1) term, when <span class="math inline">\(q=1\)</span>. Of course, additional volatility
+proxies can be included via the covariates <span class="math inline">\(x_{d,t}\)</span>.</p>
 <p>The model (@ref(eq:ar-x))–(@ref(eq:log-variance)) is estimated in two
 steps.^[A multi-step, iterative procedure might improve the finite
 sample efficiency, but does not necessarily improve the asymptotic
 efficiency. Joint estimation of the two equations in a single step,
 e.g., by Gaussian maximum likelihood, is likely to be asymptotically
-more efficient when
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mi>t</mi></msub><annotation encoding="application/x-tex">z_t</annotation></semantics></math>
-is not too fat-tailed, see First, the mean specification (@ref(eq:ar-x))
-is estimated by OLS. The default variance-covariance matrix is the
-ordinary one, but – optionally – this can be changed to either that of
-<span class="citation">(<a href="#ref-white1980heteroskedasticity">White
+more efficient when <span class="math inline">\(z_t\)</span> is not too
+fat-tailed, see First, the mean specification (@ref(eq:ar-x)) is
+estimated by OLS. The default variance-covariance matrix is the ordinary
+one, but – optionally – this can be changed to either that of <span class="citation">(<a href="#ref-white1980heteroskedasticity">White
 1980</a>)</span> or that of <span class="citation">(<a href="#ref-newey1987simple">Newey and West 1987</a>)</span>. Second, the
 nonlinear AR-representation of (@ref(eq:log-variance)) is estimated,
-also by OLS. The nonlinear AR-representation is given by
-<math display="block" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mtable><mtr><mtd columnalign="right" style="text-align: right"><mo>ln</mo><msubsup><mi>ϵ</mi><mi>t</mi><mn>2</mn></msubsup></mtd><mtd columnalign="center" style="text-align: center"><mo>=</mo></mtd><mtd columnalign="left" style="text-align: left"><msubsup><mi>α</mi><mn>0</mn><mo>*</mo></msubsup><mo>+</mo><munderover><mo>∑</mo><mrow><mi>p</mi><mo>=</mo><mn>1</mn></mrow><mi>P</mi></munderover><msub><mi>α</mi><mi>p</mi></msub><mo>ln</mo><msubsup><mi>ϵ</mi><mrow><mi>t</mi><mo>−</mo><mi>p</mi></mrow><mn>2</mn></msubsup><mo>+</mo><munder><mo>∑</mo><mrow><mi>q</mi><mo>∈</mo><mi>Q</mi></mrow></munder><msub><mi>β</mi><mi>q</mi></msub><mo>ln</mo><msub><mtext mathvariant="normal">EqWMA</mtext><mrow><mi>q</mi><mo>,</mo><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub></mtd></mtr><mtr><mtd columnalign="right" style="text-align: right"></mtd><mtd columnalign="center" style="text-align: center"></mtd><mtd columnalign="left" style="text-align: left"><mo>+</mo><munderover><mo>∑</mo><mrow><mi>a</mi><mo>=</mo><mn>1</mn></mrow><mi>A</mi></munderover><msub><mi>λ</mi><mi>a</mi></msub><mrow><mo stretchy="true" form="prefix">(</mo><mo>ln</mo><msubsup><mi>ϵ</mi><mrow><mi>t</mi><mo>−</mo><mi>a</mi></mrow><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><msub><mi>I</mi><mrow><mo stretchy="false" form="prefix">{</mo><msub><mi>ϵ</mi><mrow><mi>t</mi><mo>−</mo><mi>a</mi></mrow></msub><mo>&lt;</mo><mn>0</mn><mo stretchy="false" form="postfix">}</mo></mrow></msub><mo>+</mo><munderover><mo>∑</mo><mrow><mi>d</mi><mo>=</mo><mn>1</mn></mrow><mi>D</mi></munderover><msub><mi>δ</mi><mi>d</mi></msub><msubsup><mi>x</mi><mrow><mi>d</mi><mo>,</mo><mi>t</mi></mrow><mi>v</mi></msubsup><mo>+</mo><msub><mi>u</mi><mi>t</mi></msub><mo>,</mo></mtd></mtr></mtable><annotation encoding="application/x-tex">\begin{eqnarray}
-\ln\epsilon_t^2 &amp;=&amp; \alpha_0^* + \sum_{p=1}^P \alpha_p \ln\epsilon_{t-p}^2 + \sum_{q\in Q} \beta_q \ln \text{EqWMA}_{q,t-1}\\
+also by OLS. The nonlinear AR-representation is given by <span class="math display">\[\begin{eqnarray}
+\ln\epsilon_t^2 &amp;=&amp; \alpha_0^* + \sum_{p=1}^P \alpha_p
+\ln\epsilon_{t-p}^2 + \sum_{q\in Q} \beta_q \ln \text{EqWMA}_{q,t-1}\\
 %
-&amp;&amp; + \sum_{a=1}^A \lambda_a(\ln\epsilon_{t-a}^2)I_{\{\epsilon_{t-a} &lt; 0\}} + \sum_{d=1}^D\delta_d x_{d,t}^v + u_t,
-\end{eqnarray}</annotation></semantics></math></p>
-<p>where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>α</mi><mn>0</mn><mo>*</mo></msubsup><mo>=</mo><msub><mi>α</mi><mn>0</mn></msub><mo>+</mo><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><mo>ln</mo><msubsup><mi>z</mi><mi>t</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\alpha_0^* = \alpha_0 + E(\ln z_t^2)</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>t</mi></msub><mo>=</mo><mo>ln</mo><msubsup><mi>z</mi><mi>t</mi><mn>2</mn></msubsup><mo>−</mo><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><mo>ln</mo><msubsup><mi>z</mi><mi>t</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">u_t=\ln z_t^2 - E(\ln z_t^2)</annotation></semantics></math>
-with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>u</mi><mi>t</mi></msub><mo>∼</mo><mtext mathvariant="normal">iid</mtext><mrow><mo stretchy="true" form="prefix">(</mo><mn>0</mn><mo>,</mo><msubsup><mi>σ</mi><mi>u</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">u_t \sim \text{iid}(0, \sigma_u^2)</annotation></semantics></math>.
-This provides consistent estimates of all the parameters in
-(@ref(eq:log-variance)) except
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>α</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\alpha_0</annotation></semantics></math>,
-under appropriate assumptions. To identify
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>α</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\alpha_0</annotation></semantics></math>,
-an estimate of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mrow><mo stretchy="true" form="prefix">(</mo><mo>ln</mo><msubsup><mi>z</mi><mi>t</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">E(\ln z_t^2)</annotation></semantics></math>
-is needed, which depends on the density of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mi>t</mi></msub><annotation encoding="application/x-tex">z_t</annotation></semantics></math>.
+&amp;&amp; + \sum_{a=1}^A
+\lambda_a(\ln\epsilon_{t-a}^2)I_{\{\epsilon_{t-a} &lt; 0\}} +
+\sum_{d=1}^D\delta_d x_{d,t}^v + u_t,
+\end{eqnarray}\]</span></p>
+<p>where <span class="math inline">\(\alpha_0^* = \alpha_0 + E(\ln
+z_t^2)\)</span> and <span class="math inline">\(u_t=\ln z_t^2 - E(\ln
+z_t^2)\)</span> with <span class="math inline">\(u_t \sim \text{iid}(0,
+\sigma_u^2)\)</span>. This provides consistent estimates of all the
+parameters in (@ref(eq:log-variance)) except <span class="math inline">\(\alpha_0\)</span>, under appropriate assumptions.
+To identify <span class="math inline">\(\alpha_0\)</span>, an estimate
+of <span class="math inline">\(E(\ln z_t^2)\)</span> is needed, which
+depends on the density of <span class="math inline">\(z_t\)</span>.
 <span class="citation">(<a href="#ref-sucarrat2016estimation">Sucarrat,
 Grønneberg, and Escribano 2016</a>)</span> show that a simple formula
-made up of the residuals
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>u</mi><mo accent="true">̂</mo></mover><mi>t</mi></msub><annotation encoding="application/x-tex">\widehat{u}_t</annotation></semantics></math>
-provides a consistent and asymptotically normal estimate under very
-general and non-restrictive assumptions. The estimator is essentially
-the negative of the natural log of the smearing estimate of <span class="citation">(<a href="#ref-Duan1983">Duan 1983</a>)</span>:
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>E</mi><mo accent="true">̂</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mo>ln</mo><msubsup><mi>z</mi><mi>t</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mo>−</mo><mo>ln</mo><mrow><mo stretchy="true" form="prefix">[</mo><msup><mi>n</mi><mrow><mo>−</mo><mn>1</mn></mrow></msup><msubsup><mo>∑</mo><mrow><mi>t</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><mo>exp</mo><mrow><mo stretchy="true" form="prefix">(</mo><msub><mover><mi>u</mi><mo accent="true">̂</mo></mover><mi>t</mi></msub><mo stretchy="true" form="postfix">)</mo></mrow><mo stretchy="true" form="postfix">]</mo></mrow></mrow><annotation encoding="application/x-tex">\widehat{E}(\ln z_t^2) = -\ln \left[ n^{-1} \sum_{t=1}^n \exp(\widehat{u}_t) \right]</annotation></semantics></math>.
-So the expression in square brackets is the smearing estimate. The
-log-variance intercept
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>α</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\alpha_0</annotation></semantics></math>
-can thus be estimated by
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mover><mi>α</mi><mo accent="true">̂</mo></mover><mn>0</mn><mo>*</mo></msubsup><mo>−</mo><mover><mi>E</mi><mo accent="true">̂</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mo>ln</mo><msubsup><mi>z</mi><mi>t</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\widehat{\alpha}_0^* - \widehat{E}(\ln z_t^2)</annotation></semantics></math>.
-Finally, the ordinary variance-covariance matrix is used for inference
-in the log-variance specification, since the error term
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>u</mi><mi>t</mi></msub><annotation encoding="application/x-tex">u_t</annotation></semantics></math>
-of the nonlinear AR-representation is iid.</p>
+made up of the residuals <span class="math inline">\(\widehat{u}_t\)</span> provides a consistent and
+asymptotically normal estimate under very general and non-restrictive
+assumptions. The estimator is essentially the negative of the natural
+log of the smearing estimate of <span class="citation">(<a href="#ref-Duan1983">Duan 1983</a>)</span>: <span class="math inline">\(\widehat{E}(\ln z_t^2) = -\ln \left[ n^{-1}
+\sum_{t=1}^n \exp(\widehat{u}_t) \right]\)</span>. So the expression in
+square brackets is the smearing estimate. The log-variance intercept
+<span class="math inline">\(\alpha_0\)</span> can thus be estimated by
+<span class="math inline">\(\widehat{\alpha}_0^* - \widehat{E}(\ln
+z_t^2)\)</span>. Finally, the ordinary variance-covariance matrix is
+used for inference in the log-variance specification, since the error
+term <span class="math inline">\(u_t\)</span> of the nonlinear
+AR-representation is iid.</p>
 <div class="section level3">
 <h3 id="subsec:simulation">Simulation<a class="anchor" aria-label="anchor" href="#subsec:simulation"></a>
 </h3>
-<p>Simulation from an
-AR(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>P</mi><annotation encoding="application/x-tex">P</annotation></semantics></math>)
-process can readily be done with the <code>arima.sim</code> function in
-the <strong>stats</strong> package (part of the base distribution of R).
-For example, the following code simulates 100 observations from the
-AR(1) model
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>t</mi></msub><mo>=</mo><msub><mi>ϕ</mi><mn>0</mn></msub><mo>+</mo><msub><mi>ϕ</mi><mn>1</mn></msub><msub><mi>y</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow></msub><mo>+</mo><msub><mi>ϵ</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">y_t = \phi_0 + \phi_1 y_{t-1} + \epsilon_t</annotation></semantics></math>
-with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\phi_0=0</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mn>1</mn></msub><mo>=</mo><mn>0.4</mn></mrow><annotation encoding="application/x-tex">\phi_1=0.4</annotation></semantics></math>:</p>
+<p>Simulation from an AR(<span class="math inline">\(P\)</span>) process
+can readily be done with the <code>arima.sim</code> function in the
+<strong>stats</strong> package (part of the base distribution of R). For
+example, the following code simulates 100 observations from the AR(1)
+model <span class="math inline">\(y_t = \phi_0 + \phi_1 y_{t-1} +
+\epsilon_t\)</span> with <span class="math inline">\(\phi_0=0\)</span>
+and <span class="math inline">\(\phi_1=0.4\)</span>:</p>
 <p>set.seed(123) y &lt;- arima.sim(list(ar = 0.4), 100)</p>
 <p>To simulate from a model with log-ARCH errors, we first need to
 simulate the errors. This can be achieved with <code>lgarchSim</code>
 from the <strong>lgarch</strong> package :</p>
 <p>library(“lgarch”)</p>
-<p>Next, the following code simulates an error-term
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>ϵ</mi><mi>t</mi></msub><annotation encoding="application/x-tex">\epsilon_t</annotation></semantics></math>
-that follows the log-ARCH(1) specification
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>ln</mo><msubsup><mi>σ</mi><mi>t</mi><mn>2</mn></msubsup><mo>=</mo><msub><mi>α</mi><mn>0</mn></msub><mo>+</mo><msub><mi>α</mi><mn>1</mn></msub><mo>ln</mo><msubsup><mi>ϵ</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\ln\sigma_t^2 = \alpha_0 + \alpha_1 \ln\epsilon_{t-1}^2</annotation></semantics></math>
-with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\alpha_0=0</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>α</mi><mn>1</mn></msub><mo>=</mo><mn>0.3</mn></mrow><annotation encoding="application/x-tex">\alpha_1=0.3</annotation></semantics></math>:</p>
+<p>Next, the following code simulates an error-term <span class="math inline">\(\epsilon_t\)</span> that follows the log-ARCH(1)
+specification <span class="math inline">\(\ln\sigma_t^2 = \alpha_0 +
+\alpha_1 \ln\epsilon_{t-1}^2\)</span> with <span class="math inline">\(\alpha_0=0\)</span> and <span class="math inline">\(\alpha_1=0.3\)</span>:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">eps</span> <span class="op">&lt;-</span> <span class="fu">lgarchSim</span><span class="op">(</span><span class="fl">100</span>, arch <span class="op">=</span> <span class="fl">0.3</span>, garch <span class="op">=</span> <span class="fl">0</span><span class="op">)</span></span></code></pre></div>
-<p>By default, the standardized error
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mi>t</mi></msub><annotation encoding="application/x-tex">z_t</annotation></semantics></math>
-is normal, but this can be changed via the <code>innovation</code>
-argument of the <code>lgarchSim</code> function. To combine the log-ARCH
-error with an AR(1) model with
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mn>0</mn></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">\phi_0=0</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>ϕ</mi><mn>1</mn></msub><mo>=</mo><mn>0.4</mn></mrow><annotation encoding="application/x-tex">\phi_1=0.4</annotation></semantics></math>
-the following code can be used:</p>
+<p>By default, the standardized error <span class="math inline">\(z_t\)</span> is normal, but this can be changed
+via the <code>innovation</code> argument of the <code>lgarchSim</code>
+function. To combine the log-ARCH error with an AR(1) model with <span class="math inline">\(\phi_0=0\)</span> and <span class="math inline">\(\phi_1=0.4\)</span> the following code can be
+used:</p>
 <p>yy &lt;- arima.sim(list(ar = 0.4), 100, innov = eps)</p>
 <!--  -->
 <p>The command <code>plot(as.zoo(cbind(y, yy, eps)))</code> plots the
@@ -1355,24 +1220,18 @@ ar1 0.397411 0.095212 4.1740 6.533e-05</p>
 <p>SE of regression 0.90933 R-squared 0.15226 Log-lik.(n=99)
 -130.06490</p>
 <!--  -->
-<p>The two diagnostic tests are of the standardized residuals
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>z</mi><mo accent="true">̂</mo></mover><mi>t</mi></msub><annotation encoding="application/x-tex">\widehat{z}_t</annotation></semantics></math>.
-The AR and ARCH tests are <span class="citation">(<a href="#ref-ljung1978measure">Ljung and Box 1978</a>)</span> tests for
-serial correlation in
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>z</mi><mo accent="true">̂</mo></mover><mi>t</mi></msub><annotation encoding="application/x-tex">\widehat{z}_t</annotation></semantics></math>
-and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mover><mi>z</mi><mo accent="true">̂</mo></mover><mi>t</mi><mn>2</mn></msubsup><annotation encoding="application/x-tex">\widehat{z}_t^2</annotation></semantics></math>,
-respectively, and the number in parentheses indicates at which lag the
-test is conducted. <code>R-squared</code> is that of the mean
-specification, whereas the (Gaussian) log-likelihood is made up of the
-residuals
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>ϵ</mi><mo accent="true">̂</mo></mover><mi>t</mi></msub><annotation encoding="application/x-tex">\widehat{\epsilon}_t</annotation></semantics></math>.
-If no log-variance specification is fitted, then the conditional
-variance in the log-likelihood is constant and equal to the sample
-variance of the residuals. By contrast, if a log-variance specification
-is fitted, then the conditional variance in the log-likelihood is equal
-to the fitted conditional variance, which is given by
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mover><mi>σ</mi><mo accent="true">̂</mo></mover><mi>t</mi><mn>2</mn></msubsup><mo>=</mo><mo>exp</mo><mrow><mo stretchy="true" form="prefix">(</mo><mo>ln</mo><msubsup><mover><mi>σ</mi><mo accent="true">̂</mo></mover><mi>t</mi><mn>2</mn></msubsup><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\widehat{\sigma}_t^2 = \exp(\ln\widehat{\sigma}_t^2)</annotation></semantics></math>.</p>
+<p>The two diagnostic tests are of the standardized residuals <span class="math inline">\(\widehat{z}_t\)</span>. The AR and ARCH tests are
+<span class="citation">(<a href="#ref-ljung1978measure">Ljung and Box
+1978</a>)</span> tests for serial correlation in <span class="math inline">\(\widehat{z}_t\)</span> and <span class="math inline">\(\widehat{z}_t^2\)</span>, respectively, and the
+number in parentheses indicates at which lag the test is conducted.
+<code>R-squared</code> is that of the mean specification, whereas the
+(Gaussian) log-likelihood is made up of the residuals <span class="math inline">\(\widehat{\epsilon}_t\)</span>. If no log-variance
+specification is fitted, then the conditional variance in the
+log-likelihood is constant and equal to the sample variance of the
+residuals. By contrast, if a log-variance specification is fitted, then
+the conditional variance in the log-likelihood is equal to the fitted
+conditional variance, which is given by <span class="math inline">\(\widehat{\sigma}_t^2 =
+\exp(\ln\widehat{\sigma}_t^2)\)</span>.</p>
 <p>The main optional arguments of the <code>arx</code> function when
 estimating the mean are:</p>
 <ul>
@@ -1404,9 +1263,9 @@ object called <code>mod02</code>:</p>
 <p>mod02 &lt;- arx(y, ar = 1:2, mxreg = mX, vcov.type = “white”)</p>
 <p>Estimation of the log-variance specification is also undertaken with
 the <code>arx</code> function. For example, the following code fits the
-log-ARCH(1) specification
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>ln</mo><msubsup><mi>σ</mi><mi>t</mi><mn>2</mn></msubsup><mo>=</mo><msub><mi>α</mi><mn>0</mn></msub><mo>+</mo><msub><mi>α</mi><mn>1</mn></msub><mo>ln</mo><msubsup><mi>ϵ</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\ln\sigma_t^2 = \alpha_0 + \alpha_1 \ln\epsilon_{t-1}^2</annotation></semantics></math>
-to the variable <code>eps</code> generated above:</p>
+log-ARCH(1) specification <span class="math inline">\(\ln\sigma_t^2 =
+\alpha_0 + \alpha_1 \ln\epsilon_{t-1}^2\)</span> to the variable
+<code>eps</code> generated above:</p>
 <p>mod03 &lt;- arx(eps, mc = FALSE, arch = 1)</p>
 <p>Typing <code>mod03</code> prints the estimation results. The main
 optional arguments when estimating the log-variance are:</p>
@@ -1487,11 +1346,11 @@ variable is quarterly Norwegian inflation (year-on-year) in % from
 associated with the second, third and fourth quarter, respectively.
 Initially, to illustrate why a time-varying conditional variance is
 needed, we estimate only the mean specification:</p>
-<p><span class="math display">$$\begin{equation}
+<p><span class="math display">\[\begin{equation}
 \verb|infl|_t = \phi_0 + \sum_{r=1}^4 \phi_r \verb|infl|_{t-r} + \eta_2
 \verb|q2dum|_{t} + \eta_3 \verb|q3dum|_{t} + \eta_4 \verb|q4dum|_{t} +
 \epsilon_t
-\end{equation}$$</span> </p>
+\end{equation}\]</span> </p>
 <p>That is, an AR(4)-X, where the dummies constitute the X-part. The
 code</p>
 <p><code>inflMod01 &lt;- arx(inflData[, "infl"], ar = 1:4, mxreg = inflData[, 2:4], vcov.type = "white")</code></p>
@@ -1515,15 +1374,14 @@ ARCH(1) 5.9665 1 0.014580</p>
 -110.57435</p>
 <p>The diagnostics suggest the standardized residuals are autocorrelated
 and heteroscedastic, since the tests for autocorrelation and
-heteroscedasticity yield
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>~values
+heteroscedasticity yield <span class="math inline">\(p\)</span>~values
 of 0.6% and 1.5%, respectively. Next, we specify the conditional
 variance as a log-ARCH(4)-X, where the X-part is made up of the seasonal
-dummies: <span class="math display">$$\begin{equation}
+dummies: <span class="math display">\[\begin{equation}
 \ln\sigma_t^2 = \alpha_0 + \sum_{p=1}^4 \alpha_p \ln\epsilon_{t-p}^2 +
 \delta_2 \verb|q2dum|_{t} + \delta_3 \verb|q3dum|_{t} + \delta_4
 \verb|q4dum|_{t}.
-\end{equation}$$</span> The code</p>
+\end{equation}\]</span> The code</p>
 <p>inflMod02 &lt;- arx(inflData[, “infl”], ar = 1:4, mxreg = inflData[,
 2:4], arch = 1:4, vxreg = inflData[, 2:4], vcov.type = “white”)</p>
 <p>estimates the full model with <span class="citation">(<a href="#ref-white1980heteroskedasticity">White 1980</a>)</span> standard
@@ -1553,22 +1411,17 @@ arch1 0.16697 0.10352 1.6130 0.110169 arch2 0.12027 0.10335 1.1637
 <p>The first noticeable difference between <code>inflMod01</code> and
 <code>inflMod02</code> is that the diagnostics improve substantially. In
 <code>inflMod02</code>, the AR and ARCH tests of the standardized
-residuals suggest the standardized error
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mi>t</mi></msub><annotation encoding="application/x-tex">z_t</annotation></semantics></math>
-is uncorrelated and homoscedastic at the usual significance levels (1%,
-5% and 10%), and the <span class="citation">(<a href="#ref-JarqueBera1980">Jarque and Bera 1980</a>)</span> test
-suggests
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>z</mi><mi>t</mi></msub><annotation encoding="application/x-tex">z_t</annotation></semantics></math>
+residuals suggest the standardized error <span class="math inline">\(z_t\)</span> is uncorrelated and homoscedastic at
+the usual significance levels (1%, 5% and 10%), and the <span class="citation">(<a href="#ref-JarqueBera1980">Jarque and Bera
+1980</a>)</span> test suggests <span class="math inline">\(z_t\)</span>
 is normal. The second noticeable improvement is in terms of fit, as
 measured by the average (Gaussian) log-likelihood. In
-<code>inflMod01</code> the average log-likelihood is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>110.57435</mn><mi>/</mi><mn>104</mn><mo>=</mo><mo>−</mo><mn>1.06</mn></mrow><annotation encoding="application/x-tex">-110.57435/104= -1.06</annotation></semantics></math>,
-whereas in <code>inflMod02</code> the average log-likelihood is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>82.3289</mn><mi>/</mi><mn>100</mn><mo>=</mo><mo>−</mo><mn>0.82</mn></mrow><annotation encoding="application/x-tex">-82.3289/100= -0.82</annotation></semantics></math>.
-This is a substantial increase. In terms of the <span class="citation">(<a href="#ref-schwarz1978estimating">Schwarz
-1978</a>)</span> information criterion (SC), which favors parsimony, a
-comparison of the average log-likelihoods can be made by the
-<code>info.criterion</code> function:</p>
+<code>inflMod01</code> the average log-likelihood is <span class="math inline">\(-110.57435/104= -1.06\)</span>, whereas in
+<code>inflMod02</code> the average log-likelihood is <span class="math inline">\(-82.3289/100= -0.82\)</span>. This is a
+substantial increase. In terms of the <span class="citation">(<a href="#ref-schwarz1978estimating">Schwarz 1978</a>)</span> information
+criterion (SC), which favors parsimony, a comparison of the average
+log-likelihoods can be made by the <code>info.criterion</code>
+function:</p>
 <p>info.criterion(as.numeric(logLik(inflMod01)), n = 104, k = 8 + 1)
 info.criterion(as.numeric(logLik(inflMod02)), n = 100, k = 8 + 8)</p>
 <p>As is clear, the value falls from 2.53 in <code>inflMod01</code> to
@@ -1587,10 +1440,10 @@ modeling of the mean and variance specifications of
 </h3>
 <p>The most common volatility specification in finance are first order
 GARCH-like specifications. In the log-GARCH class of models, this
-corresponds to a log-GARCH(1, 1):
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>ln</mo><msubsup><mi>σ</mi><mi>t</mi><mn>2</mn></msubsup><mo>=</mo><msub><mi>α</mi><mn>0</mn></msub><mo>+</mo><msub><mi>α</mi><mn>1</mn></msub><mo>ln</mo><msubsup><mi>ϵ</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></msubsup><mo>+</mo><msub><mi>β</mi><mn>1</mn></msub><mo>ln</mo><msubsup><mi>σ</mi><mrow><mi>t</mi><mo>−</mo><mn>1</mn></mrow><mn>2</mn></msubsup></mrow><annotation encoding="application/x-tex">\ln\sigma_t^2 = \alpha_0 + \alpha_1\ln\epsilon_{t-1}^2 + \beta_1\ln\sigma_{t-1}^2</annotation></semantics></math>.
-Here, we show that a log-ARCH-X model that makes use of commonly
-available information provides a better fit.</p>
+corresponds to a log-GARCH(1, 1): <span class="math inline">\(\ln\sigma_t^2 = \alpha_0 +
+\alpha_1\ln\epsilon_{t-1}^2 + \beta_1\ln\sigma_{t-1}^2\)</span>. Here,
+we show that a log-ARCH-X model that makes use of commonly available
+information provides a better fit.</p>
 <p>We start by loading a dataset of the Standard and Poor’s 500 (SP500)
 index:</p>
 <p>data(“sp500data”, package = “gets”) sp500data &lt;- zoo(sp500data[,
@@ -1653,9 +1506,8 @@ loads the package, estimates the model and stores the estimation
 results:</p>
 <p>library(“lgarch”) sp500Mod02 &lt;- lgarch(sp500Ret)</p>
 <p>Extracting the log-likelihood by <code>logLik(sp500Mod02)</code>
-reveals that it is substantially lower, namely
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>11396.11</mn></mrow><annotation encoding="application/x-tex">-11396.11</annotation></semantics></math>.
-To compare the models in terms of the <span class="citation">(<a href="#ref-schwarz1978estimating">Schwarz 1978</a>)</span> information
+reveals that it is substantially lower, namely <span class="math inline">\(-11396.11\)</span>. To compare the models in terms
+of the <span class="citation">(<a href="#ref-schwarz1978estimating">Schwarz 1978</a>)</span> information
 criterion, it is necessary to undertake the comparison in terms of the
 average log-likelihoods, since the estimation samples of the two models
 have a different number of observations:</p>
@@ -1725,9 +1577,7 @@ the final, simplified model.</p>
 arguments):</p>
 <ul>
 <li><p><code>t.pval</code>: numeric value between 0 and 1 (The default
-is 0.05). The significance level used for the two-sided
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>-tests
-of the regressors.</p></li>
+is 0.05). The significance level used for the two-sided <span class="math inline">\(t\)</span>-tests of the regressors.</p></li>
 <li><p><code>wald.pval</code>: numeric value between 0 and 1 (the
 default is <code>t.pval</code>). The significance level used for the
 parsimonious encompassing test (PET) against the general unrestricted
@@ -1741,24 +1591,20 @@ undertaken at each regressor removal.</p></li>
 1978</a>)</span> test for serial correlation in the standardized
 residuals is undertaken at each attempt to remove a regressor. The
 default, <code>list(lag = NULL, pval = 0.025)</code>, means the lag is
-chosen automatically (as <code>max(ar) + 1</code>), and that a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>~value
-of <code>pval = 0.025</code> is used. If the list is <code>NULL</code>,
-then the standardized residuals
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>z</mi><mo accent="true">̂</mo></mover><mi>t</mi></msub><annotation encoding="application/x-tex">\widehat{z}_t</annotation></semantics></math>
-are not checked for serial correlation after each removal.</p></li>
+chosen automatically (as <code>max(ar) + 1</code>), and that a <span class="math inline">\(p\)</span>~value of <code>pval = 0.025</code> is
+used. If the list is <code>NULL</code>, then the standardized residuals
+<span class="math inline">\(\widehat{z}_t\)</span> are not checked for
+serial correlation after each removal.</p></li>
 <li><p><code>arch.LjungB</code>: a list with two elements named
 <code>lag</code> and <code>pval</code>, respectively, or
 <code>NULL</code>. If the list is not <code>NULL</code>, then a <span class="citation">(<a href="#ref-ljung1978measure">Ljung and Box
 1978</a>)</span> test for serial correlation in the squared standardized
 residuals is undertaken at each attempt to remove a regressor. The
 default, <code>list(lag = NULL, pval = 0.025)</code>, means the lag is
-chosen automatically (as <code>max(arch) + 1</code>) and that a
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>p</mi><annotation encoding="application/x-tex">p</annotation></semantics></math>~value
-of <code>pval = 0.025} is used. If the list is</code>NULL`, then the
-squared standardized residuals
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msubsup><mover><mi>z</mi><mo accent="true">̂</mo></mover><mi>t</mi><mn>2</mn></msubsup><annotation encoding="application/x-tex">\widehat{z}_t^2</annotation></semantics></math>
-are not checked for serial correlation after each removal.</p></li>
+chosen automatically (as <code>max(arch) + 1</code>) and that a <span class="math inline">\(p\)</span>~value of
+<code>pval = 0.025} is used. If the list is</code>NULL`, then the
+squared standardized residuals <span class="math inline">\(\widehat{z}_t^2\)</span> are not checked for
+serial correlation after each removal.</p></li>
 <li><p><code>vcov.type</code>: <code>NULL</code>,
 <code>"ordinary"</code>, <code>"white"</code> or
 <code>"newey-west"</code>. If <code>NULL</code> (default), then the type
@@ -1810,18 +1656,17 @@ the log-variance specification of the simplified model
 vxreg = log(mX^2)) getsv06 &lt;- getsv(mod06)</p>
 <p>Typing <code>getsv06</code> prints the results. Note that
 <code>vconst</code>, the log-variance intercept, is forced to enter the
-<code>keep</code> set when <code>getsv</code> is used. That is,
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>α</mi><mn>0</mn></msub><annotation encoding="application/x-tex">\alpha_0</annotation></semantics></math>
-is restricted from removal even if it is not significant. This is due to
-the estimation procedure, which is via the AR-representation. Finally,
-the main optional arguments of <code>getsv</code> are almost the same as
-those of <code>getsm</code> (see above). The main difference is that the
-only variance-covariance matrix available is the ordinary one, since the
-error-term of the AR-specification is iid. As an example of how to set
-some of the options to non-default values, the following code restricts
-the three log-ARCH terms (in addition to the log-variance intercept)
-from removal, and turns off diagnostic testing for serial correlation in
-the standardized residuals:</p>
+<code>keep</code> set when <code>getsv</code> is used. That is, <span class="math inline">\(\alpha_0\)</span> is restricted from removal even
+if it is not significant. This is due to the estimation procedure, which
+is via the AR-representation. Finally, the main optional arguments of
+<code>getsv</code> are almost the same as those of <code>getsm</code>
+(see above). The main difference is that the only variance-covariance
+matrix available is the ordinary one, since the error-term of the
+AR-specification is iid. As an example of how to set some of the options
+to non-default values, the following code restricts the three log-ARCH
+terms (in addition to the log-variance intercept) from removal, and
+turns off diagnostic testing for serial correlation in the standardized
+residuals:</p>
 <p>getsv06b &lt;- getsv(mod06, keep = 1:4, ar.LjungB = NULL)</p>
 </div>
 <div class="section level3">
@@ -1909,10 +1754,9 @@ arch1 0.17438 0.10057 1.7339 0.086217 arch2 0.16822 0.10034 1.6764
 <p>Chi-sq df p-value Ljung-Box AR(5) 8.1224 5 0.1496 Ljung-Box ARCH(5)
 7.7418 5 0.1711</p>
 <p>The results suggest a high impact of the ARCH(1) and ARCH(2) terms –
-much higher than for financial returns,<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;In finance, if
-&lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;msub&gt;&lt;mi&gt;ϵ&lt;/mi&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;/msub&gt;&lt;annotation encoding="application/x-tex"&gt;\epsilon_t&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;
-is a mean-corrected financial return, then the ARCH(1) term is usually
-about 0.05, and almost never higher than 0.1.&lt;/p&gt;'><sup>8</sup></a> and that the
+much higher than for financial returns,<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;In finance, if &lt;span class="math inline"&gt;\(\epsilon_t\)&lt;/span&gt; is a mean-corrected financial
+return, then the ARCH(1) term is usually about 0.05, and almost never
+higher than 0.1.&lt;/p&gt;'><sup>8</sup></a> and that the
 conditional variance depends on quarter. To obtain an idea of the
 economic importance of our results, we re-estimate the full, simplified
 model, and generate out-of-sample forecasts of the conditional standard
@@ -1939,14 +1783,12 @@ via the <code>n.sim</code> argument). The forecasts for 2016(1) to
 <p>In other words, the conditional variance is forecasted to be about
 four times higher in 2016(1) than in 2016(4). This has notable economic
 consequences. For example, if the forecasted inflation in 2016(1) is 2%,
-then an approximate 95% prediction interval computed as
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>±</mo><mn>2</mn><mo>×</mo><msub><mover><mi>σ</mi><mo accent="true">̂</mo></mover><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">2 \pm 2 \times \widehat{\sigma}_{n+1}</annotation></semantics></math>
-is given by the range
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mn>0</mn><annotation encoding="application/x-tex">0</annotation></semantics></math>%
-to 4%, which is large. By contrast, an approximate 95% prediction
-interval for 2016(4) computed as
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>2</mn><mo>±</mo><mn>2</mn><mo>×</mo><msub><mover><mi>σ</mi><mo accent="true">̂</mo></mover><mrow><mi>n</mi><mo>+</mo><mn>4</mn></mrow></msub></mrow><annotation encoding="application/x-tex">2 \pm 2 \times \widehat{\sigma}_{n+4}</annotation></semantics></math>
-is given by the range 1.1% to 2.9%, which is much tighter.</p>
+then an approximate 95% prediction interval computed as <span class="math inline">\(2 \pm 2 \times \widehat{\sigma}_{n+1}\)</span> is
+given by the range <span class="math inline">\(0\)</span>% to 4%, which
+is large. By contrast, an approximate 95% prediction interval for
+2016(4) computed as <span class="math inline">\(2 \pm 2 \times
+\widehat{\sigma}_{n+4}\)</span> is given by the range 1.1% to 2.9%,
+which is much tighter.</p>
 </div>
 <div class="section level3">
 <h3 id="subsec:gets:sp500:example">Example: A parsimonious model of daily SP500 volatility<a class="anchor" aria-label="anchor" href="#subsec:gets:sp500:example"></a>
@@ -1957,8 +1799,7 @@ Simplification of this model is straightforward with the
 <code>getsv</code> function. Since the model does not fully get rid of
 the ARCH in the standardized residuals, we will turn off the ARCH
 diagnostics. Also, for parsimony we will choose a small regressor
-significance level equal to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.1</mn><mi>%</mi></mrow><annotation encoding="application/x-tex">0.1\%</annotation></semantics></math>:</p>
+significance level equal to <span class="math inline">\(0.1\%\)</span>:</p>
 <p>sp500Mod03 &lt;- getsv(sp500Mod01, t.pval = 0.001, arch.LjungB =
 NULL)</p>
 <p>Typing <code>sp500Mod03</code> returns (amongst other):</p>
@@ -1977,10 +1818,10 @@ NULL)</p>
 first ARCH-term is retained. However, three of the log-proxies are
 retained, i.e., the weekly, the monthly and the half-yearly, and both
 the lagged range-based volatility proxy and the lagged log-volume
-difference are retained. The log-likelihood is now
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mo>−</mo><mn>11131.4</mn></mrow><annotation encoding="application/x-tex">-11131.4</annotation></semantics></math>,
-and the following code computes the <span class="citation">(<a href="#ref-schwarz1978estimating">Schwarz 1978</a>)</span> information
-criterion value in terms of the average log-likelihood: %</p>
+difference are retained. The log-likelihood is now <span class="math inline">\(-11131.4\)</span>, and the following code computes
+the <span class="citation">(<a href="#ref-schwarz1978estimating">Schwarz
+1978</a>)</span> information criterion value in terms of the average
+log-likelihood: %</p>
 <p>info.criterion(as.numeric(logLik(sp500Mod03)), n = 8120, k = 7)</p>
 <p>The value is 2.7155, so so the parsimonious model provides a better
 fit (according to sc) compared with the GUM (i.e.,
@@ -2012,57 +1853,48 @@ using the general-to-specific <code>getsm</code> algorithm at a chosen
 level of significance <code>t.pval</code>. This approach to break
 detection imposes no minimum break length, and outliers can be
 identified jointly with structural breaks. The false-detection rate or
-gauge in IS is given by
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">\alpha k</annotation></semantics></math>
-for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
-irrelevant indicators selected over, where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">k=n</annotation></semantics></math>
-for IIS and TIS, and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k=n-1</annotation></semantics></math>
-for SIS if an intercept is forced. Thus, the false-detection rate can
-easily be controlled by reducing
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
-at the cost of reduced power of detecting true shifts and outliers. To
-ensure a low false-detection rate, the rule of thumb of setting
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>=</mo><mo>min</mo><mrow><mo stretchy="true" form="prefix">(</mo><mn>0.05</mn><mo>,</mo><mrow><mo stretchy="true" form="prefix">[</mo><mn>1</mn><mi>/</mi><mi>k</mi><mo stretchy="true" form="postfix">]</mo></mrow><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\alpha=\min(0.05,[1/k])</annotation></semantics></math>
-can be used, which yields one incorrectly retained indicator in
-expectation for large samples, and aims for a false-detection rate below
-5% in small samples. Figure @ref(fig_isat) (and Table
-@ref(tab_isatgauge) in Appendix @ref(sec:simulation-tables)) show the
-false-detection rate in IS using <code>isat</code> in a simple static
-simulation for increasing sample sizes.</p>
-<p>The respective GUMs for a simple model of the mean of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>y</mi><mi>t</mi></msub><annotation encoding="application/x-tex">y_t</annotation></semantics></math>
-using impulse-, step- and trend-indicator saturation<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;Note that specifications of step-functions are possible
+gauge in IS is given by <span class="math inline">\(\alpha k\)</span>
+for <span class="math inline">\(k\)</span> irrelevant indicators
+selected over, where <span class="math inline">\(k=n\)</span> for IIS
+and TIS, and <span class="math inline">\(k=n-1\)</span> for SIS if an
+intercept is forced. Thus, the false-detection rate can easily be
+controlled by reducing <span class="math inline">\(\alpha\)</span> at
+the cost of reduced power of detecting true shifts and outliers. To
+ensure a low false-detection rate, the rule of thumb of setting <span class="math inline">\(\alpha=\min(0.05,[1/k])\)</span> can be used,
+which yields one incorrectly retained indicator in expectation for large
+samples, and aims for a false-detection rate below 5% in small samples.
+Figure @ref(fig_isat) (and Table @ref(tab_isatgauge) in Appendix
+@ref(sec:simulation-tables)) show the false-detection rate in IS using
+<code>isat</code> in a simple static simulation for increasing sample
+sizes.</p>
+<p>The respective GUMs for a simple model of the mean of <span class="math inline">\(y_t\)</span> using impulse-, step- and
+trend-indicator saturation<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;Note that specifications of step-functions are possible
 in SIS. Here we specify the steps as in (@ref(eq_sisgum)), and thus for
 interpretation every additional step is added to the previous ones. In
 contrast, the paper introducing SIS &lt;span class="citation"&gt;(&lt;a href="#ref-castle2015detecting"&gt;Castle et al. 2015&lt;/a&gt;)&lt;/span&gt; works
-with step-indicators of the form
-&lt;math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"&gt;&lt;semantics&gt;&lt;mrow&gt;&lt;msubsup&gt;&lt;mo&gt;∑&lt;/mo&gt;&lt;mrow&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;mo&gt;=&lt;/mo&gt;&lt;mn&gt;2&lt;/mn&gt;&lt;/mrow&gt;&lt;mi&gt;n&lt;/mi&gt;&lt;/msubsup&gt;&lt;msub&gt;&lt;mi&gt;δ&lt;/mi&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;/msub&gt;&lt;msub&gt;&lt;mn&gt;1&lt;/mn&gt;&lt;mrow&gt;&lt;mo stretchy="false" form="prefix"&gt;{&lt;/mo&gt;&lt;mi&gt;t&lt;/mi&gt;&lt;mo&gt;≤&lt;/mo&gt;&lt;mi&gt;j&lt;/mi&gt;&lt;mo stretchy="false" form="postfix"&gt;}&lt;/mo&gt;&lt;/mrow&gt;&lt;/msub&gt;&lt;/mrow&gt;&lt;annotation encoding="application/x-tex"&gt;\sum^{n}_{j=2} \delta_j 1_{\{ t \leq j \}}&lt;/annotation&gt;&lt;/semantics&gt;&lt;/math&gt;,
-in which case the steps have to be subtracted from the previous sum of
-steps to interpret the coefficients.&lt;/p&gt;'><sup>9</sup></a> are given by</p>
-<p>SIS GUM:
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>t</mi></msub><mo>=</mo><mi>μ</mi><mo>+</mo><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>2</mn></mrow><mi>n</mi></msubsup><msub><mi>δ</mi><mi>j</mi></msub><msub><mn>1</mn><mrow><mo stretchy="false" form="prefix">{</mo><mi>t</mi><mo>≥</mo><mi>j</mi><mo stretchy="false" form="postfix">}</mo></mrow></msub><mo>+</mo><msub><mi>u</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">y_t = \mu + \sum^{n}_{j=2} \delta_j 1_{\{ t \geq j \} } + u_t</annotation></semantics></math></p>
-<p>IIS GUM:
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>t</mi></msub><mo>=</mo><mi>μ</mi><mo>+</mo><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><msub><mi>δ</mi><mi>j</mi></msub><msub><mn>1</mn><mrow><mo stretchy="false" form="prefix">{</mo><mi>t</mi><mo>=</mo><mi>j</mi><mo stretchy="false" form="postfix">}</mo></mrow></msub><mo>+</mo><msub><mi>u</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">y_t = \mu + \sum^{n}_{j=1} \delta_j 1_{\{ t = j \} } + u_t</annotation></semantics></math></p>
-<p>TIS GUM:
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mi>y</mi><mi>t</mi></msub><mo>=</mo><mi>μ</mi><mo>+</mo><msubsup><mo>∑</mo><mrow><mi>j</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></msubsup><msub><mi>δ</mi><mi>j</mi></msub><msub><mn>1</mn><mrow><mo stretchy="false" form="prefix">{</mo><mi>t</mi><mo>&gt;</mo><mi>j</mi><mo stretchy="false" form="postfix">}</mo></mrow></msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>t</mi><mo>−</mo><mi>j</mi><mo stretchy="true" form="postfix">)</mo></mrow><mo>+</mo><msub><mi>u</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">y_t = \mu + \sum^{n}_{j=1} \delta_j 1_{\{ t &gt; j \} }(t-j) + u_t</annotation></semantics></math></p>
-<p>where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
-denotes the total number of observations in the sample. Indicators are
-partitioned into blocks based on the values of the
-<code>ratio.threshold</code> and <code>max.block.size</code> arguments
-of the <code>isat</code> function, where the block size used is the
-maximum of given by either criterion. Indicators retained in each block
-are re-combined and selected over to yield terminal models. Additional
-regressors that are not selected over can be included through the
-<code>mxreg</code> argument, where autoregressive terms in particular,
-can be included using the <code>ar</code> argument. Naturally different
-indicators can be combined, by specifying both <code>iis = TRUE</code>
-and <code>sis = TRUE</code> selection takes place over both impulse- as
-well as step-indicators. The different regimes made up of indicators
-(e.g., retained step-functions or impulses) weighted by their estimated
+with step-indicators of the form &lt;span class="math inline"&gt;\(\sum^{n}_{j=2} \delta_j 1_{\{ t \leq j
+\}}\)&lt;/span&gt;, in which case the steps have to be subtracted from the
+previous sum of steps to interpret the coefficients.&lt;/p&gt;'><sup>9</sup></a> are given by</p>
+<p>SIS GUM: <span class="math inline">\(y_t = \mu + \sum^{n}_{j=2}
+\delta_j 1_{\{ t \geq j \} } + u_t\)</span></p>
+<p>IIS GUM: <span class="math inline">\(y_t = \mu + \sum^{n}_{j=1}
+\delta_j 1_{\{ t = j \} } + u_t\)</span></p>
+<p>TIS GUM: <span class="math inline">\(y_t = \mu + \sum^{n}_{j=1}
+\delta_j 1_{\{ t &gt; j \} }(t-j) + u_t\)</span></p>
+<p>where <span class="math inline">\(n\)</span> denotes the total number
+of observations in the sample. Indicators are partitioned into blocks
+based on the values of the <code>ratio.threshold</code> and
+<code>max.block.size</code> arguments of the <code>isat</code> function,
+where the block size used is the maximum of given by either criterion.
+Indicators retained in each block are re-combined and selected over to
+yield terminal models. Additional regressors that are not selected over
+can be included through the <code>mxreg</code> argument, where
+autoregressive terms in particular, can be included using the
+<code>ar</code> argument. Naturally different indicators can be
+combined, by specifying both <code>iis = TRUE</code> and
+<code>sis = TRUE</code> selection takes place over both impulse- as well
+as step-indicators. The different regimes made up of indicators (e.g.,
+retained step-functions or impulses) weighted by their estimated
 coefficients describe shifts in the intercept over time – the
 coefficient path of the intercept. While the detection of shifts in SIS
 is focused on time-series analysis, IIS can be used in cross-sectional
@@ -2072,22 +1904,16 @@ regression models to detect individual outliers (see e.g., ).</p>
 main differences and additional arguments are: %</p>
 <ul>
 <li><p><code>t.pval</code>: numeric value between 0 and 1. The
-significance level
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>
-used for the two-sided
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>t</mi><annotation encoding="application/x-tex">t</annotation></semantics></math>-tests
-of the indicators in selection. The default is lower than in regular
+significance level <span class="math inline">\(\alpha\)</span> used for
+the two-sided <span class="math inline">\(t\)</span>-tests of the
+indicators in selection. The default is lower than in regular
 <code>getsm</code> model selection and set to 0.001 to control the
 number of false positives. Under the null of no outliers (or structural
 breaks), the irrelevance proportion or gauge (or proportion of
-spuriously retained indicators) is equal to
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">\alpha k</annotation></semantics></math>
-where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
-is the number of indicators selected over. Thus setting
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>α</mi><mo>≈</mo><mn>1</mn><mi>/</mi><mi>k</mi></mrow><annotation encoding="application/x-tex">\alpha \approx 1/k</annotation></semantics></math>
-yields one spuriously retained indicator on average under the
-null.</p></li>
+spuriously retained indicators) is equal to <span class="math inline">\(\alpha k\)</span> where <span class="math inline">\(k\)</span> is the number of indicators selected
+over. Thus setting <span class="math inline">\(\alpha \approx
+1/k\)</span> yields one spuriously retained indicator on average under
+the null.</p></li>
 <li><p><code>iis</code>: logical, <code>TRUE</code> or
 <code>FALSE</code>. If <code>TRUE</code>, then a full set of impulse
 indicators is added and selected over.</p></li>
@@ -2116,33 +1942,22 @@ the number of blocks of indicators to be searched over is
 large.</p></li>
 </ul>
 <div class="section level3">
-<h3 id="example-structural-breaks-in-the-growth-rate-of-uk-so_2-emissions">Example: Structural breaks in the growth rate of UK
-SO<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi></mi><mn>2</mn></msub><annotation encoding="application/x-tex">_2</annotation></semantics></math>
-emissions<a class="anchor" aria-label="anchor" href="#example-structural-breaks-in-the-growth-rate-of-uk-so_2-emissions"></a>
+<h3 id="example-structural-breaks-in-the-growth-rate-of-uk-so_2-emissions">Example: Structural breaks in the growth rate of UK SO<span class="math inline">\(_2\)</span> emissions<a class="anchor" aria-label="anchor" href="#example-structural-breaks-in-the-growth-rate-of-uk-so_2-emissions"></a>
 </h3>
-<p>Annual emissions of the pollutant sulphur dioxide
-(SO<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi></mi><mn>2</mn></msub><annotation encoding="application/x-tex">_2</annotation></semantics></math>)
-in the UK have declined in the latter half of the 20th century due to
-policy interventions and changes in energy production. Here we assess
-whether there have been significant shifts in the growth rate
-(<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>Δ</mi><mo>log</mo><msub><mrow><mo stretchy="true" form="prefix">(</mo><mi>S</mi><msub><mi>O</mi><mn>2</mn></msub><mo stretchy="true" form="postfix">)</mo></mrow><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">\Delta \log(SO_2)_t</annotation></semantics></math>)
-of sulphur dioxide emissions between 1946 and 2005, using SIS and the
-emission time series compiled by <span class="citation">(<a href="#ref-smith2011anthropogenic">Smith et al. 2011</a>)</span>.
-Setting <code>t.pval</code> to 0.01 yields an approximate gauge of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.01</mn><mi>k</mi></mrow><annotation encoding="application/x-tex">0.01k</annotation></semantics></math>
-under the null hypothesis of no shifts for
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>k</mi><annotation encoding="application/x-tex">k</annotation></semantics></math>
-spuriously included variables. Inclusion of a full set of indicators
-implies that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi>n</mi></mrow><annotation encoding="application/x-tex">k=n</annotation></semantics></math>
-for IIS, and
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><mi>n</mi><mo>−</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k=n-1</annotation></semantics></math>
-for SIS, and thus
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mn>0.01</mn><mrow><mo stretchy="true" form="prefix">(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo stretchy="true" form="postfix">)</mo></mrow><mo>=</mo><mn>0.01</mn><mo>×</mo><mn>59</mn></mrow><annotation encoding="application/x-tex">0.01(n-1) = 0.01 \times 59</annotation></semantics></math>.
-This suggests less than one indicator being retained spuriously on
-average in a well-specified model under the null of no shifts or
-outliers. Estimating an <code>isat</code> model using SIS
-(<code>sis = TRUE</code> is default): %</p>
+<p>Annual emissions of the pollutant sulphur dioxide (SO<span class="math inline">\(_2\)</span>) in the UK have declined in the latter
+half of the 20th century due to policy interventions and changes in
+energy production. Here we assess whether there have been significant
+shifts in the growth rate (<span class="math inline">\(\Delta
+\log(SO_2)_t\)</span>) of sulphur dioxide emissions between 1946 and
+2005, using SIS and the emission time series compiled by <span class="citation">(<a href="#ref-smith2011anthropogenic">Smith et al.
+2011</a>)</span>. Setting <code>t.pval</code> to 0.01 yields an
+approximate gauge of <span class="math inline">\(0.01k\)</span> under
+the null hypothesis of no shifts for <span class="math inline">\(k\)</span> spuriously included variables.
+Inclusion of a full set of indicators implies that <span class="math inline">\(k=n\)</span> for IIS, and <span class="math inline">\(k=n-1\)</span> for SIS, and thus <span class="math inline">\(0.01(n-1) = 0.01 \times 59\)</span>. This suggests
+less than one indicator being retained spuriously on average in a
+well-specified model under the null of no shifts or outliers. Estimating
+an <code>isat</code> model using SIS (<code>sis = TRUE</code> is
+default): %</p>
 <p>options(plot = TRUE) so2 &lt;- data(“so2data”, package = “gets”) yso2
 &lt;- zoo(so2data[, “DLuk_tot_so2”], order.by = so2data[, “year”]) (sis
 &lt;- isat(yso2, t.pval = 0.01))</p>
@@ -2225,12 +2040,11 @@ approximate variance. %</p>
 variance as observations are ``dummied out’’ resulting in a truncation
 of the distribution of the error terms. The magnitude of this effect
 depends on the level of significance of selection and is generally small
-for low values of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>α</mi><annotation encoding="application/x-tex">\alpha</annotation></semantics></math>.
-This effect manifests itself in an under-estimation of the error
-variance, and an under-estimation of the variance of regressors not
-selected over. Both can be corrected when using IIS through consistency
-and efficiency correction factors derived in <span class="citation">(<a href="#ref-johansen2016asymptotic">Johansen and Nielsen
+for low values of <span class="math inline">\(\alpha\)</span>. This
+effect manifests itself in an under-estimation of the error variance,
+and an under-estimation of the variance of regressors not selected over.
+Both can be corrected when using IIS through consistency and efficiency
+correction factors derived in <span class="citation">(<a href="#ref-johansen2016asymptotic">Johansen and Nielsen
 2016</a>)</span>. These correction factors are implemented in
 <strong>gets</strong> as functions <code>isvarcor</code> which corrects
 the estimated error variance, and <code>isvareffcor</code> for an
@@ -2239,10 +2053,9 @@ correction factors can be applied manually to estimation results, or
 specified as arguments (<code>conscorr = TRUE</code> and
 <code>effcorr = TRUE</code>) within the <code>isatvar</code> function.
 This is demonstrated below running IIS on an autoregressive model with
-one lag (<code>ar = 1</code>) on the growth rate of
-SO<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi></mi><mn>2</mn></msub><annotation encoding="application/x-tex">_2</annotation></semantics></math>
-emissions. The estimated variance of the coefficient path is higher once
-consistency and efficiency corrections are applied: %</p>
+one lag (<code>ar = 1</code>) on the growth rate of SO<span class="math inline">\(_2\)</span> emissions. The estimated variance of
+the coefficient path is higher once consistency and efficiency
+corrections are applied: %</p>
 <p>iis &lt;- isat(yso2, ar = 1, sis = FALSE, iis = TRUE, t.pval = 0.05)
 isatvar(iis, conscorr = TRUE, effcorr = TRUE)</p>
 <p>coef.path const.path const.var const.se 1947 0.00000000 -0.006210179
@@ -2261,9 +2074,8 @@ orthogonal variables can be conducted using the method proposed in <span class="
 bias-correction of the coefficients in a SIS model can be directly
 applied to the coefficient path without prior orthogonalization.
 Bias-correcting the coefficient path of the above model of the growth
-rate of
-SO<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi></mi><mn>2</mn></msub><annotation encoding="application/x-tex">_2</annotation></semantics></math>
-yields the one- and two-step bias-corrected coefficients: %</p>
+rate of SO<span class="math inline">\(_2\)</span> yields the one- and
+two-step bias-corrected coefficients: %</p>
 <p>bcorr &lt;- biascorr(b = sisvar[, “const.path”], b.se = sisvar[,
 “const.se”], p.alpha = 0.01, T = length(sisvar[, “const.path”]))</p>
 <p>beta beta.1step beta.2step … 1997 -0.14560000 -0.14560000 -0.14560000
@@ -2303,8 +2115,7 @@ for a non-dynamic (no auto-regressive terms) test without additional
 covariates.</p></li>
 </ul>
 <p>Here we test the time-varying mean (as determined using SIS) of the
-annual growth rate of UK
-SO<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi></mi><mn>2</mn></msub><annotation encoding="application/x-tex">_2</annotation></semantics></math>
+annual growth rate of UK SO<span class="math inline">\(_2\)</span>
 emissions against the null hypothesis of zero-growth using
 <code>isattest</code>: %</p>
 <p>isattest(sis, hnull = 0, lr = FALSE, ci.pval = 0.99, plot.turn =
@@ -2335,21 +2146,18 @@ saturation is <strong>Autometrics</strong>. IIS and SIS are available in
 both <strong>Autometrics</strong> and <strong>gets</strong>, however, a
 crucial difference within SIS is the construction and subsequent
 interpretation of step-indicators. In <strong>gets</strong> steps are
-constructed as forward-steps: <span class="math inline">${\bf S} =
-\left( 1_{\{t \geq j\}}, j=1,...,n\right)$</span>, where
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mn>1</mn><mrow><mo stretchy="false" form="prefix">{</mo><mi>t</mi><mo>≥</mo><mi>j</mi><mo stretchy="false" form="postfix">}</mo></mrow></msub><annotation encoding="application/x-tex">1_{\{t \geq j \}}</annotation></semantics></math>
-denotes the indicator function such that
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msub><mn>1</mn><mrow><mo stretchy="false" form="prefix">{</mo><mi>t</mi><mo>≥</mo><mi>j</mi><mo stretchy="false" form="postfix">}</mo></mrow></msub><mo>=</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">1_{ \{t \geq j\}}=1</annotation></semantics></math>
-for observations from
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>j</mi><annotation encoding="application/x-tex">j</annotation></semantics></math>
-onwards, and zero otherwise. Thus the signs of the coefficients in the
-retained regression model in <strong>gets</strong> correspond to the
-direction of the step: positive (negative) coefficients imply an upward
-(downward) step, and the coefficient path begins with the regression
-intercept where for each subsequent regime the coefficient on the step
-indicator is added to the full sample intercept.
-<strong>Autometrics</strong> relies on backward-steps: <span class="math inline">${\bf S} = \left( 1_{\{t \leq j\}},
-j=1,...,n\right)$</span> and thus step-coefficients have to be
+constructed as forward-steps: <span class="math inline">\({\bf S} =
+\left( 1_{\{t \geq j\}}, j=1,...,n\right)\)</span>, where <span class="math inline">\(1_{\{t \geq j \}}\)</span> denotes the indicator
+function such that <span class="math inline">\(1_{ \{t \geq
+j\}}=1\)</span> for observations from <span class="math inline">\(j\)</span> onwards, and zero otherwise. Thus the
+signs of the coefficients in the retained regression model in
+<strong>gets</strong> correspond to the direction of the step: positive
+(negative) coefficients imply an upward (downward) step, and the
+coefficient path begins with the regression intercept where for each
+subsequent regime the coefficient on the step indicator is added to the
+full sample intercept. <strong>Autometrics</strong> relies on
+backward-steps: <span class="math inline">\({\bf S} = \left( 1_{\{t \leq
+j\}}, j=1,...,n\right)\)</span> and thus step-coefficients have to be
 interpreted as opposite-signed relative to the reported regression
 coefficients. <strong>Autometrics</strong> currently has no
 implementation of the computation of the coefficient path and its
@@ -2396,18 +2204,16 @@ in regression coefficients on random variables can be detected in
 <code>uis</code> argument by interacting a full set of step-indicators
 with the random variable. This, however, is computationally expensive as
 each additional variable whose coefficient is allowed to break over time
-adds a set of
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>n</mi><annotation encoding="application/x-tex">n</annotation></semantics></math>
-variables to be selected over the GUM. The function
-<code>breakpoints</code> in <strong>strucchange</strong> estimates a
-pure structural change model where all coefficients change,
-<code>isat</code> in <strong>gets</strong> is a partial model where the
-coefficients on variables included through <code>mxreg</code> are not
-allowed to break, and only breaks in the mean (or specified coefficients
-through inclusion in <code>uis</code>) are permitted – making it
-possible to pre-specify constancy. A partial structural change model
-using the Bai and Perron least-squares approach can be estimated using
-available code.<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;Available online at &lt;a href="http://people.bu.edu/perron/code.html" class="external-link uri"&gt;http://people.bu.edu/perron/code.html&lt;/a&gt;.&lt;/p&gt;'><sup>10</sup></a></p>
+adds a set of <span class="math inline">\(n\)</span> variables to be
+selected over the GUM. The function <code>breakpoints</code> in
+<strong>strucchange</strong> estimates a pure structural change model
+where all coefficients change, <code>isat</code> in
+<strong>gets</strong> is a partial model where the coefficients on
+variables included through <code>mxreg</code> are not allowed to break,
+and only breaks in the mean (or specified coefficients through inclusion
+in <code>uis</code>) are permitted – making it possible to pre-specify
+constancy. A partial structural change model using the Bai and Perron
+least-squares approach can be estimated using available code.<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content='&lt;p&gt;Available online at &lt;a href="http://people.bu.edu/perron/code.html" class="external-link uri"&gt;http://people.bu.edu/perron/code.html&lt;/a&gt;.&lt;/p&gt;'><sup>10</sup></a></p>
 <p>Relative to <strong>changepoint</strong> , <code>isat</code> in
 <strong>gets</strong> is focused on regression modeling and structural
 breaks in the intercept of regression models jointly with outlier
@@ -2675,50 +2481,34 @@ Infrastructure for Regular and Irregular Time Series.”</span>
 </h2>
 <p>Table @ref(table:list 1 of experiments) contains the list of
 experiments. The design of the experiments HP1, HP2’ and HP7’ are based
-on , and make use of their data
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msubsup><mi>x</mi><mrow><mn>1</mn><mi>t</mi></mrow><mtext mathvariant="normal">HP</mtext></msubsup><mo>,</mo><mi>.</mi><mi>.</mi><mi>.</mi><mo>,</mo><msubsup><mi>x</mi><mrow><mn>36</mn><mi>t</mi></mrow><mtext mathvariant="normal">HP</mtext></msubsup></mrow><annotation encoding="application/x-tex">x_{1t}^{\text{HP}},...,x_{36t}^{\text{HP}}</annotation></semantics></math>.
+on , and make use of their data <span class="math inline">\(x_{1t}^{\text{HP}},...,x_{36t}^{\text{HP}}\)</span>.
 It should be noted that there are two typos in their Table 3. The value
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msqrt><mrow><mo stretchy="true" form="prefix">(</mo><mn>7</mn><mi>/</mi><mn>4</mn><mo stretchy="true" form="postfix">)</mo></mrow></msqrt><annotation encoding="application/x-tex">\sqrt{(7/4)}</annotation></semantics></math>
-should instead be
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><msqrt><mn>7</mn></msqrt><mi>/</mi><mn>4</mn></mrow><annotation encoding="application/x-tex">\sqrt{7}/4</annotation></semantics></math>
-in the model of the autoregressive error, and the value 6.73 should
-instead be 6.44 in model 7’, see also . The number of relevant variables
-in the GUM is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><annotation encoding="application/x-tex">k_{\text{rel}}</annotation></semantics></math>,
-the number of irrelevant variables in the GUM is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><annotation encoding="application/x-tex">k_{\text{irr}}</annotation></semantics></math>
-and the total number of variables (the constant included) in the GUM is
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>k</mi><mo>=</mo><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><mo>+</mo><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><mo>+</mo><mn>1</mn></mrow><annotation encoding="application/x-tex">k = k_{\text{rel}} + k_{\text{irr}} + 1</annotation></semantics></math>.
+<span class="math inline">\(\sqrt{(7/4)}\)</span> should instead be
+<span class="math inline">\(\sqrt{7}/4\)</span> in the model of the
+autoregressive error, and the value 6.73 should instead be 6.44 in model
+7’, see also . The number of relevant variables in the GUM is <span class="math inline">\(k_{\text{rel}}\)</span>, the number of irrelevant
+variables in the GUM is <span class="math inline">\(k_{\text{irr}}\)</span> and the total number of
+variables (the constant included) in the GUM is <span class="math inline">\(k = k_{\text{rel}} + k_{\text{irr}} + 1\)</span>.
 Nominal regressor significance level used is 5%, and 1000 replications.
-The term
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">rel</mtext></msub><mi>/</mi><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">m(\hat{k}_{\text{rel}}/k_{\text{rel}})</annotation></semantics></math>
-is the average proportion of relevant variables
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">rel</mtext></msub><annotation encoding="application/x-tex">\hat{k}_{\text{rel}}</annotation></semantics></math>
-retained relative to the actual number of relevant variables
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mtext mathvariant="normal">rel</mtext></msub><annotation encoding="application/x-tex">k_{\text{rel}}</annotation></semantics></math>
-in the DGP. The term
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>m</mi><mrow><mo stretchy="true" form="prefix">(</mo><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">irr</mtext></msub><mi>/</mi><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">m(\hat{k}_{\text{irr}}/k_{\text{irr}})</annotation></semantics></math>
-denotes the average proportion of irrelevant variables
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">irr</mtext></msub><annotation encoding="application/x-tex">\hat{k}_{\text{irr}}</annotation></semantics></math>
-retained relative to the actual number of irrelevant variables
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mi>k</mi><mtext mathvariant="normal">irr</mtext></msub><annotation encoding="application/x-tex">k_{\text{irr}}</annotation></semantics></math>
-in the GUM. The estimate
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msub><mover><mi>k</mi><mo accent="true">̂</mo></mover><mtext mathvariant="normal">irr</mtext></msub><annotation encoding="application/x-tex">\hat{k}_{\text{irr}}</annotation></semantics></math>
-includes both significant and insignificant retained irrelevant
-variables (this is in line with , and , but counter to HP which only
-includes significant irrelevant variables in the estimate).
-<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mover><mi>p</mi><mo accent="true">̂</mo></mover><mrow><mo stretchy="true" form="prefix">(</mo><mtext mathvariant="normal">DGP</mtext><mo stretchy="true" form="postfix">)</mo></mrow></mrow><annotation encoding="application/x-tex">\hat{p}(\text{DGP})</annotation></semantics></math>
-is the proportion of times the DGP is found exactly. The properties of
-the HP algorithm are from . The properties of the
-<strong>PcGets</strong> algorithm are from , and the properties of the
-Autometrics algorithm are from . For <strong>AutoSEARCH</strong>, a
-constant is included in all the regressions but ignored in the
-evaluation of successes and failures (this is in line with but counter
-to , and ), in the diagnostic checks both the AR and ARCH test of the
-standardized residuals were undertaken at lag 2 using a significance
-level of 2.5% for each, and as tiebreaker the Schwarz information
-criterion is used with a Gaussian log-likelihood made up of the
-standardized residuals of the mean specification.</p>
+The term <span class="math inline">\(m(\hat{k}_{\text{rel}}/k_{\text{rel}})\)</span> is
+the average proportion of relevant variables <span class="math inline">\(\hat{k}_{\text{rel}}\)</span> retained relative to
+the actual number of relevant variables <span class="math inline">\(k_{\text{rel}}\)</span> in the DGP. The term <span class="math inline">\(m(\hat{k}_{\text{irr}}/k_{\text{irr}})\)</span>
+denotes the average proportion of irrelevant variables <span class="math inline">\(\hat{k}_{\text{irr}}\)</span> retained relative to
+the actual number of irrelevant variables <span class="math inline">\(k_{\text{irr}}\)</span> in the GUM. The estimate
+<span class="math inline">\(\hat{k}_{\text{irr}}\)</span> includes both
+significant and insignificant retained irrelevant variables (this is in
+line with , and , but counter to HP which only includes significant
+irrelevant variables in the estimate). <span class="math inline">\(\hat{p}(\text{DGP})\)</span> is the proportion of
+times the DGP is found exactly. The properties of the HP algorithm are
+from . The properties of the <strong>PcGets</strong> algorithm are from
+, and the properties of the Autometrics algorithm are from . For
+<strong>AutoSEARCH</strong>, a constant is included in all the
+regressions but ignored in the evaluation of successes and failures
+(this is in line with but counter to , and ), in the diagnostic checks
+both the AR and ARCH test of the standardized residuals were undertaken
+at lag 2 using a significance level of 2.5% for each, and as tiebreaker
+the Schwarz information criterion is used with a Gaussian log-likelihood
+made up of the standardized residuals of the mean specification.</p>
 </div>
 <div class="section level2">
 <h2 id="sec:simulation-tables">Simulation tables<a class="anchor" aria-label="anchor" href="#sec:simulation-tables"></a>
