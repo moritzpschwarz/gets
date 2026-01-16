@@ -9,6 +9,8 @@ output:
     number_sections: true
 bibliography: bib-introduction.bib
 link-citations: yes
+pkgdown:
+  as_is: true
 vignette: >
   \VignetteIndexEntry{An Introduction to the gets package}
   \VignetteDepends{gets}
@@ -46,7 +48,7 @@ This version: `r Sys.Date()`
 
 Original version: 3 September 2018
 
-Modified for Online Display by [Moritz Schwarz](https://www.moritzpschwarz.org)
+Modified for Online Display by [Moritz Schwarz](www.moritzpschwarz.org)
 
 <!-- table of contents -->
 
@@ -91,18 +93,16 @@ This paper provides an overview of the **gets** package. The main model class un
 
 It is convenient to provide an overview of GETS modeling in terms of the linear regression model 
 
-<!-- \begin{equation} -->
-<!--   y_{t} = \beta_1 x_{1t} + \cdots + \beta_k x_{kt} + u_{t}, \qquad t=1,2,..., n  -->
-<!--   (\#eq:linearregressionmodel) -->
-<!-- \end{equation} -->
+\begin{equation}
+
+y_{t} = \beta_1 x_{1t} + \cdots + \beta_k x_{kt} + u_{t}, \qquad t=1,2,..., n 
+
+  (\#eq:linear-regression-model)
+
+\end{equation}
 
 
-$$
-  y_{t} = \beta_1 x_{1t} + \cdots + \beta_k x_{kt} + u_{t}, \qquad t=1,2,..., n 
-$$ {#eq-linear-regression-model}
-
-
-where $y_t$ is the dependent variable, the $\beta$'s are slope coefficients, the $x$'s are the regressors and $u_t$ is a zero mean error term. GETS modeling assumes there exists at least one "local" data generating process (LDGP) nested in \@ref(#eq-linear-regression-model). By philosophical assumption the DGP is not contained in the simple model above, see [@sucarrat2010econometric] and \citet[][Sections 6.2--6.3]{HendryDoornik2014}. The qualifier\`local'' thus means it is assumed that there exists a specification within \@ref(eq:linear-regression-model) that is a statistically valid representation of the DGP. Henceforth, for notational and theoretical convenience, we will assume there exists only a single LDGP, but this is not a necessary condition.
+where $y_t$ is the dependent variable, the $\beta$'s are slope coefficients, the $x$'s are the regressors and $u_t$ is a zero mean error term. GETS modeling assumes there exists at least one "local" data generating process (LDGP) nested in \@ref(eq:linear-regression-model). By philosophical assumption the DGP is not contained in the simple model above, see [@sucarrat2010econometric] and \citet[][Sections 6.2--6.3]{HendryDoornik2014}. The qualifier\`local'' thus means it is assumed that there exists a specification within \@ref(eq:linear-regression-model) that is a statistically valid representation of the DGP. Henceforth, for notational and theoretical convenience, we will assume there exists only a single LDGP, but this is not a necessary condition.
 
 A variable $x_{jt}$, $j\in \{1,...,k\}$, is said to be relevant if $\beta_j \neq 0$ and irrelevant if $\beta_j = 0$. Let $k_{\text{rel}} \geq 0$ and $k_{\text{irr}} \geq 0$ denote the number of relevant and irrelevant variables, respectively, such that $k_{\text{rel}} + k_{\text{irr}} = k$. Of course, both $k_{\text{rel}}$ and $k_{\text{irr}}$ are unknown to the investigator. GETS modeling aims at finding a specification that contains as many relevant variables as possible, and a proportion of irrelevant variables that corresponds to the significance level $\alpha$ chosen by the investigator. Put differently, if $\widehat{k}_{\text{rel}}$ and $\widehat{k}_{\text{irr}}$ are the retained number of relevant and irrelevant variables, respectively, then GETS modeling aims at satisfying
 
