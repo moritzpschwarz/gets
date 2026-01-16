@@ -128,7 +128,7 @@ plot(mymod)
 
 print(mymod)
 #> 
-#> Date: Fri Jan 16 14:36:51 2026 
+#> Date: Fri Jan 16 14:55:47 2026 
 #> Dependent var.: y 
 #> Method: Maximum Likelihood (logit) 
 #> Variance-Covariance: Ordinary 
@@ -172,7 +172,7 @@ summary(mymod)
 #> fit             99    zoo    numeric  
 #> vcov             4    -none- numeric  
 toLatex(mymod)
-#> % Date: Fri Jan 16 14:36:51 2026 
+#> % Date: Fri Jan 16 14:55:47 2026 
 #> % LaTeX code generated in R 4.5.2 by the gets package
 #> % Note: The {eqnarray} environment requires the {amsmath} package
 #> \begin{eqnarray}

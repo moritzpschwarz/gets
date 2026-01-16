@@ -248,7 +248,7 @@ y <- arima.sim(list(ar=0.4), 70)
 ##estimate an AR(2) with intercept:
 arx(y, mc=TRUE, ar=1:2)
 #> 
-#> Date: Fri Jan 16 14:36:45 2026 
+#> Date: Fri Jan 16 14:55:21 2026 
 #> Dependent var.: y 
 #> Method: Ordinary Least Squares (OLS) 
 #> Variance-Covariance: Ordinary 
@@ -281,7 +281,7 @@ xregs <- matrix(rnorm(4*70), 70, 4)
 ##regressors in the mean:
 arx(y, ar=1:2, mxreg=xregs)
 #> 
-#> Date: Fri Jan 16 14:36:45 2026 
+#> Date: Fri Jan 16 14:55:21 2026 
 #> Dependent var.: y 
 #> Method: Ordinary Least Squares (OLS) 
 #> Variance-Covariance: Ordinary 
@@ -315,7 +315,7 @@ arx(y, ar=1:2, mxreg=xregs)
 ##structure:
 arx(y, mc=FALSE, arch=1:4)
 #> 
-#> Date: Fri Jan 16 14:36:45 2026 
+#> Date: Fri Jan 16 14:55:21 2026 
 #> Dependent var.: y 
 #> Method: Ordinary Least Squares (OLS) 
 #> Sample: 1 to 70 
@@ -345,7 +345,7 @@ arx(y, mc=FALSE, arch=1:4)
 ##structure and an asymmetry/leverage term:
 arx(y, mc=FALSE, arch=1:4, asym=1)
 #> 
-#> Date: Fri Jan 16 14:36:45 2026 
+#> Date: Fri Jan 16 14:55:21 2026 
 #> Dependent var.: y 
 #> Method: Ordinary Least Squares (OLS) 
 #> Sample: 1 to 70 
@@ -381,7 +381,7 @@ arx(y, mc=FALSE, arch=1:4, asym=1)
 arx(y, mc=FALSE,
   arch=1:4, asym=1, log.ewma=list(length=10), vxreg=log(xregs^2))
 #> 
-#> Date: Fri Jan 16 14:36:45 2026 
+#> Date: Fri Jan 16 14:55:21 2026 
 #> Dependent var.: y 
 #> Method: Ordinary Least Squares (OLS) 
 #> Sample: 1 to 70 
@@ -421,7 +421,7 @@ arx(y, mc=FALSE,
 arx(y, ar=1:2, mxreg=xregs,
   arch=1:4, asym=1, log.ewma=list(length=10), vxreg=log(xregs^2))
 #> 
-#> Date: Fri Jan 16 14:36:45 2026 
+#> Date: Fri Jan 16 14:55:21 2026 
 #> Dependent var.: y 
 #> Method: Ordinary Least Squares (OLS) 
 #> Variance-Covariance: Ordinary 

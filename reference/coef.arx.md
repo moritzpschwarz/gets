@@ -160,7 +160,7 @@ mymod <- arx(y, mc=TRUE, ar=1:2, mxreg=xregs, arch=1:3)
 ##print results:
 print(mymod)
 #> 
-#> Date: Fri Jan 16 14:36:48 2026 
+#> Date: Fri Jan 16 14:55:44 2026 
 #> Dependent var.: y 
 #> Method: Ordinary Least Squares (OLS) 
 #> Variance-Covariance: Ordinary 

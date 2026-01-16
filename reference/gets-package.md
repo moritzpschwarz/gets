@@ -225,7 +225,7 @@ simpleVar <- getsv(myModel)
 ##results:
 print(simpleMean)
 #> 
-#> Date: Fri Jan 16 14:36:53 2026 
+#> Date: Fri Jan 16 14:55:49 2026 
 #> Dependent var.: y 
 #> Method: Ordinary Least Squares (OLS) 
 #> Variance-Covariance: Ordinary 
@@ -259,7 +259,7 @@ print(simpleMean)
 #> Log-lik.(n=54)   -66.75816
 print(simpleVar)
 #> 
-#> Date: Fri Jan 16 14:36:53 2026 
+#> Date: Fri Jan 16 14:55:49 2026 
 #> Method: Ordinary Least Squares (OLS) 
 #> No. of observations (variance eq.): 54 
 #> Sample: 7 to 60 
@@ -327,7 +327,7 @@ isat(y)
 #> 
 #> GETS of union of ALL retained variables...
 #> 
-#> Date: Fri Jan 16 14:36:53 2026 
+#> Date: Fri Jan 16 14:55:49 2026 
 #> Dependent var.: y 
 #> Method: Ordinary Least Squares (OLS)
 #> Variance-Covariance: Ordinary 

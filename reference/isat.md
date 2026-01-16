@@ -480,7 +480,7 @@ isat(Nile, sis=TRUE, iis=FALSE, plot=TRUE, t.pval=0.005)
 #> GETS of union of ALL retained variables...
 
 #> 
-#> Date: Fri Jan 16 14:36:57 2026 
+#> Date: Fri Jan 16 14:55:53 2026 
 #> Dependent var.: y 
 #> Method: Ordinary Least Squares (OLS)
 #> Variance-Covariance: Ordinary 

@@ -326,7 +326,7 @@ varmod <- getsv(mymod)
 ##print results:
 print(meanmod)
 #> 
-#> Date: Fri Jan 16 14:36:49 2026 
+#> Date: Fri Jan 16 14:55:45 2026 
 #> Dependent var.: y 
 #> Method: Ordinary Least Squares (OLS) 
 #> Variance-Covariance: Ordinary 
@@ -359,7 +359,7 @@ print(meanmod)
 #> Log-lik.(n=95)   -125.89303
 print(varmod)
 #> 
-#> Date: Fri Jan 16 14:36:49 2026 
+#> Date: Fri Jan 16 14:55:45 2026 
 #> Method: Ordinary Least Squares (OLS) 
 #> No. of observations (variance eq.): 95 
 #> Sample: 6 to 100 

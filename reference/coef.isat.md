@@ -259,7 +259,7 @@ isatmod <- isat(y)
 ##print results:
 print(isatmod)
 #> 
-#> Date: Fri Jan 16 14:36:50 2026 
+#> Date: Fri Jan 16 14:55:46 2026 
 #> Dependent var.: y 
 #> Method: Ordinary Least Squares (OLS)
 #> Variance-Covariance: Ordinary 

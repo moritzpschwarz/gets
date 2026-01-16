@@ -158,7 +158,7 @@ gets(mymod)
 #> 9 
 #> 10 
 #> 
-#> Date: Fri Jan 16 14:36:54 2026 
+#> Date: Fri Jan 16 14:55:50 2026 
 #> Dependent var.: y 
 #> Method: Maximum Likelihood (logit) 
 #> Variance-Covariance: Ordinary 

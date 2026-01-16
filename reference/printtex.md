@@ -122,7 +122,7 @@ mymod <- arx(y, ar=1:3, mxreg=mX)
 
 ##print latex code of estimation result:
 printtex(mymod)
-#> % Date: Fri Jan 16 14:37:06 2026 
+#> % Date: Fri Jan 16 14:56:02 2026 
 #> % LaTeX code generated in R 4.5.2 by the gets package
 #> % Note: The {eqnarray} environment requires the {amsmath} package
 #> \begin{eqnarray}
@@ -138,7 +138,7 @@ mymod <- arx(y, mc=FALSE, mxreg=mX)
 
 ##set intercept location to 3:
 printtex(mymod, intercept=3)
-#> % Date: Fri Jan 16 14:37:06 2026 
+#> % Date: Fri Jan 16 14:56:02 2026 
 #> % LaTeX code generated in R 4.5.2 by the gets package
 #> % Note: The {eqnarray} environment requires the {amsmath} package
 #> \begin{eqnarray}

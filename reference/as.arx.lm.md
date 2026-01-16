@@ -49,7 +49,7 @@ x <- matrix(rnorm(30*10), 30, 10) #create matrix of Xs
 mymodel <- lm(y ~ x)
 as.arx(mymodel)
 #> 
-#> Date: Fri Jan 16 14:36:47 2026 
+#> Date: Fri Jan 16 14:55:43 2026 
 #> Dependent var.: y 
 #> Method: Ordinary Least Squares (OLS) 
 #> Variance-Covariance: Ordinary 
@@ -86,7 +86,7 @@ as.arx(mymodel)
 ##use hetero-robust vcov:
 as.arx(mymodel, vcov.type="white")
 #> 
-#> Date: Fri Jan 16 14:36:47 2026 
+#> Date: Fri Jan 16 14:55:43 2026 
 #> Dependent var.: y 
 #> Method: Ordinary Least Squares (OLS) 
 #> Variance-Covariance: White (1980) 
@@ -123,7 +123,7 @@ as.arx(mymodel, vcov.type="white")
 ##add ar-dynamics:
 as.arx(mymodel, ar=1:2)
 #> 
-#> Date: Fri Jan 16 14:36:47 2026 
+#> Date: Fri Jan 16 14:55:43 2026 
 #> Dependent var.: y 
 #> Method: Ordinary Least Squares (OLS) 
 #> Variance-Covariance: Ordinary 
@@ -162,7 +162,7 @@ as.arx(mymodel, ar=1:2)
 ##add log-variance specification:
 as.arx(mymodel, arch=1:2)
 #> 
-#> Date: Fri Jan 16 14:36:47 2026 
+#> Date: Fri Jan 16 14:55:43 2026 
 #> Dependent var.: y 
 #> Method: Ordinary Least Squares (OLS) 
 #> Variance-Covariance: Ordinary 

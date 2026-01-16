@@ -197,7 +197,7 @@ x <- matrix(rnorm(40*2), 40, 2)
 ##structure:
 larch(e, arch=1:4)
 #> 
-#> Date: Fri Jan 16 14:37:02 2026 
+#> Date: Fri Jan 16 14:55:58 2026 
 #> Dependent var.: e 
 #> Variance-Covariance: Robust (default) 
 #> No. of observations: 36 
@@ -227,7 +227,7 @@ larch(e, arch=1:4)
 ##term:
 larch(e, arch=1:4, harch=5, asym=1)
 #> 
-#> Date: Fri Jan 16 14:37:02 2026 
+#> Date: Fri Jan 16 14:55:58 2026 
 #> Dependent var.: e 
 #> Variance-Covariance: Robust (default) 
 #> No. of observations: 35 
@@ -260,7 +260,7 @@ larch(e, arch=1:4, harch=5, asym=1)
 ##regressors in the log-variance specification:
 larch(e, arch=1:4, asym=1, log.ewma=list(length=10), vxreg=log(x^2))
 #> 
-#> Date: Fri Jan 16 14:37:02 2026 
+#> Date: Fri Jan 16 14:55:58 2026 
 #> Dependent var.: e 
 #> Variance-Covariance: Robust (default) 
 #> No. of observations: 30 

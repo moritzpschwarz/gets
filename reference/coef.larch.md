@@ -153,7 +153,7 @@ mymod <- larch(e, arch=1:3, vxreg=x)
 ##print results:
 print(mymod)
 #> 
-#> Date: Fri Jan 16 14:36:51 2026 
+#> Date: Fri Jan 16 14:55:47 2026 
 #> Dependent var.: e 
 #> Variance-Covariance: Robust (default) 
 #> No. of observations: 37 
@@ -179,7 +179,7 @@ print(mymod)
 
 ##LaTeX print of the estimation results (equation format):
 toLatex(mymod)
-#> % Date: Fri Jan 16 14:36:51 2026 
+#> % Date: Fri Jan 16 14:55:47 2026 
 #> % LaTeX code generated in R 4.5.2 by the gets package
 #> % Note: The {eqnarray} environment requires the {amsmath} package
 #> \begin{eqnarray}
